@@ -1,0 +1,26 @@
+// Liga yaratish uchun Telegram Stars to'lov havolasini yaratadi.
+// GET  -> narx (Stars)
+// POST -> { initData } : to'lov havolasi
+// Narx: Vercel'da LEAGUE_STARS o'zgaruvchisi (standart 400). Sinash uchun 1 qilib qo'ying.
+const crypto = require("crypto");
+const { verify, call } = require("../lib/tg");
+
+module.exports = async (req, res) => {
+  const stars = Math.max(1, parseInt(process.env.LEAGUE_STARS || "400", 10) || 400);
+  if (req.method === "GET") return res.status(200).json({ stars });
+  if (req.method !== "POST") return res.status(405).json({ ok: false });
+  const token = process.env.BOT_TOKEN;
+  const u = verify((req.body || {}).initData, token);
+  if (!u) return res.status(401).json({ ok: false, error: "kirish tasdiqlanmadi" });
+  const nonce = crypto.randomBytes(5).toString("hex");
+  const payload = `lg:${u.id}:${nonce}`;
+  const r = await call(token, "createInvoiceLink", {
+    title: "Yangi liga",
+    description: "Trofeo'da yangi liga yaratish",
+    payload,
+    currency: "XTR",
+    prices: [{ label: "Liga yaratish", amount: stars }],
+  });
+  if (!r.ok) return res.status(502).json({ ok: false, error: r.description || "havola yaratilmadi" });
+  return res.status(200).json({ ok: true, link: r.result, nonce, stars });
+};
