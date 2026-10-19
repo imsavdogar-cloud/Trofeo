@@ -10,8 +10,8 @@ const tg = (method, body) =>
 const base = (req) => process.env.APP_URL || `https://${req.headers.host}`;
 const contact = () => process.env.SUPPORT_CONTACT || "shu botga yozing";
 
-const openBtn = (url) => ({
-  inline_keyboard: [[{ text: "Trofeo'ni ochish", web_app: { url } }]],
+const openBtn = (url, text = "Trofeo'ni ochish") => ({
+  inline_keyboard: [[{ text, web_app: { url } }]],
 });
 
 async function onMessage(m, req) {
@@ -20,8 +20,16 @@ async function onMessage(m, req) {
   const name = (m.from && m.from.first_name) || "do'st";
 
   if (m.successful_payment) {
-    // Keyingi bosqichda: shu yerda liga yaratiladi va to'lov bazaga yoziladi
-    console.log("Stars to'lovi:", m.successful_payment.telegram_payment_charge_id);
+    const sp = m.successful_payment;
+    console.log("Stars to'lovi:", sp.telegram_payment_charge_id, sp.total_amount);
+    const parts = String(sp.invoice_payload || "").split(":");
+    if (parts[0] === "lg" && parts[2]) {
+      return tg("sendMessage", {
+        chat_id: chat,
+        text: "To'lov qabul qilindi. Rahmat! Ligangizni yaratish uchun tugmani bosing.",
+        reply_markup: openBtn(`${base(req)}/?paid=${parts[2]}`, "Ligani yaratish"),
+      });
+    }
     return tg("sendMessage", { chat_id: chat, text: "To'lov qabul qilindi. Rahmat!" });
   }
 
