@@ -2,6 +2,7 @@
 <html lang="uz">
 <head>
 <meta charset="utf-8">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trofeo</title>
 <meta name="theme-color" content="#000000">
@@ -197,6 +198,69 @@ textarea:focus{border-color:var(--acc)}
 .kv2{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--mut)}.kv2 b{color:var(--tx)}
 .lnk{color:#229ED9;text-decoration:none;font-weight:700}
 .sres .pl:first-child{border-top:0}
+
+/* ===== V2: premium ko'rinish ===== */
+:root{--bg:#f3f6f4;--card:#ffffff;--card2:#eaf0ec;--tx:#0b1511;--mut:#5f7167;--acc:#0b9b63;--accA:#14c47d;--accB:#0b9b63;--accx:#ffffff;--line:#e2e9e5;--bd:rgba(11,21,17,.07);--red:#e5484d;--blue:#3b82f6;--gold:#c98a12;--glow:rgba(11,155,99,.14);--soft:rgba(11,155,99,.12);--glass:rgba(255,255,255,.7);--nav:rgba(255,255,255,.88);--hs:55%;--hl1:96%;--hl2:90%;--sh:0 1px 2px rgba(10,30,20,.05),0 10px 28px rgba(10,30,20,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#050806;--card:#0e1411;--card2:#171f1a;--tx:#f1f6f3;--mut:#8c9c93;--acc:#2bd98c;--accA:#3be8a0;--accB:#1fc07d;--accx:#03150d;--line:#1f2a24;--bd:rgba(255,255,255,.07);--red:#ff6b6b;--blue:#5aa9ff;--gold:#f4c14e;--glow:rgba(43,217,140,.17);--soft:rgba(43,217,140,.14);--glass:rgba(255,255,255,.06);--nav:rgba(11,17,14,.84);--hs:45%;--hl1:15%;--hl2:7%;--sh:0 1px 0 rgba(255,255,255,.04) inset,0 10px 30px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#050806;--card:#0e1411;--card2:#171f1a;--tx:#f1f6f3;--mut:#8c9c93;--acc:#2bd98c;--accA:#3be8a0;--accB:#1fc07d;--accx:#03150d;--line:#1f2a24;--bd:rgba(255,255,255,.07);--red:#ff6b6b;--blue:#5aa9ff;--gold:#f4c14e;--glow:rgba(43,217,140,.17);--soft:rgba(43,217,140,.14);--glass:rgba(255,255,255,.06);--nav:rgba(11,17,14,.84);--hs:45%;--hl1:15%;--hl2:7%;--sh:0 1px 0 rgba(255,255,255,.04) inset,0 10px 30px rgba(0,0,0,.35)}
+body{background:var(--bg)}
+body::before{content:"";position:fixed;left:0;right:0;top:0;height:380px;background:radial-gradient(70% 100% at 50% 0%,var(--glow),transparent 72%);pointer-events:none;z-index:0}
+#app{position:relative;z-index:1;padding-bottom:132px}
+.card{border:1px solid var(--bd);box-shadow:var(--sh);border-radius:22px;background-image:linear-gradient(180deg,rgba(255,255,255,.035),transparent 55%)}
+.card.empty,.card.pad{border-radius:22px}
+.btn{background:linear-gradient(180deg,var(--accA),var(--accB));box-shadow:0 8px 20px -8px var(--acc),inset 0 1px 0 rgba(255,255,255,.28);border-radius:16px;transition:transform .12s,filter .12s}
+.btn:active{transform:scale(.975);filter:brightness(.96)}
+.btn.sec{background:var(--card2);box-shadow:none}.btn.out,.btn.red{background:none;box-shadow:none}
+.btn.tg{background:linear-gradient(180deg,#34b6ee,#1d95d1);color:#fff;box-shadow:0 8px 20px -8px #229ed9}
+.seg.on{background:var(--soft);color:var(--acc)}
+.tab.on,.day.on{border-color:var(--acc)}
+.nav{background:none;border:0;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
+.nav>div{pointer-events:auto;max-width:480px;background:var(--nav);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);border:1px solid var(--bd);border-radius:28px;box-shadow:0 14px 36px rgba(0,0,0,.3);padding:6px;gap:2px}
+.ni{border-radius:22px;padding:9px 0 8px;transition:background .2s,color .2s}
+.ni.on{background:var(--soft);color:var(--acc)}
+.fab{bottom:calc(92px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,var(--accA),var(--accB));box-shadow:0 12px 26px -8px var(--acc),inset 0 1px 0 rgba(255,255,255,.3)}
+.ch{background-image:linear-gradient(180deg,rgba(255,255,255,.04),transparent)}
+.mr{transition:background .15s}.mr:active{background:var(--card2)}
+.res{background:var(--card2);border-radius:10px;padding:6px 10px;min-width:62px}.res.t{background:none}
+.rkn2{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--mut)}
+.rkn2.m1{background:linear-gradient(145deg,#ffe58a,#e0a416);color:#4a3000}
+.rkn2.m2{background:linear-gradient(145deg,#f1f4f7,#aeb8c2);color:#2b3640}
+.rkn2.m3{background:linear-gradient(145deg,#f0b98a,#b9722f);color:#3b1f05}
+tr.me td{background:var(--soft)}
+.podium{padding:16px 10px 14px;overflow:visible;background-image:radial-gradient(80% 90% at 50% 0%,rgba(244,193,78,.13),transparent 70%)}
+.pdw{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:8px;align-items:end}
+.pd{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;padding:12px 6px 10px;border-radius:18px;background:var(--card2);cursor:pointer;min-width:0}
+.pd1{padding-top:12px;padding-bottom:14px;background:linear-gradient(180deg,rgba(244,193,78,.22),rgba(244,193,78,.04));border:1px solid rgba(244,193,78,.38)}
+.crown{color:var(--gold);display:flex;margin-bottom:2px}
+.pdl{position:relative;margin-bottom:4px;display:flex}
+.pdn{position:absolute;right:-9px;bottom:-5px;width:20px;height:20px;border-radius:50%;font-style:normal;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.pd1 .pdn{background:linear-gradient(145deg,#ffe58a,#e0a416);color:#4a3000}
+.pd2 .pdn{background:linear-gradient(145deg,#f1f4f7,#aeb8c2);color:#2b3640}
+.pd3 .pdn{background:linear-gradient(145deg,#f0b98a,#b9722f);color:#3b1f05}
+.pdt{font-weight:800;font-size:13px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pds{font-size:11px;color:var(--mut);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pdp{font-weight:900;font-size:20px;margin-top:2px}.pdp small{font-size:11px;color:var(--mut);margin-left:3px;font-weight:700}
+.pd1 .pdp{color:var(--gold)}
+.lhero{border-radius:24px;padding:16px;margin-bottom:14px;border:1px solid var(--bd);box-shadow:var(--sh);position:relative;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,hsla(var(--h),70%,55%,.28),transparent 62%),linear-gradient(160deg,hsl(var(--h),var(--hs),var(--hl1)),hsl(var(--h),var(--hs),var(--hl2)))}
+.lh-top{display:flex;align-items:center;gap:14px}
+.lhero h2{font-size:24px;font-weight:800;letter-spacing:-.4px;line-height:1.1;overflow:hidden;text-overflow:ellipsis}
+.lhero .sub{color:var(--mut);margin-top:3px;font-size:13px}
+.lh-st{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+.lh-st>div{background:var(--glass);border:1px solid var(--bd);border-radius:14px;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+.lh-st b{font-size:20px;font-weight:800;line-height:1.2;min-height:26px;display:flex;align-items:center}
+.lh-st span{font-size:11px;color:var(--mut);font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rankpill{display:inline-block;margin-top:8px;padding:4px 10px;border-radius:12px;background:var(--glass);border:1px solid var(--bd);font-size:12px;font-weight:700}
+.donut{position:relative;flex:none}.dnt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}.dnt b{font-size:14px;font-weight:800}
+.prow{display:flex;align-items:center;gap:18px;padding:4px 16px 16px}
+.pleg{display:flex;flex-direction:column;gap:7px;font-size:14px;color:var(--mut)}.pleg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px}.pleg b{color:var(--tx);margin-left:8px}
+.avatar{object-fit:cover}
+.wel{background:radial-gradient(120% 60% at 50% 0%,var(--glow),transparent 70%)}
+.emb{filter:drop-shadow(0 0 30px rgba(244,193,78,.4));animation:flt 4s ease-in-out infinite}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+#app.go>*{animation:rise .42s cubic-bezier(.2,.7,.2,1) both}
+#app.go>*:nth-child(2){animation-delay:.05s}#app.go>*:nth-child(3){animation-delay:.1s}#app.go>*:nth-child(4){animation-delay:.15s}#app.go>*:nth-child(n+5){animation-delay:.2s}
+@media (prefers-reduced-motion:reduce){#app.go>*,.emb{animation:none}}
 </style>
 </head>
 <body>
@@ -236,7 +300,8 @@ const I={
  mega:ico('<path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',22),
  chart:ico('<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>'),
  dl:ico('<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>',20),
- clock:ico('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')
+ clock:ico('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
+ crown:ico('<path d="M3 8l4.5 4L12 5l4.5 7L21 8l-1.8 10H4.8z"/><path d="M5 21h14"/>',22)
 };
 const mark=(s=26)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polygon points="12,7.5 16.3,10.6 14.7,15.7 9.3,15.7 7.7,10.6" fill="var(--acc)"/><path d="M12 7.5V2M16.3 10.6l5.2-1.7M14.7 15.7L18 20M9.3 15.7L6 20M7.7 10.6L2.5 8.9"/></svg>`;
 const brand=(s=26,sz)=>`<div class="brand">${mark(s)}<div class="logo" ${sz?`style="font-size:${sz}px"`:""}>TRO<b>FEO</b></div></div>`;
@@ -281,9 +346,25 @@ const lbadge=(c,s=46)=>lbadgeOf((typeof leagues!=="undefined"&&leagues[c])||{},s
 
 /* ---------- Saqlash ---------- */
 let db=null,isAdmin=false,SA=false,usersMap={},announce=null,dl=null,me={id:"demo",name:"",tg:""},reg=false,leagues={},demo=true,fol=[],ft=[];
+const TGW=(window.Telegram&&window.Telegram.WebApp&&window.Telegram.WebApp.initData)?window.Telegram.WebApp:null;
+function setTg(u){me.id="tg"+u.id;me.tgid=u.id;me.name=[u.first_name,u.last_name].filter(Boolean).join(" ")||u.username||"Futbolchi";me.tg=u.username||"";me.photo=u.photo_url||"";reg=true;try{localStorage.setItem("profile",JSON.stringify({name:me.name,tg:me.tg}))}catch(e){}}
+async function tgLogin(){
+ if(!TGW)return;
+ try{TGW.ready();TGW.expand();if(TGW.disableVerticalSwipes)TGW.disableVerticalSwipes();if(TGW.onEvent)TGW.onEvent("themeChanged",applyTheme)}catch(e){}
+ const u0=(TGW.initDataUnsafe||{}).user;let ok=false;
+ try{const r=await fetch("/api/me",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({initData:TGW.initData})});
+  if(r.ok){const j=await r.json();if(j.ok){setTg(j.user);isAdmin=!!j.isAdmin;ok=true}}}catch(e){}
+ if(!ok&&u0){setTg(u0);isAdmin=false}
+}
+function applyTheme(){
+ let pref="";try{pref=localStorage.getItem("theme")||""}catch(e){}
+ const d=document.documentElement;
+ if(pref)d.dataset.theme=pref;else if(TGW)d.dataset.theme=TGW.colorScheme||"dark";else delete d.dataset.theme;
+ if(TGW){try{const dark=d.dataset.theme==="dark";const c=dark?"#050806":"#f3f6f4";TGW.setHeaderColor(c);TGW.setBackgroundColor(c);if(TGW.setBottomBarColor)TGW.setBottomBarColor(dark?"#0b110e":"#ffffff")}catch(e){}}
+}
 const store={
  async init(){
-  if(typeof claude==="undefined"){SA=true;isAdmin=true;me.id="local";
+  if(typeof claude==="undefined"){SA=true;isAdmin=false;me.id="local";
    try{leagues=JSON.parse(localStorage.getItem("tr_leagues")||"{}");announce=JSON.parse(localStorage.getItem("tr_ann")||"null")}catch(e){}
    dl={save:async({filename,data})=>{const b=new Blob([data],{type:"text/plain;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=filename;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}}}
   try{const u=await claude.use("user"); if(u){const m=await u.me(); me.id=m.id||"demo"; isAdmin=!!(await u.isOwner());}
@@ -291,6 +372,7 @@ const store={
   try{const p=JSON.parse(localStorage.getItem("profile")||"null"); if(p&&p.name){me.name=p.name;me.tg=p.tg||"";reg=true}
    fol=JSON.parse(localStorage.getItem("fol")||"[]");ft=JSON.parse(localStorage.getItem("ft")||"[]");
    const th=localStorage.getItem("theme");if(th)document.documentElement.dataset.theme=th}catch(e){}
+  await tgLogin();applyTheme();
   if(db){demo=false;
    db.collection("leagues").onSnapshot(s=>{leagues={};s.docs.forEach(d=>leagues[d.id]=d.data());render(false)},()=>{});
    db.collection("meta").onSnapshot(s=>{announce=null;s.docs.forEach(d=>{if(d.id==="announcement")announce=d.data()});render(false)},()=>{});
@@ -362,22 +444,17 @@ const backBar=r=>bar(`<button class="ic" onclick="back()">${I.back}</button>`,r)
 
 /* ---------- Kirish / ro'yxatdan o'tish ---------- */
 function renderWelcome(){
- app.innerHTML=`<div class="wel"><div class="top">${mark(70)}<div class="logo">TRO<b>FEO</b></div><p>Do'stlar bilan konsolda futbol o'ynang: liga yarating, hisobni yozing va jadvalni kuzating.</p></div>
+ app.innerHTML=`<div class="wel"><div class="top"><div class="emb">${lbadgeOf({ic:"trophy",h:150},108,"x")}</div><div class="logo">TRO<b>FEO</b></div><p>Do'stlar bilan konsolda futbol o'ynang: liga yarating, natijani kiriting va jadvalni kuzating.</p></div>
  <div style="display:flex;flex-direction:column;gap:10px">
- <div class="feat"><div class="fi">${I.tro(22)}</div><div><b>Liga va jadval</b><span>G'alaba 3, durang 1 ochko — avtomatik</span></div></div>
+ <div class="feat"><div class="fi">${I.tro(22)}</div><div><b>Liga va jadval</b><span>G'alaba 3, durang 1 ochko, avtomatik</span></div></div>
  <div class="feat"><div class="fi">${I.cal}</div><div><b>O'yinlar kalendari</b><span>Qachon o'ynaganingiz va keyingi o'yinlar</span></div></div>
  <div class="feat"><div class="fi">${I.link}</div><div><b>Link orqali taklif</b><span>Do'stlaringiz bir bosishda ligaga kiradi</span></div></div></div>
- <button class="btn tg" onclick="openModal('register',{})">${I.send}Telegram orqali kirish</button></div>`;
+ <div style="display:flex;flex-direction:column;gap:10px"><a class="btn tg" href="https://t.me/MyTrofeoBot" target="_blank" rel="noopener" style="text-decoration:none">${I.send}Telegram'da ochish</a><button class="btn sec" onclick="openModal('register',{})">Brauzerda sinab ko'rish</button></div></div>`;
 }
-function registerSheet(){return `<div class="sheet"><h3>Ro'yxatdan o'tish</h3><div class="mut" style="margin-top:4px">Telegram akkauntingiz bilan davom eting</div>
- <label>Telegram username</label><input id="rtg" placeholder="@username yoki t.me/username" value="${esc(S.draft.tg||"")}" oninput="S.draft.tg=this.value">
- <label>Ism (do'stlaringiz ko'radi)</label><input id="rnm" placeholder="Masalan: Jasur" value="${esc(S.draft.name||"")}" oninput="S.draft.name=this.value">
- <div style="height:18px"></div><button class="btn tg" onclick="doRegister()">${I.send}Davom etish</button></div>`}
+function registerSheet(){return `<div class="sheet"><h3>Tezkor kirish</h3><div class="mut" style="margin-top:4px">Ismingizni yozing, shuning o'zi yetadi</div><label>Ism</label><input placeholder="Masalan: Jasur" value="${esc(S.draft.name||"")}" oninput="S.draft.name=this.value"><div style="height:18px"></div><button class="btn" onclick="doRegister()">Davom etish</button></div>`}
 function doRegister(){
- const tg=(S.draft.tg||"").trim().replace(/^(https?:\/\/)?(www\.)?(t|telegram)\.me\//i,"").replace(/^@/,"").split(/[\/?#]/)[0],name=(S.draft.name||"").trim();
- if(!/^[A-Za-z0-9_]{5,32}$/.test(tg))return toast("Telegram username noto'g'ri (kamida 5 belgi)");
- if(!name)return toast("Ismingizni yozing");
- me.name=name;me.tg=tg;reg=true;keep("profile",{name,tg});touchUser();S.modal=null;toast("Xush kelibsiz, "+name+"!");render();
+ const name=(S.draft.name||"").trim();if(!name)return toast("Ismingizni yozing");
+ me.name=name;me.tg="";reg=true;keep("profile",{name,tg:""});touchUser();S.modal=null;toast("Xush kelibsiz, "+name+"!");render();
  const h=location.hash.slice(1).toLowerCase();if(h&&leagues[h])S.stack=[{s:"matches"},{s:"league",code:h}],S.ltab="players",render();
 }
 function logout(){reg=false;me.name="";me.tg="";keep("profile","null");S.stack=[{s:"matches"}];render()}
@@ -560,16 +637,29 @@ function ptitle(t,sb){return `<div class="ptw"><div class="pt">${t}</div>${sb?`<
 function renderProfile(){
  const T={P:0,W:0,D:0,L:0,GF:0,GA:0,Pts:0};
  Object.values(leagues).forEach(l=>standings(l).forEach(r=>{if(r.p.uid===me.id)for(const k in T)T[k]+=r[k]}));
- const th=document.documentElement.dataset.theme||"auto";
+ const th=(function(){try{return localStorage.getItem("theme")||"auto"}catch(e){return"auto"}})();
  app.innerHTML=bar(ptitle("Mening profilim","Hisob va ko'rinish sozlamalari"))+
- `<div class="card pad" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div class="avatar">${esc((me.name||"?").slice(0,1).toUpperCase())}</div><h2>${esc(me.name)}</h2><div class="mut">@${esc(me.tg)}</div></div>`+
- `<div class="card"><div class="ttl">Shaxsiy statistika</div><div class="grid"><div><b>${T.P}</b><span>O'yin</span></div><div><b>${T.W}</b><span>G'alaba</span></div><div><b>${T.D}</b><span>Durang</span></div><div><b>${T.L}</b><span>Mag'lubiyat</span></div><div><b>${T.GF}</b><span>Urilgan gol</span></div><div><b>${T.GA}</b><span>O'tkazilgan gol</span></div></div></div>`+
+ `<div class="card pad" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">${me.photo?`<img class="avatar" src="${esc(me.photo)}" referrerpolicy="no-referrer" alt="">`:`<div class="avatar">${esc((me.name||"?").slice(0,1).toUpperCase())}</div>`}<h2>${esc(me.name)}</h2><div class="mut">${me.tg?"@"+esc(me.tg):"Telegram foydalanuvchisi"}</div>${me.tgid?`<div class="mut">Telegram ID: <b style="color:var(--tx)">${me.tgid}</b></div>`:""}</div>`+
+ `<div class="card"><div class="ttl">Shaxsiy statistika</div><div class="prow">${donut(T.W,T.D,T.L,88)}<div class="pleg"><div><i style="background:var(--acc)"></i>G'alaba<b>${T.W}</b></div><div><i style="background:#8b93a0"></i>Durang<b>${T.D}</b></div><div><i style="background:var(--red)"></i>Mag'lubiyat<b>${T.L}</b></div></div></div><div class="grid"><div><b>${T.P}</b><span>O'yin</span></div><div><b>${T.W}</b><span>G'alaba</span></div><div><b>${T.D}</b><span>Durang</span></div><div><b>${T.L}</b><span>Mag'lubiyat</span></div><div><b>${T.GF}</b><span>Urilgan gol</span></div><div><b>${T.GA}</b><span>O'tkazilgan gol</span></div></div></div>`+
  themeCard(th)+
- `<button class="btn out" style="margin-top:4px" onclick="logout()">Hisobdan chiqish</button>`;
+ (TGW?"":`<button class="btn out" style="margin-top:4px" onclick="logout()">Hisobdan chiqish</button>`);
 }
-function setTheme(k){if(k==="auto"){delete document.documentElement.dataset.theme;keep("theme","")}else{document.documentElement.dataset.theme=k;keep("theme",k)}render()}
+function setTheme(k){keep("theme",k==="auto"?"":k);applyTheme();render()}
 
 /* ---------- 5) Liga sahifasi ---------- */
+function lhue(c){const o=leagues[c]||{};const h=o.h!=null?o.h:hue(c);return h<0?220:h}
+function hexHue(x){const m=/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(x||"");if(!m)return null;const r=parseInt(m[1],16)/255,g=parseInt(m[2],16)/255,b=parseInt(m[3],16)/255,mx=Math.max(r,g,b),mn=Math.min(r,g,b);if(mx===mn)return null;const d=mx-mn;let h=mx===r?((g-b)/d)%6:mx===g?(b-r)/d+2:(r-g)/d+4;return Math.round(((h*60)+360)%360)}
+const _hc={};
+function teamHue(t){if(t.club&&_hc[t.club]!=null)return _hc[t.club];if(!t.club&&!t.img){const h=hexHue(t.c1);if(h!=null)return h}return hue(t.team||"x")}
+function tintTeam(t){if(!t.club||!LG[t.club])return;const apply=h=>{const e=$("#th");if(e)e.style.setProperty("--h",h)};if(_hc[t.club]!=null)return apply(_hc[t.club]);
+ try{const im=new Image();im.onload=()=>{try{const c=document.createElement("canvas");c.width=c.height=16;const x=c.getContext("2d");x.drawImage(im,0,0,16,16);const d=x.getImageData(0,0,16,16).data;let sx=0,sy=0,n=0;for(let i=0;i<d.length;i+=4){if(d[i+3]<200)continue;const r=d[i]/255,g=d[i+1]/255,b=d[i+2]/255,mx=Math.max(r,g,b),mn=Math.min(r,g,b),sa=mx?(mx-mn)/mx:0;if(sa<.35||mx<.25)continue;const a=Math.atan2(Math.sqrt(3)*(g-b),2*r-g-b);sx+=Math.cos(a)*sa;sy+=Math.sin(a)*sa;n++}if(n){const h=Math.round(((Math.atan2(sy,sx)*180/Math.PI)+360)%360);_hc[t.club]=h;apply(h)}}catch(e){}};im.src=LG[t.club]}catch(e){}}
+function donut(w,d,l,s=64){const t=w+d+l,C=2*Math.PI*26;let off=0;
+ const seg=(v,col)=>{if(!v)return"";const len=v/t*C,e=`<circle cx="32" cy="32" r="26" fill="none" stroke-width="7" style="stroke:${col}" stroke-dasharray="${Math.max(len-1.5,0.1)} ${C}" stroke-dashoffset="${-off}"/>`;off+=len;return e};
+ return `<div class="donut" style="width:${s}px;height:${s}px"><svg viewBox="0 0 64 64" width="${s}" height="${s}" style="transform:rotate(-90deg)"><circle cx="32" cy="32" r="26" fill="none" stroke-width="7" style="stroke:var(--line)"/>${t?seg(w,"var(--acc)")+seg(d,"#8b93a0")+seg(l,"var(--red)"):""}</svg><div class="dnt"><b>${t?Math.round(w/t*100)+"%":"—"}</b></div></div>`}
+function podium(l,c){const st=standings(l).filter(r=>r.P>0);if(st.length<3)return"";
+ const cell=(r,pos)=>`<div class="pd pd${pos}" onclick="push({s:'team',code:'${c}',pid:'${r.p.id}'})">${pos===1?`<div class="crown">${I.crown}</div>`:""}<div class="pdl">${logo(r.p,pos===1?58:46)}<i class="pdn">${pos}</i></div><div class="pdt">${esc(r.p.team)}</div><div class="pds">${esc(r.p.name)}</div><div class="pdp">${r.Pts}<small>och</small></div></div>`;
+ return `<div class="card podium"><div class="ttl" style="padding:0 4px 10px">Peshqadamlar</div><div class="pdw">${cell(st[1],2)}${cell(st[0],1)}${cell(st[2],3)}</div></div>`}
+function teamHero(l,t,r,i){return `<div class="lhero" id="th" style="--h:${teamHue(t)}"><div class="lh-top">${logo(t,66)}<div style="flex:1;min-width:0"><h2>${esc(t.team)}</h2><div class="sub">${sub(t)}</div><div class="rankpill">${i+1}-o'rin · ${r.Pts} ochko</div></div>${donut(r.W,r.D,r.L,68)}</div></div>`}
 function prevRank(l){const ms=(l.matches||[]).filter(done);if(ms.length<2)return null;const last=ms[ms.length-1];const a=standings({...l,matches:(l.matches||[]).filter(m=>m!==last)}),mp={};a.forEach((r,i)=>mp[r.p.id]=i);return mp}
 function tableCard(l,c,hl){
  const st=standings(l);if(!st.length)return `<div class="card empty">Hali jamoa yo'q. Jamoangizni qo'shing.</div>`;
@@ -583,7 +673,7 @@ function tableCard(l,c,hl){
  else{head=`<tr><th class="l" colspan="2">Jamoa</th><th>So'nggi o'yinlar</th></tr>`;
   row=r=>`<td class="l">${tn(r)}</td><td style="padding-right:12px"><span class="fm">${form(l,r.p.id).map(f=>`<b class="${f.r}">${f.r==="W"?"G":f.r==="D"?"D":"M"}</b>`).join("")||'<span class="mut">—</span>'}</span></td>`}
  return `<div class="card" style="overflow-x:auto"><table>${head}${st.map((r,i)=>{const o=pr?pr[r.p.id]:null;const mv=(o!=null&&o!==i)?(o>i?'<i class="mv u"></i>':'<i class="mv d"></i>'):"";
-  return `<tr ${open(r)} class="${hl===r.p.id?'hl':''}"><td class="rk ${i===0&&r.P?'z1':(i<3&&n>=4&&r.P?'z2':'')}"><div class="rkc"><span>${i+1}</span>${mv}</div></td>${row(r)}</tr>`}).join("")}</table></div>`;
+  return `<tr ${open(r)} class="${hl===r.p.id?'hl':''}${r.p.uid===me.id?' me':''}"><td class="rk ${i===0&&r.P?'z1':(i<3&&n>=4&&r.P?'z2':'')}"><div class="rkc"><span class="rkn2 ${r.P&&i<3?'m'+(i+1):''}">${i+1}</span>${mv}</div></td>${row(r)}</tr>`}).join("")}</table></div>`;
 }
 function leagueStats(l){
  const P=pmap(l),st=standings(l).filter(r=>r.P>0);if(!st.length)return `<div class="card empty">Statistika o'yinlar o'ynalgach paydo bo'ladi.</div>`;
@@ -598,7 +688,7 @@ function leagueStats(l){
 }
 function leagueView(c,inline){
  const l=leagues[c],mp=(l.players||[]).find(p=>p.uid===me.id);let body="";
- if(S.ltab==="table")body=joinCard(l,c)+((l.players||[]).length>=2&&canAdd(l)?`<button class="btn" style="margin-bottom:12px" onclick="newMatch('${c}')">Natija kiritish</button>`:"")+`<div class="segs">${[["short","Qisqacha"],["full","To'liq"],["form","Forma"]].map(([k,t])=>`<button class="seg ${S.seg===k?'on':''}" onclick="S.seg='${k}';render()">${t}</button>`).join("")}</div>`+tableCard(l,c);
+ if(S.ltab==="table")body=joinCard(l,c)+((l.players||[]).length>=2&&canAdd(l)?`<button class="btn" style="margin-bottom:12px" onclick="newMatch('${c}')">Natija kiritish</button>`:"")+podium(l,c)+`<div class="segs">${[["short","Qisqacha"],["full","To'liq"],["form","Forma"]].map(([k,t])=>`<button class="seg ${S.seg===k?'on':''}" onclick="S.seg='${k}';render()">${t}</button>`).join("")}</div>`+tableCard(l,c);
  if(S.ltab==="matches"){
   const all=[...(l.matches||[])],up=all.filter(m=>!done(m)).sort((a,b)=>a.ts-b.ts),pl=all.filter(done).sort((a,b)=>b.ts-a.ts);
   body=(up.length?`<div class="card"><div class="ttl">Keyingi o'yinlar</div>${gGrp(l,c,up)}</div>`:"")+(pl.length?`<div class="card"><div class="ttl">O'tkazilgan o'yinlar</div>${gGrp(l,c,pl)}</div>`:"")||`<div class="card empty">Hali o'yin yo'q</div>`;
@@ -608,7 +698,8 @@ function leagueView(c,inline){
   `<div class="card"><div class="ttl">Jamoalar</div>${(l.players||[]).map(p=>`<div class="pl" onclick="push({s:'team',code:'${c}',pid:'${p.id}'})">${logo(p,38)}<div style="flex:1"><div class="n">${esc(p.team)}</div><div class="s">${sub(p)}${p.uid===l.owner?" · liga egasi":""}</div></div>${(p.uid===me.id||l.owner===me.id||isAdmin)?`<button class="btn sm sec" onclick="event.stopPropagation();delPlayer('${c}','${p.id}')">Chiqarish</button>`:""}</div>`).join("")||'<div class="empty" style="padding:20px">Hali yo\'q</div>'}${!mp?`<div class="pad"><button class="btn" onclick="openJoin('${c}')">Ligaga qo'shilish</button></div>`:""}</div>`;
  }
  if(S.ltab==="stats")body=leagueStats(l);
- const hero=`<div class="hero">${lbadge(c,inline?64:76)}<div style="flex:1"><h2 ${inline?'style="font-size:22px"':''}>${esc(l.name)}</h2><div class="sub">${(l.players||[]).length} o'yinchi · ${(l.matches||[]).filter(done).length} o'yin</div></div>${inline?`<span class="star ${fol.includes(c)?'on':''}" onclick="follow('${c}',event)">${fol.includes(c)?I.star():I.starO()}</span>`:""}</div>`;
+ const stt=standings(l),ld=stt.find(r=>r.P>0),dn=(l.matches||[]).filter(done),gl=dn.reduce((a,m)=>a+m.hs+m.as,0);
+ const hero=`<div class="lhero" style="--h:${lhue(c)}"><div class="lh-top">${lbadge(c,inline?60:68)}<div style="flex:1;min-width:0"><h2>${esc(l.name)}</h2><div class="sub">${(l.players||[]).length} jamoa · ${dn.length} o'yin</div></div>${inline?`<span class="star ${fol.includes(c)?'on':''}" onclick="follow('${c}',event)">${fol.includes(c)?I.star():I.starO()}</span>`:""}</div><div class="lh-st"><div><b>${(l.players||[]).length}</b><span>Jamoa</span></div><div><b>${dn.length}</b><span>O'yin</span></div><div><b>${gl}</b><span>Gol</span></div><div>${ld?`<b>${logo(ld.p,26)}</b><span>${esc(ld.p.team)}</span>`:`<b>—</b><span>Peshqadam</span>`}</div></div></div>`;
  return hero+tabsBar([["table","Jadval"],["matches","O'yinlar"],["players","Jamoalar"],["stats","Statistika"]],S.ltab,"setLT")+body+
  ((l.players||[]).length>=2&&canAdd(l)?`<button class="fab" onclick="openMatch('${c}','new')">${I.plus}</button>`:"");
 }
@@ -649,8 +740,8 @@ function renderTeam(){
  }
  if(S.ttab==="table")body=tableCard(l,c,pid);
  app.innerHTML=backBar(`${(t.uid===me.id||isAdmin)?`<button class="ic" onclick="openEditTeam('${c}','${pid}')">${I.edit}</button>`:""}<button class="sub-btn ${ft.includes(k)?'on':''}" onclick="followT('${k}')">${ft.includes(k)?I.star(18):I.starO(18)}${ft.includes(k)?"Kuzatilmoqda":"Kuzatish"}</button>`)+
- `<div class="hero">${logo(t,76)}<div><h2>${esc(t.team)}</h2><div class="sub">${sub(t)} · ${i+1}-o'rin</div></div></div>`+
- tabsBar([["over","Umumiy"],["matches","O'yinlar"],["table","Jadval"]],S.ttab,"setTT")+body;
+ teamHero(l,t,r,i)+
+ tabsBar([["over","Umumiy"],["matches","O'yinlar"],["table","Jadval"]],S.ttab,"setTT")+body;tintTeam(t);
 }
 function setTT(k){S.ttab=k;render()}
 
@@ -742,6 +833,7 @@ function nav(){const t=cur().s;const on=k=>(k==="matches"&&t==="matches")||(k===
  return `<div class="nav"><div>${[["matches","O'yinlar",I.pitch],["leagues","Ligalar",I.tro()],["follow","Sevimlilar",I.starO(24)],["profile","Profil",I.usr],...(isAdmin?[["admin","Boshqaruv",I.shield]]:[])].map(([k,n,ic])=>`<div class="ni ${on(k)?'on':''}" onclick="root('${k}')">${ic}${n}</div>`).join("")}</div></div>`}
 function render(full=true){
  if(!full&&document.activeElement&&app.contains(document.activeElement)&&/INPUT|SELECT/.test(document.activeElement.tagName))return;
+ {const key=reg?cur().s+(cur().code||"")+(cur().pid||""):"w";if(full&&key!==S.lastKey){S.lastKey=key;app.classList.add("go");clearTimeout(S.gt);S.gt=setTimeout(()=>app.classList.remove("go"),700)}}
  let n=$("#navw");if(!n){n=document.createElement("div");n.id="navw";document.body.appendChild(n)}
  if(!reg){renderWelcome();n.innerHTML=""}
  else{({matches:renderMatches,leagues:renderLeagues,follow:renderFollow,profile:renderProfile,admin:renderAdmin,league:renderLeague,team:renderTeam})[cur().s]();n.innerHTML=nav()}
