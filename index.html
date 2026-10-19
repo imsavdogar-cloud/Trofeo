@@ -261,6 +261,19 @@ tr.me td{background:var(--soft)}
 #app.go>*{animation:rise .42s cubic-bezier(.2,.7,.2,1) both}
 #app.go>*:nth-child(2){animation-delay:.05s}#app.go>*:nth-child(3){animation-delay:.1s}#app.go>*:nth-child(4){animation-delay:.15s}#app.go>*:nth-child(n+5){animation-delay:.2s}
 @media (prefers-reduced-motion:reduce){#app.go>*,.emb{animation:none}}
+.pill.addl{background:linear-gradient(180deg,var(--accA),var(--accB));color:var(--accx);box-shadow:0 6px 16px -6px var(--acc);gap:5px;padding:8px 14px}
+.payopt{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:16px;background:var(--card2);border:2px solid transparent;margin-bottom:8px}
+.payopt.on{border-color:var(--acc);background:var(--soft)}
+.payopt.dis{opacity:.55}
+.payopt b{display:block;font-size:15px}.payopt span{display:block;font-size:12px;color:var(--mut);margin-top:2px}
+.pi{width:40px;height:40px;border-radius:12px;background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--gold);flex:none}
+.payopt.dis .pi{color:var(--mut)}
+.pp{font-size:22px;font-weight:900;text-align:right;line-height:1}.pp small{display:block;font-size:11px;color:var(--mut);font-weight:700;margin-top:3px}
+.soon{font-size:11px;font-weight:800;color:var(--mut);background:var(--card);padding:4px 8px;border-radius:8px}
+.paynote{font-size:13px;color:var(--mut);line-height:1.5;margin-top:10px}
+.payst{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:26px 8px}
+.spin{width:42px;height:42px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--acc);animation:spn .9s linear infinite}
+@keyframes spn{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -301,7 +314,9 @@ const I={
  chart:ico('<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>'),
  dl:ico('<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>',20),
  clock:ico('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
- crown:ico('<path d="M3 8l4.5 4L12 5l4.5 7L21 8l-1.8 10H4.8z"/><path d="M5 21h14"/>',22)
+ crown:ico('<path d="M3 8l4.5 4L12 5l4.5 7L21 8l-1.8 10H4.8z"/><path d="M5 21h14"/>',22),
+ plus2:ico('<path d="M12 5v14M5 12h14"/>',16,"none",2.8),
+ coin:ico('<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.4-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.7-2.5 1.8 0 2.6 5 1.3 5 3.9 0 1.1-1.1 1.8-2.5 1.8-1.2 0-2.2-.5-2.6-1.4M12 6.5V8m0 8v1.5"/>',22)
 };
 const mark=(s=26)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polygon points="12,7.5 16.3,10.6 14.7,15.7 9.3,15.7 7.7,10.6" fill="var(--acc)"/><path d="M12 7.5V2M16.3 10.6l5.2-1.7M14.7 15.7L18 20M9.3 15.7L6 20M7.7 10.6L2.5 8.9"/></svg>`;
 const brand=(s=26,sz)=>`<div class="brand">${mark(s)}<div class="logo" ${sz?`style="font-size:${sz}px"`:""}>TRO<b>FEO</b></div></div>`;
@@ -478,7 +493,7 @@ function renderMatches(){
  if(favRows&&others.length)html+=`<button class="hidebtn" onclick="toggleAll()">${Object.values(S.col).some(x=>x)?"Hammasini ko'rsatish "+I.down:"Hammasini yashirish "+I.up}</button>`;
  others.forEach(([c,l,ms])=>html+=mk(c,cl=>`<div class="ch">${lbadge(c,26)}<span class="ct" onclick="push({s:'league',code:'${c}'})">${esc(l.name)}</span><span class="chev ${cl?'cl':''}" onclick="toggleCol('${c}')">${I.chev}</span></div>`,ms.map(m=>mrow(l,c,m)).join("")));
  app.innerHTML=bar(brand(28),`<button class="pill" onclick="S.day=0;render()"><span class="dot on"></span>Bugun</button><button class="ic" onclick="openCal()">${I.cal}</button><button class="ic" onclick="openSearch()">${I.search}</button>`)+annBanner()+`<div class="days">${strip}</div>`+
- (html||`<div class="empty">${Object.keys(leagues).length?"Bu kunda o'yin yo'q.":"Hali liga yo'q. Admin liga yaratgach yoki do'stingiz kod yuborgach, o'yinlar shu yerda chiqadi."}</div>`)+fabAny();
+ (html||`<div class="empty">${Object.keys(leagues).length?"Bu kunda o'yin yo'q.":"Hali liga yo'q. «Ligalar» bo'limidan liga yarating yoki do'stingizning linkini oching."}</div>`)+fabAny();
  const el=$("#dsel");if(el)el.scrollIntoView({inline:"center",block:"nearest"});
 }
 function fabAny(){return eligible().length?`<button class="fab" onclick="newMatch()">${I.plus}</button>`:""}
@@ -516,11 +531,52 @@ function joinCard(l,c){
 }
 function renderLeagues(){
  const ent=Object.entries(leagues);
- const hdr=bar(ptitle("Ligalar","Jadval, natijalar va statistika"),`<button class="ic" onclick="openModal('joincode',{})">${I.link}</button>`);
- if(!ent.length){app.innerHTML=hdr+`<div class="empty">Hozircha liga yo'q.<br>Ligani admin yaratadi. Do'stingiz link yuborgan bo'lsa, tepadagi link tugmasi bilan kiring.</div>`;return}
+ const hdr=bar(ptitle("Ligalar","Jadval, natijalar va statistika"),`<button class="pill addl" onclick="openNewLeague()">${I.plus2}Liga</button><button class="ic" onclick="openModal('joincode',{})">${I.link}</button>`);
+ if(!ent.length){app.innerHTML=hdr+`<div class="empty">Hozircha liga yo'q.<br>Birinchi ligani o'zingiz yarating yoki do'stingiz yuborgan link bilan kiring (tepadagi zanjir tugmasi).</div><div style="padding:0 20px"><button class="btn" onclick="openNewLeague()">${I.plus2}Liga yaratish</button></div>`;return}
  let c=S.lg;if(!leagues[c]){const m=ent.find(([k,x])=>isMine(x));c=(m||ent[0])[0];S.lg=c}
  const chips=ent.length>1?`<div class="chips">${ent.map(([k,x])=>`<div class="chip ${k===c?'on':''}" onclick="S.lg='${k}';render()">${lbadge(k,28)}${esc(x.name)}</div>`).join("")}</div>`:"";
  app.innerHTML=hdr+chips+leagueView(c,true);
+}
+let PRICE=400;
+const getUsed=()=>{try{return JSON.parse(localStorage.getItem("tr_used")||"[]")}catch(e){return[]}};
+async function makeLeague(name){const c=genCode();await store.save(c,{name,owner:me.id,players:[],matches:[]});return c}
+async function fetchPrice(){try{const r=await fetch("/api/invoice");const j=await r.json();if(j.stars&&j.stars!==PRICE){PRICE=j.stars;if(S.modal==="newleague"&&S.pay!=="verify")render()}}catch(e){}}
+function openNewLeague(){S.pay="idle";openModal("newleague",{n:""});if(!isAdmin)fetchPrice()}
+function newLeagueSheet(){const d=S.draft;
+ if(S.pay==="verify")return `<div class="sheet"><div class="payst"><div class="spin"></div><h3>To'lov tekshirilmoqda</h3><div class="mut">Telegram tasdiqlashini kutyapmiz, bir necha soniya...</div></div></div>`;
+ return `<div class="sheet"><h3>Yangi liga yaratish</h3><label>Liga nomi</label><input maxlength="40" placeholder="Masalan: Do'stlar ligasi" value="${esc(d.n||"")}" oninput="S.draft.n=this.value">
+ ${isAdmin?`<div class="paynote">Siz adminsiz: liga bepul yaratiladi.</div>`:`<label>To'lov usuli</label>
+ <div class="payopt on"><div class="pi">${I.star(22)}</div><div style="flex:1;min-width:0"><b>Telegram Stars</b><span>Telegram ichida, bir bosishda</span></div><div class="pp">${PRICE}<small>Stars</small></div></div>
+ <div class="payopt dis"><div class="pi">${I.coin}</div><div style="flex:1;min-width:0"><b>Kripto (USDT)</b><span>Tez orada</span></div><div class="soon">Tez orada</div></div>
+ <div class="paynote">Narx taxminan 5 dollar. To'lov o'tgach liga darrov yaratiladi, to'lovni Telegramning o'zi tasdiqlaydi.</div>`}
+ <div style="height:14px"></div><button class="btn" onclick="payCreate()">${isAdmin?"Ligani yaratish":`${I.star(18)}${PRICE} Stars bilan to'lash`}</button></div>`}
+async function payCreate(){
+ const n=(S.draft.n||"").trim();if(!n)return toast("Liga nomini yozing");
+ if(isAdmin){S.modal=null;const c=await makeLeague(n);toast("Liga yaratildi");S.lg=c;S.ltab="players";root("leagues");return}
+ if(!TGW)return toast("To'lov uchun ilovani Telegram ichida oching");
+ try{
+  const r=await fetch("/api/invoice",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({initData:TGW.initData})});
+  const j=await r.json();if(!j.ok)throw new Error(j.error||"xato");
+  keep("tr_pend_"+j.nonce,n);
+  TGW.openInvoice(j.link,st=>{if(st==="paid")finishPay(j.nonce,n);else if(st==="cancelled")toast("To'lov bekor qilindi");else if(st==="failed")toast("To'lov amalga oshmadi")});
+ }catch(e){toast("To'lov oynasini ochib bo'lmadi")}
+}
+async function finishPay(nonce,name){
+ if(getUsed().includes(nonce))return toast("Bu to'lov allaqachon ishlatilgan");
+ S.pay="verify";if(!S.modal)S.modal="newleague";render();
+ for(let i=0;i<12;i++){
+  try{const r=await fetch("/api/claim",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({initData:TGW.initData,nonce})});const j=await r.json();
+   if(j.ok&&j.paid){keep("tr_used",[...getUsed(),nonce]);S.pay="idle";S.modal=null;const c=await makeLeague(name||"Mening ligam");toast("To'lov tasdiqlandi, liga yaratildi");S.lg=c;S.ltab="players";root("leagues");return}}catch(e){}
+  await new Promise(r=>setTimeout(r,2000));
+ }
+ S.pay="idle";S.modal=null;render();toast("To'lov hali tasdiqlanmadi. Botdan kelgan xabardagi tugmani bosing.");
+}
+function handlePaid(){
+ let nonce=null;try{nonce=new URLSearchParams(location.search).get("paid")}catch(e){}
+ if(!nonce||!TGW||!/^[a-f0-9]{10}$/.test(nonce))return;
+ try{history.replaceState(null,"",location.pathname+location.hash)}catch(e){}
+ let name=null;try{name=localStorage.getItem("tr_pend_"+nonce)}catch(e){}
+ finishPay(nonce,name);
 }
 function joinCodeSheet(){return `<div class="sheet"><h3>Ligaga kirish</h3><div class="mut" style="margin-top:4px">Do'stingiz yuborgan link yoki kodni kiriting</div><label>Link yoki kod</label><input id="jc" placeholder="Kod yoki link"><div style="height:16px"></div><button class="btn" onclick="joinCode()">Kirish</button></div>`}
 function joinCode(){const c=($("#jc").value.trim().split("#").pop()||"").toLowerCase();if(!leagues[c])return toast("Bunday liga topilmadi");S.lg=c;S.ltab="players";S.modal=null;root("leagues")}
@@ -620,10 +676,9 @@ async function delLeague(){const c=S.draft.c;S.modal=null;await store.remove(c);
 /* ---------- 3) Kuzatish ---------- */
 function renderFollow(){
  const lg=fol.filter(c=>leagues[c]),tm=ft.map(k=>{const [c,pid]=k.split(":");const l=leagues[c];return l&&pmap(l)[pid]?{c,l,p:pmap(l)[pid]}:null}).filter(Boolean);
- app.innerHTML=bar(ptitle("Sevimlilar","Kuzatilayotgan liga va jamoalar"))+
- (tm.length?`<div class="card"><div class="ttl">Jamoalar</div>${tm.map(x=>`<div class="pl" onclick="push({s:'team',code:'${x.c}',pid:'${x.p.id}'})">${logo(x.p,38)}<div style="flex:1"><div class="n">${esc(x.p.team)}</div><div class="s">${esc(x.l.name)}</div></div></div>`).join("")}</div>`:"")+
- (lg.length?`<div class="card"><div class="ttl">Ligalar</div>${lg.map(c=>`<div class="pl" onclick="push({s:'league',code:'${c}'})">${lbadge(c,38)}<div style="flex:1"><div class="n">${esc(leagues[c].name)}</div><div class="s">${(leagues[c].players||[]).length} o'yinchi</div></div></div>`).join("")}</div>`:"")||
- `<div class="empty">Hali hech narsa kuzatilmayapti.<br>Liga yoki jamoa sahifasidagi yulduzchani bosing.</div>`;
+ const teamsCard=tm.length?`<div class="card"><div class="ttl">Jamoalar</div>${tm.map(x=>`<div class="pl" onclick="push({s:'team',code:'${x.c}',pid:'${x.p.id}'})">${logo(x.p,38)}<div style="flex:1"><div class="n">${esc(x.p.team)}</div><div class="s">${esc(x.l.name)}</div></div></div>`).join("")}</div>`:"";
+ const leaguesCard=lg.length?`<div class="card"><div class="ttl">Ligalar</div>${lg.map(c=>`<div class="pl" onclick="push({s:'league',code:'${c}'})">${lbadge(c,38)}<div style="flex:1"><div class="n">${esc(leagues[c].name)}</div><div class="s">${(leagues[c].players||[]).length} o'yinchi</div></div></div>`).join("")}</div>`:"";
+ app.innerHTML=bar(ptitle("Sevimlilar","Kuzatilayotgan liga va jamoalar"))+(teamsCard+leaguesCard||`<div class="empty">Hali hech narsa kuzatilmayapti.<br>Liga yoki jamoa sahifasidagi yulduzchani bosing.</div>`);
 }
 
 /* ---------- 4) Profil ---------- */
@@ -699,13 +754,13 @@ function leagueView(c,inline){
  }
  if(S.ltab==="stats")body=leagueStats(l);
  const stt=standings(l),ld=stt.find(r=>r.P>0),dn=(l.matches||[]).filter(done),gl=dn.reduce((a,m)=>a+m.hs+m.as,0);
- const hero=`<div class="lhero" style="--h:${lhue(c)}"><div class="lh-top">${lbadge(c,inline?60:68)}<div style="flex:1;min-width:0"><h2>${esc(l.name)}</h2><div class="sub">${(l.players||[]).length} jamoa · ${dn.length} o'yin</div></div>${inline?`<span class="star ${fol.includes(c)?'on':''}" onclick="follow('${c}',event)">${fol.includes(c)?I.star():I.starO()}</span>`:""}</div><div class="lh-st"><div><b>${(l.players||[]).length}</b><span>Jamoa</span></div><div><b>${dn.length}</b><span>O'yin</span></div><div><b>${gl}</b><span>Gol</span></div><div>${ld?`<b>${logo(ld.p,26)}</b><span>${esc(ld.p.team)}</span>`:`<b>—</b><span>Peshqadam</span>`}</div></div></div>`;
+ const hero=`<div class="lhero" style="--h:${lhue(c)}"><div class="lh-top">${lbadge(c,inline?60:68)}<div style="flex:1;min-width:0"><h2>${esc(l.name)}</h2><div class="sub">${(l.players||[]).length} jamoa · ${dn.length} o'yin</div></div>${inline&&(l.owner===me.id||isAdmin)?`<button class="ic" onclick="editLeague('${c}')">${I.edit}</button>`:""}${inline?`<span class="star ${fol.includes(c)?'on':''}" onclick="follow('${c}',event)">${fol.includes(c)?I.star():I.starO()}</span>`:""}</div><div class="lh-st"><div><b>${(l.players||[]).length}</b><span>Jamoa</span></div><div><b>${dn.length}</b><span>O'yin</span></div><div><b>${gl}</b><span>Gol</span></div><div>${ld?`<b>${logo(ld.p,26)}</b><span>${esc(ld.p.team)}</span>`:`<b>—</b><span>Peshqadam</span>`}</div></div></div>`;
  return hero+tabsBar([["table","Jadval"],["matches","O'yinlar"],["players","Jamoalar"],["stats","Statistika"]],S.ltab,"setLT")+body+
  ((l.players||[]).length>=2&&canAdd(l)?`<button class="fab" onclick="openMatch('${c}','new')">${I.plus}</button>`:"");
 }
 function renderLeague(){
  const {code:c}=cur();if(!leagues[c]){back();return}
- app.innerHTML=backBar(`<button class="sub-btn ${fol.includes(c)?'on':''}" onclick="follow('${c}')">${fol.includes(c)?I.star(18):I.starO(18)}${fol.includes(c)?"Kuzatilmoqda":"Kuzatish"}</button>`)+leagueView(c,false);
+ app.innerHTML=backBar(`${(leagues[c].owner===me.id||isAdmin)?`<button class="ic" onclick="editLeague('${c}')">${I.edit}</button>`:""}<button class="sub-btn ${fol.includes(c)?'on':''}" onclick="follow('${c}')">${fol.includes(c)?I.star(18):I.starO(18)}${fol.includes(c)?"Kuzatilmoqda":"Kuzatish"}</button>`)+leagueView(c,false);
 }
 function setLT(k){S.ltab=k;render()}
 function copyLink(c){const t=link(c);(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast("Nusxalandi"),()=>toast("Kod: "+c))}
@@ -839,14 +894,14 @@ function render(full=true){
  else{({matches:renderMatches,leagues:renderLeagues,follow:renderFollow,profile:renderProfile,admin:renderAdmin,league:renderLeague,team:renderTeam})[cur().s]();n.innerHTML=nav()}
  if(full){const o=$(".modal");let sc=0;if(o){const sh=o.querySelector(".sheet");if(sh)sc=sh.scrollTop;o.remove()}
   if(S.modal){const w=document.createElement("div");w.className="modal";w.onclick=e=>{if(e.target===w){S.modal=null;render()}};
-   w.innerHTML=({join:joinSheet,match:matchSheet,leagueEdit:leagueEditSheet,joincode:joinCodeSheet,user:userSheet,register:registerSheet,cal:calSheet,search:searchSheet})[S.modal]();document.body.appendChild(w);
+   w.innerHTML=({join:joinSheet,match:matchSheet,leagueEdit:leagueEditSheet,joincode:joinCodeSheet,user:userSheet,newleague:newLeagueSheet,register:registerSheet,cal:calSheet,search:searchSheet})[S.modal]();document.body.appendChild(w);
    const sh=w.querySelector(".sheet");if(sh)sh.scrollTop=sc;const q=w.querySelector("#sq");if(q)q.focus()}}
 }
 (async()=>{
  await store.init();
  const h=location.hash.slice(1).toLowerCase();
  if(h){const go=()=>{if(reg&&leagues[h]&&cur().s!=="league"&&!S.opened){S.opened=1;S.stack=[{s:"matches"},{s:"league",code:h}];S.ltab="players";render()}};go();setTimeout(go,1200)}
- render();
+ render();handlePaid();
 })();
 </script>
 </body>
