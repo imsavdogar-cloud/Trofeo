@@ -34,6 +34,10 @@ async function onMessage(m, req) {
     return tg("sendMessage", { chat_id: chat, text: lines, reply_markup: openBtn(url) });
   }
 
+  if (text.startsWith("/id")) {
+    return tg("sendMessage", { chat_id: chat, text: `Sizning Telegram ID'ingiz: ${m.from.id}` });
+  }
+
   if (text.startsWith("/support")) {
     return tg("sendMessage", {
       chat_id: chat,
