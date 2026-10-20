@@ -5,11 +5,12 @@ const { verify, call } = require("../lib/tg");
 module.exports = async (req, res) => {
   if (req.method !== "POST") return res.status(405).json({ ok: false });
   const token = process.env.BOT_TOKEN;
-  const { initData, nonce } = req.body || {};
+  const { initData, nonce, kind } = req.body || {};
   const u = verify(initData, token);
   if (!u) return res.status(401).json({ ok: false, error: "kirish tasdiqlanmadi" });
   if (!/^[a-f0-9]{10}$/.test(String(nonce || ""))) return res.status(400).json({ ok: false });
-  const payload = `lg:${u.id}:${nonce}`;
+  const k = kind === "cp" ? "cp" : "lg";
+  const payload = `${k}:${u.id}:${nonce}`;
   const r = await call(token, "getStarTransactions", { limit: 100 });
   if (!r.ok) return res.status(502).json({ ok: false, error: r.description || "tekshirib bo'lmadi" });
   const list = (r.result && r.result.transactions) || [];
