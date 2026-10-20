@@ -274,6 +274,30 @@ tr.me td{background:var(--soft)}
 .payst{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:26px 8px}
 .spin{width:42px;height:42px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--acc);animation:spn .9s linear infinite}
 @keyframes spn{to{transform:rotate(360deg)}}
+.brk{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 14px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;margin:0 -2px}
+.brc{flex:none;width:212px;display:flex;flex-direction:column;scroll-snap-align:start}
+.brh{text-align:center;font-weight:800;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.6px;padding:4px 0 10px}
+.brb{flex:1;display:flex;flex-direction:column;justify-content:space-around;gap:10px}
+.tie{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:var(--sh)}
+.tt{display:flex;align-items:center;gap:8px;padding:9px 10px;font-weight:600;font-size:13px}
+.tt+.tt{border-top:1px solid var(--line)}
+.tt b{margin-left:auto;font-size:15px}
+.tt.w{background:var(--soft)}.tt.w b{color:var(--acc)}.tt.l{opacity:.5}
+.tn2{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tbd{width:22px;height:22px;border-radius:50%;border:2px dashed var(--line);flex:none}
+.tie.bye{opacity:.72}.tp{font-size:11px;color:var(--mut);padding:0 10px 8px;font-weight:600}
+.champ{display:flex;align-items:center;gap:14px;padding:16px;border-radius:22px;margin-bottom:12px;background:linear-gradient(135deg,rgba(244,193,78,.25),rgba(244,193,78,.06));border:1px solid rgba(244,193,78,.4)}
+.champ .crown{color:var(--gold)}
+.nchip{display:inline-block;padding:7px 14px;border-radius:16px;background:var(--card2);font-weight:700;font-size:13px;cursor:pointer;margin:8px 8px 0 0}
+.tnm{flex:1;min-width:0;font-weight:700}.tnm small{display:block;color:var(--mut);font-size:11px;font-weight:500;margin-top:2px}
+.nav .ni{font-size:10px;min-width:0}
+.langs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lang{border:2px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center;cursor:pointer;background:var(--card)}
+.lang b{display:block;font-size:18px;margin-bottom:3px}.lang span{font-size:12px;color:var(--mut)}
+.lang.on{border-color:var(--acc);background:var(--soft)}
+.langrow{display:flex;justify-content:flex-end;gap:6px;margin-bottom:-14px}
+.lc{padding:6px 12px;border-radius:14px;background:var(--card);font-weight:800;font-size:12px;cursor:pointer;color:var(--mut)}
+.lc.on{background:var(--soft);color:var(--acc)}
 </style>
 </head>
 <body>
@@ -283,6 +307,12 @@ const LG={"Bournemouth":"data:image/webp;base64,UklGRlQNAABXRUJQVlA4WAoAAAAQAAAA
 const CL=[["Angliya",["Bournemouth","Arsenal","Aston Villa","Brentford","Brighton & Hove Albion","Chelsea","Coventry City","Crystal Palace","Everton","Fulham","Hull City","Ipswich Town","Leeds United","Liverpool","Manchester City","Manchester United","Newcastle United","Nottingham Forest","Sunderland","Tottenham Hotspur"]],["Ispaniya",["Athletic Bilbao","Atlético de Madrid","Osasuna","Celta de Vigo","Deportivo A Coruña","Deportivo Alavés","Elche","Barcelona","Getafe","Levante UD","Málaga","Espanyol Barcelona","Racing Santander","Rayo Vallecano","Real Betis Balompié","Real Madrid","Real Sociedad","Sevilla","Valencia","Villarreal"]],["Italiya",["Milan","Monza","ACF Fiorentina","Roma","Atalanta BC","Bologna FC 1909","Cagliari Calcio","Como 1907","Frosinone Calcio","Genoa CFC","Inter Milan","Juventus","Parma Calcio 1913","SS Lazio","Napoli","Torino","Lecce","Sassuolo","Udinese Calcio","Venezia"]],["Germaniya",["Köln","Union Berlin","1.FSV Mainz 05","Bayer 04 Leverkusen","Bayern Munich","Borussia Dortmund","Borussia Mönchengladbach","Eintracht Frankfurt","Augsburg","Schalke 04","Hamburger SV","RB Leipzig","Freiburg","Paderborn 07","07 Elversberg","Werder Bremen","1899 Hoffenheim","Stuttgart"]],["Fransiya",["AJ Auxerre","Monaco","Angers SCO","ESTAC Troyes","Lorient","Toulouse","LOSC Lille","Le Havre AC","Le Mans","Nice","Olympique Lyon","Olympique Marseille","Paris","Paris Saint-Germain","Lens","Strasbourg Alsace","Stade Brestois 29","Stade Rennais"]],["Portugaliya",["Académico Viseu","Nacional","Santa Clara","Estrela Amadora","Marítimo","Casa Pia AC","Alverca","Arouca","Famalicão","Porto","Estoril Praia","Gil Vicente","Moreirense","Rio Ave","Braga","Benfica","Sporting CP","Vitória Guimarães"]],["Niderlandiya",["ADO Den Haag","AZ Alkmaar","Ajax Amsterdam","Excelsior Rotterdam","Groningen","Twente Enschede","Utrecht","Feyenoord Rotterdam","Fortuna Sittard","Go Ahead Eagles","NEC Nijmegen","PEC Zwolle","PSV Eindhoven","Cambuur Leeuwarden","Heerenveen","Telstar","Sparta Rotterdam","Willem II Tilburg"]],["Turkiya",["Alanyaspor","Amed","Basaksehir","Besiktas JK","Caykur Rizespor","Corum","Erzurumspor","Eyüpspor","Fenerbahce","Galatasaray","Gaziantep","Genclerbirligi Ankara","Göztepe","Kasimpasa","Kocaelispor","Konyaspor","Samsunspor","Trabzonspor"]],["Shotlandiya",["Aberdeen","Celtic","Dundee","Dundee United","Falkirk","Heart of Midlothian","Hibernian","Kilmarnock","Motherwell","Rangers","St. Johnstone","St. Mirren"]],["Belgiya",["Cercle Brugge","Club Brugge KV","KAA Gent","KRC Genk","KV Kortrijk","KV Mechelen","KVC Westerlo","Lommel","Oud-Heverlee Leuven","RAAL La Louvière","RSC Anderlecht","Royal Antwerp","Royal Charleroi","Beveren","Sint-Truidense VV","Standard Liège","Union Saint-Gilloise","Zulte Waregem"]],["Rossiya",["Akhmat Grozny","Akron Tolyatti","Baltika Kaliningrad","CSKA Moscow","Dinamo Makhachkala","Dynamo Moscow","Krasnodar","Orenburg","Rostov","Fakel Voronezh","Krylya Sovetov Samara","Lokomotiv Moscow","Rodina Moscow","Rubin Kazan","Spartak Moscow","Zenit St. Petersburg"]],["Ukraina",["Bukovyna Chernivtsi","Chornomorets Odesa","Dynamo Kyiv","Epicentr Kamyanets-Podilskyi","Kharkiv","Kudrivka","Karpaty Lviv","Kolos Kovalivka","Kryvbas Kryvyi Rig","LNZ Cherkasy","Livyi Bereg Kyiv","Veres Rivne","Obolon Kyiv","Polissya Zhytomyr","Shakhtar Donetsk","Zorya Lugansk"]]];
 </script>
 <script>
+const LANGS={uz:"O'zbekcha",ru:"Русский",en:"English"};
+const LOC={uz:"uz-UZ",ru:"ru-RU",en:"en-GB"};
+let LANG="uz";
+const DICT={"Futbolchi":{"ru":"Футболист","en":"Player"},"O'chirishda xato":{"ru":"Ошибка удаления","en":"Delete failed"},"Saqlashda xato":{"ru":"Ошибка сохранения","en":"Save failed"},"Do'stlar bilan konsolda futbol o'ynang: liga yarating, natijani kiriting va jadvalni kuzating.":{"ru":"Играйте в футбол на консоли с друзьями: создавайте лиги, вносите результаты и следите за таблицей.","en":"Play console football with friends: create leagues, enter results and follow the table."},"Liga va jadval":{"ru":"Лига и таблица","en":"League and table"},"G'alaba 3, durang 1 ochko, avtomatik":{"ru":"Победа 3, ничья 1 очко, автоматически","en":"Win 3, draw 1 point, automatic"},"O'yinlar kalendari":{"ru":"Календарь матчей","en":"Match calendar"},"Qachon o'ynaganingiz va keyingi o'yinlar":{"ru":"Когда вы играли и следующие матчи","en":"When you played and upcoming matches"},"Link orqali taklif":{"ru":"Приглашение по ссылке","en":"Invite by link"},"Do'stlaringiz bir bosishda ligaga kiradi":{"ru":"Друзья заходят в лигу одним нажатием","en":"Friends join the league in one tap"},"Telegram'da ochish":{"ru":"Открыть в Telegram","en":"Open in Telegram"},"Brauzerda sinab ko'rish":{"ru":"Попробовать в браузере","en":"Try in browser"},"Tezkor kirish":{"ru":"Быстрый вход","en":"Quick sign-in"},"Ismingizni yozing, shuning o'zi yetadi":{"ru":"Введите имя, этого достаточно","en":"Just enter your name, that's enough"},"Ism":{"ru":"Имя","en":"Name"},"Davom etish":{"ru":"Продолжить","en":"Continue"},"Masalan: Jasur":{"ru":"Например: Артём","en":"For example: Alex"},"Ismingizni yozing":{"ru":"Введите имя","en":"Enter your name"},"Xush kelibsiz,":{"ru":"Добро пожаловать,","en":"Welcome,"},"Bugun":{"ru":"Сегодня","en":"Today"},"Kecha":{"ru":"Вчера","en":"Yesterday"},"Ertaga":{"ru":"Завтра","en":"Tomorrow"},"Kuzatish":{"ru":"Следить","en":"Follow"},"Hammasini ko'rsatish":{"ru":"Показать все","en":"Show all"},"Hammasini yashirish":{"ru":"Скрыть все","en":"Hide all"},"Bu kunda o'yin yo'q.":{"ru":"В этот день матчей нет.","en":"No matches on this day."},"Hali liga yo'q. «Ligalar» bo'limidan liga yarating yoki do'stingizning linkini oching.":{"ru":"Лиг пока нет. Создайте лигу в разделе «Лиги» или откройте ссылку друга.","en":"No leagues yet. Create one in the “Leagues” section or open a friend's link."},"Du":{"ru":"Пн","en":"Mo"},"Se":{"ru":"Вт","en":"Tu"},"Ch":{"ru":"Ср","en":"We"},"Pa":{"ru":"Чт","en":"Th"},"Ju":{"ru":"Пт","en":"Fr"},"Sh":{"ru":"Сб","en":"Sa"},"Ya":{"ru":"Вс","en":"Su"},"Bugunga o'tish":{"ru":"К сегодняшнему дню","en":"Go to today"},"Liga yoki jamoa qidirish":{"ru":"Поиск лиги или команды","en":"Search league or team"},"Chempionat":{"ru":"Чемпионат","en":"Tournament"},"Liga":{"ru":"Лига","en":"League"},"Hech narsa topilmadi":{"ru":"Ничего не найдено","en":"Nothing found"},"Jamoangizni ro'yxatdan o'tkazing":{"ru":"Зарегистрируйте свою команду","en":"Register your team"},"Nom va logotipni tanlang":{"ru":"Выберите название и логотип","en":"Choose a name and logo"},"Ligalar":{"ru":"Лиги","en":"Leagues"},"Jadval, natijalar va statistika":{"ru":"Таблица, результаты и статистика","en":"Table, results and statistics"},"Hozircha liga yo'q.":{"ru":"Пока нет лиг.","en":"No leagues yet."},"Birinchi ligani o'zingiz yarating yoki do'stingiz yuborgan link bilan kiring (tepadagi zanjir tugmasi).":{"ru":"Создайте первую лигу сами или войдите по ссылке друга (кнопка-цепочка вверху).","en":"Create the first league yourself or join with a friend's link (chain button at the top)."},"Liga yaratish":{"ru":"Создать лигу","en":"Create league"},"Final":{"ru":"Финал","en":"Final"},"Yarim final":{"ru":"Полуфинал","en":"Semi-final"},"Chorak final":{"ru":"Четвертьфинал","en":"Quarter-final"},"1/8 final":{"ru":"1/8 финала","en":"Round of 16"},"1/16 final":{"ru":"1/16 финала","en":"Round of 32"},"1/32 final":{"ru":"1/32 финала","en":"Round of 64"},"Jamoalar soni 2 dan 64 gacha bo'lishi kerak":{"ru":"Количество команд должно быть от 2 до 64","en":"Number of teams must be between 2 and 64"},"Bosqichlar:":{"ru":"Этапы:","en":"Rounds:"},". Jamoalar soni 2 ning darajasi emas, shuning uchun ba'zi jamoalar birinchi bosqichni o'ynamay o'tadi.":{"ru":". Количество команд не степень двойки, поэтому некоторые команды проходят первый этап без игры.","en":". The number of teams is not a power of two, so some teams skip the first round."},"To'lov tekshirilmoqda":{"ru":"Проверяем оплату","en":"Checking payment"},"Telegram tasdiqlashini kutyapmiz, bir necha soniya...":{"ru":"Ждём подтверждения от Telegram, несколько секунд...","en":"Waiting for Telegram to confirm, a few seconds..."},"Jamoalar soni":{"ru":"Количество команд","en":"Number of teams"},"Siz adminsiz: bepul yaratiladi.":{"ru":"Вы администратор: создаётся бесплатно.","en":"You are an admin: created for free."},"To'lov usuli":{"ru":"Способ оплаты","en":"Payment method"},"Telegram ichida, bir bosishda":{"ru":"Прямо в Telegram, в одно нажатие","en":"Inside Telegram, in one tap"},"Kripto (USDT)":{"ru":"Крипто (USDT)","en":"Crypto (USDT)"},"Tez orada":{"ru":"Скоро","en":"Coming soon"},"Narx taxminan 5 dollar. To'lov o'tgach {0} darrov yaratiladi, to'lovni Telegramning o'zi tasdiqlaydi.":{"ru":"Цена около 5 долларов. После оплаты {0} создаётся сразу, оплату подтверждает сам Telegram.","en":"The price is about 5 dollars. After payment the {0} is created instantly; Telegram itself confirms the payment."},"chempionat":{"ru":"чемпионат","en":"tournament"},"liga":{"ru":"лига","en":"league"},"Yangi chempionat yaratish":{"ru":"Создать новый чемпионат","en":"Create new tournament"},"Yangi liga yaratish":{"ru":"Создать новую лигу","en":"Create new league"},"Chempionat nomi":{"ru":"Название чемпионата","en":"Tournament name"},"Liga nomi":{"ru":"Название лиги","en":"League name"},"Masalan: Yoz kubogi":{"ru":"Например: Летний кубок","en":"For example: Summer Cup"},"Masalan: Do'stlar ligasi":{"ru":"Например: Лига друзей","en":"For example: Friends League"},"Yaratish":{"ru":"Создать","en":"Create"},"To'lovni sinab ko'rish":{"ru":"Проверить оплату","en":"Test the payment"},"{0} Stars bilan to'lash":{"ru":"Оплатить {0} Stars","en":"Pay {0} Stars"},"Chempionat nomini yozing":{"ru":"Введите название чемпионата","en":"Enter the tournament name"},"Liga nomini yozing":{"ru":"Введите название лиги","en":"Enter the league name"},"Chempionat yaratildi":{"ru":"Чемпионат создан","en":"Tournament created"},"Liga yaratildi":{"ru":"Лига создана","en":"League created"},"To'lov uchun ilovani Telegram ichida oching":{"ru":"Для оплаты откройте приложение в Telegram","en":"Open the app inside Telegram to pay"},"To'lov bekor qilindi":{"ru":"Оплата отменена","en":"Payment cancelled"},"To'lov amalga oshmadi":{"ru":"Оплата не прошла","en":"Payment failed"},"To'lov oynasini ochib bo'lmadi":{"ru":"Не удалось открыть окно оплаты","en":"Could not open the payment window"},"Bu to'lov allaqachon ishlatilgan":{"ru":"Этот платёж уже использован","en":"This payment has already been used"},"Mening chempionatim":{"ru":"Мой чемпионат","en":"My tournament"},"Mening ligam":{"ru":"Моя лига","en":"My league"},"To'lov tasdiqlandi, chempionat yaratildi":{"ru":"Оплата подтверждена, чемпионат создан","en":"Payment confirmed, tournament created"},"To'lov tasdiqlandi, liga yaratildi":{"ru":"Оплата подтверждена, лига создана","en":"Payment confirmed, league created"},"To'lov hali tasdiqlanmadi. Botdan kelgan xabardagi tugmani bosing.":{"ru":"Оплата ещё не подтверждена. Нажмите кнопку в сообщении от бота.","en":"Payment not confirmed yet. Tap the button in the message from the bot."},"Yakunlandi":{"ru":"Завершён","en":"Finished"},"O'ynalmoqda":{"ru":"Идёт","en":"In progress"},"Ro'yxat ochiq":{"ru":"Набор открыт","en":"Registration open"},"Kutilmoqda":{"ru":"Ожидается","en":"Pending"},"Keyingi bosqichga o'tdi":{"ru":"Проходит дальше","en":"Advances"},"Penaltilarda: {0}":{"ru":"По пенальти: {0}","en":"On penalties: {0}"},"Qur'a hali tashlanmagan.":{"ru":"Жеребьёвка ещё не проведена.","en":"The draw hasn't been made yet."},"{0}/{1} jamoa qo'shildi.":{"ru":"Добавлено команд: {0}/{1}.","en":"Teams joined: {0}/{1}."},"Qur'a tashlash":{"ru":"Провести жеребьёвку","en":"Make the draw"},"Qur'a tashlash uchun kamida 2 jamoa kerak":{"ru":"Для жеребьёвки нужно минимум 2 команды","en":"At least 2 teams are needed for the draw"},"Chempion":{"ru":"Чемпион","en":"Champion"},"Qur'a tashlangach o'yinlar shu yerda chiqadi":{"ru":"Матчи появятся здесь после жеребьёвки","en":"Matches will appear here after the draw"},"Hali o'yin yo'q":{"ru":"Матчей пока нет","en":"No matches yet"},"Do'stlarni taklif qilish":{"ru":"Пригласить друзей","en":"Invite friends"},"Nusxa":{"ru":"Копировать","en":"Copy"},"Kod:":{"ru":"Код:","en":"Code:"},"Jamoalar ({0}/{1})":{"ru":"Команды ({0}/{1})","en":"Teams ({0}/{1})"},"· tashkilotchi":{"ru":"· организатор","en":"· organizer"},"Chiqarish":{"ru":"Исключить","en":"Remove"},"Hali yo'q":{"ru":"Пока нет","en":"None yet"},"Chempionat · {0} jamoagacha":{"ru":"Чемпионат · до {0} команд","en":"Tournament · up to {0} teams"},"Jamoa":{"ru":"Команда","en":"Team"},"Bosqich":{"ru":"Этап","en":"Round"},"Holat":{"ru":"Статус","en":"Status"},"Setka":{"ru":"Сетка","en":"Bracket"},"O'yinlar":{"ru":"Матчи","en":"Matches"},"Jamoalar":{"ru":"Команды","en":"Teams"},"Chempionatlar":{"ru":"Чемпионаты","en":"Tournaments"},"Kubok formatidagi turnirlar":{"ru":"Турниры в формате кубка","en":"Knockout cup tournaments"},"Hozircha chempionat yo'q.":{"ru":"Чемпионатов пока нет.","en":"No tournaments yet."},"Jamoalar soni va bosqichlarni o'zingiz belgilab, kubok turnirini yarating yoki do'stingiz yuborgan link bilan kiring.":{"ru":"Создайте кубковый турнир, сами выбрав число команд и этапов, или войдите по ссылке друга.","en":"Create a knockout tournament by choosing the number of teams and rounds yourself, or join with a friend's link."},"Chempionat yaratish":{"ru":"Создать чемпионат","en":"Create tournament"},"Kuzatilmoqda":{"ru":"Вы следите","en":"Following"},"{0} jamoa qatnashadi. Bosqichlar: {1}.{2}":{"ru":"Участвуют команд: {0}. Этапы: {1}.{2}","en":"Teams taking part: {0}. Rounds: {1}.{2}"},"Qur'adan keyin yangi jamoa qo'shib bo'lmaydi.":{"ru":"После жеребьёвки новые команды добавить нельзя.","en":"New teams can't be added after the draw."},"{0} jamoa birinchi bosqichni o'ynamay keyingisiga o'tadi.":{"ru":"Команд, проходящих первый этап без игры: {0}.","en":"Teams skipping the first round: {0}."},"Kamida 2 jamoa kerak":{"ru":"Нужно минимум 2 команды","en":"At least 2 teams needed"},"Qur'a tashlandi":{"ru":"Жеребьёвка проведена","en":"Draw completed"},"Raqib hali aniqlanmagan":{"ru":"Соперник ещё не определён","en":"Opponent not decided yet"},"Natijani faqat o'yinchilar yoki tashkilotchi kirita oladi":{"ru":"Результат могут вносить только игроки или организатор","en":"Only the players or the organizer can enter the result"},"Penaltilarda kim yutdi?":{"ru":"Кто выиграл по пенальти?","en":"Who won on penalties?"},"Natijani tasdiqlash":{"ru":"Подтвердить результат","en":"Confirm result"},"Natijani o'chirish":{"ru":"Удалить результат","en":"Delete result"},"Hisobni kiriting":{"ru":"Введите счёт","en":"Enter the score"},"Penaltilarda g'olibni tanlang":{"ru":"Выберите победителя по пенальти","en":"Choose the penalty winner"},"Chempion aniqlandi!":{"ru":"Чемпион определён!","en":"Champion decided!"},"Natija saqlandi":{"ru":"Результат сохранён","en":"Result saved"},"Natija o'chirildi":{"ru":"Результат удалён","en":"Result deleted"},"Ligaga kirish":{"ru":"Вход в лигу","en":"Join a league"},"Do'stingiz yuborgan link yoki kodni kiriting":{"ru":"Введите ссылку или код, который прислал друг","en":"Enter the link or code your friend sent"},"Link yoki kod":{"ru":"Ссылка или код","en":"Link or code"},"Kirish":{"ru":"Войти","en":"Join"},"Kod yoki link":{"ru":"Код или ссылка","en":"Code or link"},"Bunday liga topilmadi":{"ru":"Такая лига не найдена","en":"League not found"},"E'lon":{"ru":"Объявление","en":"Announcement"},"Foydalanuvchi":{"ru":"Пользователь","en":"User"},"Nomsiz":{"ru":"Без имени","en":"Unnamed"},"siz":{"ru":"вы","en":"you"},"Umumiy":{"ru":"Обзор","en":"Overview"},"Foydalanuvchilar":{"ru":"Пользователи","en":"Users"},"Faollik":{"ru":"Активность","en":"Activity"},"Ma'lumotlar":{"ru":"Данные","en":"Data"},"Boshqaruv paneli":{"ru":"Панель управления","en":"Admin panel"},"Platforma holati va nazorat":{"ru":"Состояние платформы и контроль","en":"Platform status and control"},"Egasi":{"ru":"Владелец","en":"Owner"},"+{0} shu hafta":{"ru":"+{0} за неделю","en":"+{0} this week"},"Faol (7 kun)":{"ru":"Активные (7 дн.)","en":"Active (7 days)"},"+{0} chempionat":{"ru":"Чемпионатов: +{0}","en":"Tournaments: +{0}"},"Jami gollar":{"ru":"Всего голов","en":"Total goals"},"o'yinga":{"ru":"за матч","en":"per match"},"O'yinlar · oxirgi 14 kun":{"ru":"Матчи · последние 14 дней","en":"Matches · last 14 days"},"Yangi foydalanuvchilar · oxirgi 14 kun":{"ru":"Новые пользователи · последние 14 дней","en":"New users · last 14 days"},"Eng yaxshi o'yinchilar":{"ru":"Лучшие игроки","en":"Top players"},"{0} o'yin · {1} g'alaba":{"ru":"Матчей: {0} · Побед: {1}","en":"Matches: {0} · Wins: {1}"},"Natijalar kiritilgach chiqadi":{"ru":"Появится после ввода результатов","en":"Appears once results are entered"},"E'lon (hamma ko'radi)":{"ru":"Объявление (видят все)","en":"Announcement (visible to everyone)"},"E'lon qilish":{"ru":"Опубликовать","en":"Publish"},"Masalan: Shanba kuni 20:00 da final o'yini!":{"ru":"Например: в субботу в 20:00 финал!","en":"For example: the final is on Saturday at 20:00!"},"Olib tashlash":{"ru":"Убрать","en":"Remove"},"E'lon matnini yozing":{"ru":"Введите текст объявления","en":"Enter the announcement text"},"E'lon chop etildi":{"ru":"Объявление опубликовано","en":"Announcement published"},"E'lon olib tashlandi":{"ru":"Объявление убрано","en":"Announcement removed"},"{0} liga · {1} o'yin · {2}":{"ru":"Лиг: {0} · Матчей: {1} · {2}","en":"Leagues: {0} · Matches: {1} · {2}"},"Hech kim topilmadi":{"ru":"Никого не найдено","en":"No one found"},"Foydalanuvchilar ({0})":{"ru":"Пользователи ({0})","en":"Users ({0})"},"Ism yoki @username bo'yicha qidirish":{"ru":"Поиск по имени или @username","en":"Search by name or @username"},"O'yin":{"ru":"Матчи","en":"Matches"},"G'alaba":{"ru":"Победы","en":"Wins"},"Ochko":{"ru":"Очки","en":"Points"},"Ro'yxatdan o'tgan":{"ru":"Зарегистрирован","en":"Registered"},"Oxirgi faollik":{"ru":"Последняя активность","en":"Last active"},"Jamoalari ({0})":{"ru":"Команды ({0})","en":"Teams ({0})"},"Hali jamoa yo'q":{"ru":"Команд пока нет","en":"No teams yet"},"Ha, hamma ligadan chiqarish":{"ru":"Да, исключить из всех лиг","en":"Yes, remove from all leagues"},"Ligalardan chiqarish":{"ru":"Исключить из лиг","en":"Remove from leagues"},"Foydalanuvchi ligalardan chiqarildi":{"ru":"Пользователь исключён из лиг","en":"User removed from leagues"},"Barcha ligalar ({0})":{"ru":"Все лиги ({0})","en":"All leagues ({0})"},"{0} jamoa · {1} o'yin · {2} gol":{"ru":"Команд: {0} · Матчей: {1} · Голов: {2}","en":"Teams: {0} · Matches: {1} · Goals: {2}"},"Kod: {0} · oxirgi o'yin: {1}":{"ru":"Код: {0} · последний матч: {1}","en":"Code: {0} · last match: {1}"},"Ko'rish":{"ru":"Открыть","en":"View"},"kubok":{"ru":"кубок","en":"cup"},"Hali liga yaratilmagan":{"ru":"Лиг ещё не создано","en":"No leagues created yet"},"ro'yxatdan o'tdi":{"ru":"зарегистрировался","en":"registered"},"So'nggi faollik":{"ru":"Недавняя активность","en":"Recent activity"},"Hali faollik yo'q":{"ru":"Активности пока нет","en":"No activity yet"},"Ma'lumotlar bazasi":{"ru":"База данных","en":"Database"},"Hajmi":{"ru":"Размер","en":"Size"},"Eksport":{"ru":"Экспорт","en":"Export"},"Zaxira nusxa va hisobotlarni yuklab oling":{"ru":"Скачайте резервные копии и отчёты","en":"Download backups and reports"},"Zaxira nusxa (JSON)":{"ru":"Резервная копия (JSON)","en":"Backup (JSON)"},"Natijalar (CSV)":{"ru":"Результаты (CSV)","en":"Results (CSV)"},"Foydalanuvchilar (CSV)":{"ru":"Пользователи (CSV)","en":"Users (CSV)"},"Yuklab olish bu yerda mavjud emas":{"ru":"Скачивание здесь недоступно","en":"Download isn't available here"},"Sana":{"ru":"Дата","en":"Date"},"Uy jamoasi":{"ru":"Хозяева","en":"Home team"},"Uy egasi":{"ru":"Игрок (хозяева)","en":"Home player"},"Hisob":{"ru":"Счёт","en":"Score"},"Mehmon jamoasi":{"ru":"Гости","en":"Away team"},"Mehmon egasi":{"ru":"Игрок (гости)","en":"Away player"},"Royxatdan otgan":{"ru":"Зарегистрирован","en":"Registered"},"Oyinlar":{"ru":"Матчи","en":"Matches"},"Galaba":{"ru":"Победы","en":"Wins"},"Fayl tayyor":{"ru":"Файл готов","en":"File ready"},"Saqlab bo'lmadi":{"ru":"Не удалось сохранить","en":"Could not save"},"Ligani sozlash":{"ru":"Настройки лиги","en":"League settings"},"Belgi":{"ru":"Значок","en":"Badge"},"Rang":{"ru":"Цвет","en":"Color"},"yoki o'z rasmingizni yuklang":{"ru":"или загрузите своё изображение","en":"or upload your own image"},"Do'stlar uchun taklif linki":{"ru":"Ссылка-приглашение для друзей","en":"Invite link for friends"},"Saqlash":{"ru":"Сохранить","en":"Save"},"Ha, butunlay o'chirish ({0} jamoa, {1} o'yin)":{"ru":"Да, удалить навсегда (команд: {0}, матчей: {1})","en":"Yes, delete permanently (teams: {0}, matches: {1})"},"Ligani o'chirish":{"ru":"Удалить лигу","en":"Delete league"},"Nomni yozing":{"ru":"Введите название","en":"Enter a name"},"Saqlandi":{"ru":"Сохранено","en":"Saved"},"Liga o'chirildi":{"ru":"Лига удалена","en":"League deleted"},"{0} o'yinchi":{"ru":"Игроков: {0}","en":"Players: {0}"},"Sevimlilar":{"ru":"Избранное","en":"Favorites"},"Kuzatilayotgan liga va jamoalar":{"ru":"Отслеживаемые лиги и команды","en":"Followed leagues and teams"},"Hali hech narsa kuzatilmayapti.":{"ru":"Вы пока ничего не отслеживаете.","en":"You aren't following anything yet."},"Liga yoki jamoa sahifasidagi yulduzchani bosing.":{"ru":"Нажмите на звёздочку на странице лиги или команды.","en":"Tap the star on a league or team page."},"Tizim":{"ru":"Система","en":"System"},"Yorug'":{"ru":"Светлая","en":"Light"},"Qorong'i":{"ru":"Тёмная","en":"Dark"},"Mavzu":{"ru":"Тема","en":"Theme"},"Ilova ko'rinishini tanlang":{"ru":"Выберите оформление приложения","en":"Choose the app appearance"},"Til":{"ru":"Язык","en":"Language"},"Ilova tilini tanlang":{"ru":"Выберите язык приложения","en":"Choose the app language"},"Mening profilim":{"ru":"Мой профиль","en":"My profile"},"Hisob va ko'rinish sozlamalari":{"ru":"Аккаунт и настройки оформления","en":"Account and appearance settings"},"Telegram foydalanuvchisi":{"ru":"Пользователь Telegram","en":"Telegram user"},"Shaxsiy statistika":{"ru":"Личная статистика","en":"Personal statistics"},"Durang":{"ru":"Ничьи","en":"Draws"},"Mag'lubiyat":{"ru":"Поражения","en":"Losses"},"Urilgan gol":{"ru":"Забито","en":"Goals for"},"O'tkazilgan gol":{"ru":"Пропущено","en":"Goals against"},"Hisobdan chiqish":{"ru":"Выйти из аккаунта","en":"Sign out"},"och":{"ru":"очк.","en":"pts"},"Peshqadamlar":{"ru":"Лидеры","en":"Leaders"},"{0}-o'rin · {1} ochko":{"ru":"Место: {0} · Очки: {1}","en":"Rank: {0} · Points: {1}"},"Hali jamoa yo'q. Jamoangizni qo'shing.":{"ru":"Команд пока нет. Добавьте свою команду.","en":"No teams yet. Add your team."},"O":{"ru":"И","en":"P"},"TF":{"ru":"РМ","en":"GD"},"Och":{"ru":"Очк","en":"Pts"},"G":{"ru":"В","en":"W"},"D":{"ru":"Н","en":"D"},"M":{"ru":"П","en":"L"},"To'p":{"ru":"Мячи","en":"Goals"},"So'nggi o'yinlar":{"ru":"Последние матчи","en":"Recent matches"},"Statistika o'yinlar o'ynalgach paydo bo'ladi.":{"ru":"Статистика появится после матчей.","en":"Statistics appear after matches are played."},"Liga statistikasi":{"ru":"Статистика лиги","en":"League statistics"},"Jami gol":{"ru":"Всего голов","en":"Total goals"},"O'yinga gol":{"ru":"Голов за матч","en":"Goals per match"},"Eng katta hisob":{"ru":"Самый крупный счёт","en":"Biggest score"},"Eng ko'p gol urgan":{"ru":"Больше всех забили","en":"Top scorers"},"Eng yaxshi himoya (o'yinga o'tkazilgan)":{"ru":"Лучшая защита (пропущено за матч)","en":"Best defence (conceded per match)"},"Eng yaxshi ochko o'rtachasi":{"ru":"Лучшее среднее число очков","en":"Best points average"},"Eng uzun g'alabalar seriyasi":{"ru":"Самая длинная победная серия","en":"Longest winning streak"},"Natija kiritish":{"ru":"Ввести результат","en":"Enter result"},"Qisqacha":{"ru":"Кратко","en":"Short"},"To'liq":{"ru":"Полная","en":"Full"},"Forma":{"ru":"Форма","en":"Form"},"Keyingi o'yinlar":{"ru":"Ближайшие матчи","en":"Upcoming matches"},"O'tkazilgan o'yinlar":{"ru":"Сыгранные матчи","en":"Played matches"},"· liga egasi":{"ru":"· владелец лиги","en":"· league owner"},"Ligaga qo'shilish":{"ru":"Вступить в лигу","en":"Join the league"},"{0} jamoa · {1} o'yin":{"ru":"Команд: {0} · Матчей: {1}","en":"Teams: {0} · Matches: {1}"},"Gol":{"ru":"Голы","en":"Goals"},"Peshqadam":{"ru":"Лидер","en":"Leader"},"Jadval":{"ru":"Таблица","en":"Table"},"Statistika":{"ru":"Статистика","en":"Stats"},"Nusxalandi":{"ru":"Скопировано","en":"Copied"},"{0} hali rasmiy o'yin o'tkazmagan. Birinchi hisob kiritilgach bu yerda jamoa haqida qisqa xulosa paydo bo'ladi.":{"ru":"{0} ещё не сыграла ни одного матча. После первого результата здесь появится краткий разбор команды.","en":"{0} hasn't played an official match yet. A short team summary will appear here after the first result."},"{0} jamoasi ustidan {1}:{2} hisobida g'alaba qozondi":{"ru":"обыграла {0} со счётом {1}:{2}","en":"beat {0} {1}:{2}"},"{0} jamoasiga {1}:{2} hisobida yutqazdi":{"ru":"проиграла {0} со счётом {1}:{2}","en":"lost to {0} {1}:{2}"},"{0} jamoasi bilan {1}:{2} hisobida durang o'ynadi":{"ru":"сыграла вничью с {0} со счётом {1}:{2}","en":"drew with {0} {1}:{2}"},"{0} so'nggi o'yinda {1}. {2} jamoani {3} o'yindan {4} ochkoga yetkazdi va jadvalda {5}-o'rinda turibdi.":{"ru":"{0} в последнем матче {1}. Игрок: {2}. Матчей: {3}, очков: {4}, место в таблице: {5}.","en":"{0} {1} in the last match. Player: {2}. Played: {3}, points: {4}, table position: {5}."},"Ketma-ket {0} ta g'alaba — jamoa yaxshi kayfiyatda.":{"ru":"Победная серия: {0}. Команда в отличной форме.","en":"Winning streak: {0}. The team is in great form."},"Ketma-ket {0} o'yinda mag'lub bo'lmagan.":{"ru":"Серия без поражений: {0}.","en":"Unbeaten run: {0}."},"Ketma-ket ikki mag'lubiyat. Qaytish vaqti keldi.":{"ru":"Два поражения подряд. Пора возвращаться.","en":"Two defeats in a row. Time to bounce back."},"Oxirgi 5 o'yin":{"ru":"Последние 5 матчей","en":"Last 5 matches"},"O'yinlar tarixi":{"ru":"История матчей","en":"Match history"},"Qisqacha tahlil":{"ru":"Краткий разбор","en":"Quick analysis"},"G-D-M":{"ru":"В-Н-П","en":"W-D-L"},"Topilmadi. Pastdan o'zingiz yasang.":{"ru":"Не найдено. Создайте логотип ниже.","en":"Not found. Create your own below."},"Logotip avtomatik topildi:":{"ru":"Логотип найден автоматически:","en":"Logo found automatically:"},"1. Jamoa nomi":{"ru":"1. Название команды","en":"1. Team name"},"2. Logotip: klubni qidiring yoki tanlang":{"ru":"2. Логотип: найдите или выберите клуб","en":"2. Logo: search or pick a club"},"yoki o'zingiz yasang (naqsh va ranglar)":{"ru":"или создайте сами (узор и цвета)","en":"or design your own (pattern and colors)"},"Rang 1":{"ru":"Цвет 1","en":"Color 1"},"Rang 2":{"ru":"Цвет 2","en":"Color 2"},"Qisqartma (3 harf)":{"ru":"Аббревиатура (3 буквы)","en":"Abbreviation (3 letters)"},"Masalan: Barcelona yoki Jasur FC":{"ru":"Например: Barcelona или Jasur FC","en":"For example: Barcelona or Jasur FC"},"Klub qidirish (barselona, real, liverpul...)":{"ru":"Поиск клуба (барселона, реал, ливерпуль...)","en":"Search club (barcelona, real, liverpool...)"},"Jamoani tahrirlash":{"ru":"Редактировать команду","en":"Edit team"},"Jamoangizni yarating":{"ru":"Создайте свою команду","en":"Create your team"},"Qo'shilish":{"ru":"Вступить","en":"Join"},"Jamoa nomini yozing":{"ru":"Введите название команды","en":"Enter the team name"},"Qur'a tashlangan, yangi jamoa qo'shib bo'lmaydi":{"ru":"Жеребьёвка проведена, новые команды добавлять нельзя","en":"The draw is done, new teams can't be added"},"Jamoalar soni to'lgan":{"ru":"Все места заняты","en":"The tournament is full"},"Qo'shildingiz!":{"ru":"Вы в игре!","en":"You're in!"},"Natija kiritish uchun ligada kamida 2 jamoa kerak":{"ru":"Для ввода результата в лиге нужно минимум 2 команды","en":"At least 2 teams are needed in the league to enter a result"},"{0} g'alaba qozonadi: +3 ochko":{"ru":"{0} побеждает: +3 очка","en":"{0} wins: +3 points"},"Durang: ikkala jamoaga +1 ochko":{"ru":"Ничья: по +1 очку обеим командам","en":"Draw: +1 point for both teams"},"Raqib":{"ru":"Соперник","en":"Opponent"},"O'ynaldi":{"ru":"Сыграно","en":"Played"},"Rejalashtirish":{"ru":"Запланировать","en":"Schedule"},"O'yinni tahrirlash":{"ru":"Редактировать матч","en":"Edit match"},"Sizning jamoangiz":{"ru":"Ваша команда","en":"Your team"},"Sana va vaqt":{"ru":"Дата и время","en":"Date and time"},"· avtomatik":{"ru":"· автоматически","en":"· automatic"},"O'yin sanasi va vaqti":{"ru":"Дата и время матча","en":"Match date and time"},"O'yinni o'chirish":{"ru":"Удалить матч","en":"Delete match"},"Bir xil jamoa tanlangan":{"ru":"Выбрана одна и та же команда","en":"The same team is selected"},"O'yin rejalashtirildi":{"ru":"Матч запланирован","en":"Match scheduled"},"Natija saqlandi, jadval yangilandi":{"ru":"Результат сохранён, таблица обновлена","en":"Result saved, table updated"},"Profil":{"ru":"Профиль","en":"Profile"},"hozir":{"ru":"сейчас","en":"just now"},"{0} daqiqa oldin":{"ru":"{0} мин. назад","en":"{0} min ago"},"{0} soat oldin":{"ru":"{0} ч. назад","en":"{0} h ago"},"kecha":{"ru":"вчера","en":"yesterday"},"{0} kun oldin":{"ru":"{0} дн. назад","en":"{0} d ago"},"grp:Angliya":{"ru":"Англия","en":"England","uz":"Angliya"},"grp:Ispaniya":{"ru":"Испания","en":"Spain","uz":"Ispaniya"},"grp:Italiya":{"ru":"Италия","en":"Italy","uz":"Italiya"},"grp:Germaniya":{"ru":"Германия","en":"Germany","uz":"Germaniya"},"grp:Fransiya":{"ru":"Франция","en":"France","uz":"Fransiya"},"grp:Portugaliya":{"ru":"Португалия","en":"Portugal","uz":"Portugaliya"},"grp:Niderlandiya":{"ru":"Нидерланды","en":"Netherlands","uz":"Niderlandiya"},"grp:Turkiya":{"ru":"Турция","en":"Turkey","uz":"Turkiya"},"grp:Shotlandiya":{"ru":"Шотландия","en":"Scotland","uz":"Shotlandiya"},"grp:Belgiya":{"ru":"Бельгия","en":"Belgium","uz":"Belgiya"},"grp:Rossiya":{"ru":"Россия","en":"Russia","uz":"Rossiya"},"grp:Ukraina":{"ru":"Украина","en":"Ukraine","uz":"Ukraina"},"grp:O'zbekiston":{"ru":"Узбекистан","en":"Uzbekistan","uz":"O'zbekiston"},"natija kiritdi":{"ru":"ввёл(а) результат","en":"entered a result"}};
+function $t(k,a){const e=DICT[k];let s=(e&&e[LANG])||k;if(a)s=s.replace(/\{(\d+)\}/g,(m,i)=>a[+i]!=null?a[+i]:m);return s}
+const tg=g=>$t("grp:"+g);
 /* ---------- Ikonkalar (chiziqli SVG) ---------- */
 const ico=(p,s=24,f="none",w=2)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="${f}" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
 const I={
@@ -315,6 +345,7 @@ const I={
  dl:ico('<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>',20),
  clock:ico('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
  crown:ico('<path d="M3 8l4.5 4L12 5l4.5 7L21 8l-1.8 10H4.8z"/><path d="M5 21h14"/>',22),
+ bracket:ico('<path d="M4 4h5v5H4zM4 15h5v5H4zM15 9.5h5v5h-5zM9 6.5h3v11H9M12 12h3"/>'),
  plus2:ico('<path d="M12 5v14M5 12h14"/>',16,"none",2.8),
  coin:ico('<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.4-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.7-2.5 1.8 0 2.6 5 1.3 5 3.9 0 1.1-1.1 1.8-2.5 1.8-1.2 0-2.2-.5-2.6-1.4M12 6.5V8m0 8v1.5"/>',22)
 };
@@ -362,7 +393,7 @@ const lbadge=(c,s=46)=>lbadgeOf((typeof leagues!=="undefined"&&leagues[c])||{},s
 /* ---------- Saqlash ---------- */
 let db=null,isAdmin=false,SA=false,usersMap={},announce=null,dl=null,me={id:"demo",name:"",tg:""},reg=false,leagues={},demo=true,fol=[],ft=[];
 const TGW=(window.Telegram&&window.Telegram.WebApp&&window.Telegram.WebApp.initData)?window.Telegram.WebApp:null;
-function setTg(u){me.id="tg"+u.id;me.tgid=u.id;me.name=[u.first_name,u.last_name].filter(Boolean).join(" ")||u.username||"Futbolchi";me.tg=u.username||"";me.photo=u.photo_url||"";reg=true;try{localStorage.setItem("profile",JSON.stringify({name:me.name,tg:me.tg}))}catch(e){}}
+function setTg(u){me.id="tg"+u.id;me.tgid=u.id;me.name=[u.first_name,u.last_name].filter(Boolean).join(" ")||u.username||$t("Futbolchi");me.tg=u.username||"";me.photo=u.photo_url||"";reg=true;try{localStorage.setItem("profile",JSON.stringify({name:me.name,tg:me.tg}))}catch(e){}}
 async function tgLogin(){
  if(!TGW)return;
  try{TGW.ready();TGW.expand();if(TGW.disableVerticalSwipes)TGW.disableVerticalSwipes();if(TGW.onEvent)TGW.onEvent("themeChanged",applyTheme)}catch(e){}
@@ -387,15 +418,15 @@ const store={
   try{const p=JSON.parse(localStorage.getItem("profile")||"null"); if(p&&p.name){me.name=p.name;me.tg=p.tg||"";reg=true}
    fol=JSON.parse(localStorage.getItem("fol")||"[]");ft=JSON.parse(localStorage.getItem("ft")||"[]");
    const th=localStorage.getItem("theme");if(th)document.documentElement.dataset.theme=th}catch(e){}
-  await tgLogin();applyTheme();
+  await tgLogin();applyTheme();initLang();
   if(db){demo=false;
    db.collection("leagues").onSnapshot(s=>{leagues={};s.docs.forEach(d=>leagues[d.id]=d.data());render(false)},()=>{});
    db.collection("meta").onSnapshot(s=>{announce=null;s.docs.forEach(d=>{if(d.id==="announcement")announce=d.data()});render(false)},()=>{});
    if(isAdmin)db.collection("users").onSnapshot(s=>{usersMap={};s.docs.forEach(d=>usersMap[d.id]=d.data());render(false)},()=>{});
    touchUser();}
  },
- async remove(c){delete leagues[c];if(SA)keep("tr_leagues",leagues);fol=fol.filter(x=>x!==c);keep("fol",fol);if(db){try{await db.doc("leagues/"+c).delete()}catch(e){toast("O'chirishda xato")}}render()},
- async save(code,l){leagues[code]=l;if(SA)keep("tr_leagues",leagues); if(db){try{await db.doc("leagues/"+code).set(l)}catch(e){toast("Saqlashda xato")}} render()}
+ async remove(c){delete leagues[c];if(SA)keep("tr_leagues",leagues);fol=fol.filter(x=>x!==c);keep("fol",fol);if(db){try{await db.doc("leagues/"+c).delete()}catch(e){toast($t("O'chirishda xato"))}}render()},
+ async save(code,l){leagues[code]=l;if(SA)keep("tr_leagues",leagues); if(db){try{await db.doc("leagues/"+code).set(l)}catch(e){toast($t("Saqlashda xato"))}} render()}
 };
 const keep=(k,v)=>{try{localStorage.setItem(k,typeof v==="string"?v:JSON.stringify(v))}catch(e){}};
 async function touchUser(){if(!db||!reg||me.id==="demo")return;try{const ref=db.doc("users/"+me.id);let j=Date.now();try{const sn=await ref.get();if(sn.exists&&sn.data().joinedAt)j=sn.data().joinedAt}catch(e){}await ref.set({name:me.name,tg:me.tg,joinedAt:j,lastSeen:Date.now()})}catch(e){}}
@@ -405,8 +436,11 @@ const S={at:"over",uq:"",cq:"",clg:"Angliya",lg:null,stack:[{s:"matches"}],day:0
 const cur=()=>S.stack[S.stack.length-1];
 const $=s=>document.querySelector(s),app=$("#app");
 const pad=n=>String(n).padStart(2,"0");
-const WD=["Yak","Dush","Sesh","Chor","Pay","Jum","Shan"],MO=["yan","fev","mar","apr","may","iyn","iyl","avg","sen","okt","noy","dek"];
-const MOF=["Yanvar","Fevral","Mart","Aprel","May","Iyun","Iyul","Avgust","Sentabr","Oktabr","Noyabr","Dekabr"];
+let WD,MO,MOF;
+const WDL={uz:["Yak","Dush","Sesh","Chor","Pay","Jum","Shan"],ru:["Вс","Пн","Вт","Ср","Чт","Пт","Сб"],en:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]};
+const MOL={uz:["yan","fev","mar","apr","may","iyn","iyl","avg","sen","okt","noy","dek"],ru:["янв","фев","мар","апр","мая","июн","июл","авг","сен","окт","ноя","дек"],en:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]};
+const MOFL={uz:["Yanvar","Fevral","Mart","Aprel","May","Iyun","Iyul","Avgust","Sentabr","Oktabr","Noyabr","Dekabr"],ru:["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"],en:["January","February","March","April","May","June","July","August","September","October","November","December"]};
+function langArrays(){WD=WDL[LANG];MO=MOL[LANG];MOF=MOFL[LANG]}
 const dkey=ts=>{const d=new Date(ts);return d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()};
 const dayAt=o=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+o);return d};
 const hhmm=ts=>{const d=new Date(ts);return pad(d.getHours())+":"+pad(d.getMinutes())};
@@ -421,7 +455,7 @@ const pmap=l=>Object.fromEntries((l.players||[]).map(p=>[p.id,p]));
 const link=c=>location.href.split("#")[0]+"#"+c;
 const sub=p=>esc(p.name)+(p.tg?" · @"+esc(p.tg):"");
 function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1900)}
-function push(o){S.modal=null;S.stack.push(o);if(o.s==="league")S.ltab=o.tab||"table";if(o.s==="team")S.ttab="over";render();scrollTo(0,0)}
+function push(o){S.modal=null;S.stack.push(o);if(o.s==="league")S.ltab=o.tab||"table";if(o.s==="cup")S.ctab=o.tab||(leagues[o.code]&&leagues[o.code].status==="reg"?"teams":"bracket");if(o.s==="team")S.ttab="over";render();scrollTo(0,0)}
 function back(){if(S.stack.length>1)S.stack.pop();render()}
 function root(s){S.stack=[{s}];render();scrollTo(0,0)}
 function follow(c,e){if(e)e.stopPropagation();fol=fol.includes(c)?fol.filter(x=>x!==c):[...fol,c];keep("fol",fol);render()}
@@ -459,41 +493,41 @@ const backBar=r=>bar(`<button class="ic" onclick="back()">${I.back}</button>`,r)
 
 /* ---------- Kirish / ro'yxatdan o'tish ---------- */
 function renderWelcome(){
- app.innerHTML=`<div class="wel"><div class="top"><div class="emb">${lbadgeOf({ic:"trophy",h:150},108,"x")}</div><div class="logo">TRO<b>FEO</b></div><p>Do'stlar bilan konsolda futbol o'ynang: liga yarating, natijani kiriting va jadvalni kuzating.</p></div>
+ app.innerHTML=`<div class="wel"><div class="langrow">${["uz","ru","en"].map(k=>`<span class="lc ${LANG===k?"on":""}" onclick="setLang('${k}')">${k.toUpperCase()}</span>`).join("")}</div><div class="top"><div class="emb">${lbadgeOf({ic:"trophy",h:150},108,"x")}</div><div class="logo">TRO<b>FEO</b></div><p>${$t("Do'stlar bilan konsolda futbol o'ynang: liga yarating, natijani kiriting va jadvalni kuzating.")}</p></div>
  <div style="display:flex;flex-direction:column;gap:10px">
- <div class="feat"><div class="fi">${I.tro(22)}</div><div><b>Liga va jadval</b><span>G'alaba 3, durang 1 ochko, avtomatik</span></div></div>
- <div class="feat"><div class="fi">${I.cal}</div><div><b>O'yinlar kalendari</b><span>Qachon o'ynaganingiz va keyingi o'yinlar</span></div></div>
- <div class="feat"><div class="fi">${I.link}</div><div><b>Link orqali taklif</b><span>Do'stlaringiz bir bosishda ligaga kiradi</span></div></div></div>
- <div style="display:flex;flex-direction:column;gap:10px"><a class="btn tg" href="https://t.me/MyTrofeoBot" target="_blank" rel="noopener" style="text-decoration:none">${I.send}Telegram'da ochish</a><button class="btn sec" onclick="openModal('register',{})">Brauzerda sinab ko'rish</button></div></div>`;
+ <div class="feat"><div class="fi">${I.tro(22)}</div><div><b>${$t("Liga va jadval")}</b><span>${$t("G'alaba 3, durang 1 ochko, avtomatik")}</span></div></div>
+ <div class="feat"><div class="fi">${I.cal}</div><div><b>${$t("O'yinlar kalendari")}</b><span>${$t("Qachon o'ynaganingiz va keyingi o'yinlar")}</span></div></div>
+ <div class="feat"><div class="fi">${I.link}</div><div><b>${$t("Link orqali taklif")}</b><span>${$t("Do'stlaringiz bir bosishda ligaga kiradi")}</span></div></div></div>
+ <div style="display:flex;flex-direction:column;gap:10px"><a class="btn tg" href="https://t.me/MyTrofeoBot" target="_blank" rel="noopener" style="text-decoration:none">${I.send}${$t("Telegram'da ochish")}</a><button class="btn sec" onclick="openModal('register',{})">${$t("Brauzerda sinab ko'rish")}</button></div></div>`;
 }
-function registerSheet(){return `<div class="sheet"><h3>Tezkor kirish</h3><div class="mut" style="margin-top:4px">Ismingizni yozing, shuning o'zi yetadi</div><label>Ism</label><input placeholder="Masalan: Jasur" value="${esc(S.draft.name||"")}" oninput="S.draft.name=this.value"><div style="height:18px"></div><button class="btn" onclick="doRegister()">Davom etish</button></div>`}
+function registerSheet(){return `<div class="sheet"><h3>${$t("Tezkor kirish")}</h3><div class="mut" style="margin-top:4px">${$t("Ismingizni yozing, shuning o'zi yetadi")}</div><label>${$t("Ism")}</label><input placeholder="${$t("Masalan: Jasur")}" value="${esc(S.draft.name||"")}" oninput="S.draft.name=this.value"><div style="height:18px"></div><button class="btn" onclick="doRegister()">${$t("Davom etish")}</button></div>`}
 function doRegister(){
- const name=(S.draft.name||"").trim();if(!name)return toast("Ismingizni yozing");
- me.name=name;me.tg="";reg=true;keep("profile",{name,tg:""});touchUser();S.modal=null;toast("Xush kelibsiz, "+name+"!");render();
- const h=location.hash.slice(1).toLowerCase();if(h&&leagues[h])S.stack=[{s:"matches"},{s:"league",code:h}],S.ltab="players",render();
+ const name=(S.draft.name||"").trim();if(!name)return toast($t("Ismingizni yozing"));
+ me.name=name;me.tg="";reg=true;keep("profile",{name,tg:""});touchUser();S.modal=null;toast(($t("Xush kelibsiz,")+" ")+name+"!");render();
+ const h=location.hash.slice(1).toLowerCase();if(h&&leagues[h])deepOpen(h);
 }
 function logout(){reg=false;me.name="";me.tg="";keep("profile","null");S.stack=[{s:"matches"}];render()}
 
 /* ---------- 1) O'yinlar ---------- */
 function visCodes(){let c=Object.keys(leagues).filter(k=>isMine(leagues[k])||fol.includes(k)||ft.some(x=>x.startsWith(k+":")));if(!c.length)c=Object.keys(leagues);return c}
 function renderMatches(){
- const codes=visCodes(),has=new Set();codes.forEach(c=>(leagues[c].matches||[]).forEach(m=>has.add(dkey(m.ts))));
+ const codes=visCodes(),has=new Set();codes.forEach(c=>matchesOf(leagues[c]).forEach(m=>has.add(dkey(m.ts))));
  let strip="";const lo=Math.min(-12,S.day-4),hi=Math.max(8,S.day+4);
- for(let o=lo;o<=hi;o++){const d=dayAt(o);const lab=o===0?"Bugun":o===-1?"Kecha":o===1?"Ertaga":WD[d.getDay()]+" "+pad(d.getDate())+" "+MO[d.getMonth()];
+ for(let o=lo;o<=hi;o++){const d=dayAt(o);const lab=o===0?$t("Bugun"):o===-1?$t("Kecha"):o===1?$t("Ertaga"):WD[d.getDay()]+" "+pad(d.getDate())+" "+MO[d.getMonth()];
   strip+=`<div class="day ${S.day===o?'on':''}" ${S.day===o?'id="dsel"':''} onclick="S.day=${o};render()">${lab}${has.has(dkey(d.getTime()))&&S.day!==o?'<i></i>':''}</div>`}
  const key=dkey(dayAt(S.day).getTime());
  const isF=(c,m)=>fol.includes(c)||ft.includes(c+":"+m.h)||ft.includes(c+":"+m.a);
  let favRows="",others=[];
- codes.forEach(c=>{const l=leagues[c];const ms=(l.matches||[]).filter(m=>dkey(m.ts)===key).sort((a,b)=>a.ts-b.ts);
+ codes.forEach(c=>{const l=leagues[c];const ms=matchesOf(l).filter(m=>dkey(m.ts)===key).sort((a,b)=>a.ts-b.ts);
   const f=ms.filter(m=>isF(c,m)),o=ms.filter(m=>!isF(c,m));
   f.forEach(m=>favRows+=mrow(l,c,m));if(o.length)others.push([c,l,o])});
  const mk=(id,head,rows)=>{const cl=S.col[id];return `<div class="card">${head(cl)}${cl?"":rows}</div>`};
  let html="";
- if(favRows)html+=mk("fav",cl=>`<div class="ch"><span style="color:var(--acc);display:flex">${I.star(20)}</span><span class="ct" style="cursor:default">Kuzatish</span><span class="chev ${cl?'cl':''}" onclick="toggleCol('fav')">${I.chev}</span></div>`,favRows);
- if(favRows&&others.length)html+=`<button class="hidebtn" onclick="toggleAll()">${Object.values(S.col).some(x=>x)?"Hammasini ko'rsatish "+I.down:"Hammasini yashirish "+I.up}</button>`;
- others.forEach(([c,l,ms])=>html+=mk(c,cl=>`<div class="ch">${lbadge(c,26)}<span class="ct" onclick="push({s:'league',code:'${c}'})">${esc(l.name)}</span><span class="chev ${cl?'cl':''}" onclick="toggleCol('${c}')">${I.chev}</span></div>`,ms.map(m=>mrow(l,c,m)).join("")));
- app.innerHTML=bar(brand(28),`<button class="pill" onclick="S.day=0;render()"><span class="dot on"></span>Bugun</button><button class="ic" onclick="openCal()">${I.cal}</button><button class="ic" onclick="openSearch()">${I.search}</button>`)+annBanner()+`<div class="days">${strip}</div>`+
- (html||`<div class="empty">${Object.keys(leagues).length?"Bu kunda o'yin yo'q.":"Hali liga yo'q. «Ligalar» bo'limidan liga yarating yoki do'stingizning linkini oching."}</div>`)+fabAny();
+ if(favRows)html+=mk("fav",cl=>`<div class="ch"><span style="color:var(--acc);display:flex">${I.star(20)}</span><span class="ct" style="cursor:default">${$t("Kuzatish")}</span><span class="chev ${cl?'cl':''}" onclick="toggleCol('fav')">${I.chev}</span></div>`,favRows);
+ if(favRows&&others.length)html+=`<button class="hidebtn" onclick="toggleAll()">${Object.values(S.col).some(x=>x)?($t("Hammasini ko'rsatish")+" ")+I.down:($t("Hammasini yashirish")+" ")+I.up}</button>`;
+ others.forEach(([c,l,ms])=>html+=mk(c,cl=>`<div class="ch">${lbadge(c,26)}<span class="ct" onclick="openLg('${c}')">${esc(l.name)}</span><span class="chev ${cl?'cl':''}" onclick="toggleCol('${c}')">${I.chev}</span></div>`,ms.map(m=>mrow(l,c,m)).join("")));
+ app.innerHTML=bar(brand(28),`<button class="pill" onclick="S.day=0;render()"><span class="dot on"></span>${$t("Bugun")}</button><button class="ic" onclick="openCal()">${I.cal}</button><button class="ic" onclick="openSearch()">${I.search}</button>`)+annBanner()+`<div class="days">${strip}</div>`+
+ (html||`<div class="empty">${Object.keys(leagues).length?$t("Bu kunda o'yin yo'q."):$t("Hali liga yo'q. «Ligalar» bo'limidan liga yarating yoki do'stingizning linkini oching.")}</div>`)+fabAny();
  const el=$("#dsel");if(el)el.scrollIntoView({inline:"center",block:"nearest"});
 }
 function fabAny(){return eligible().length?`<button class="fab" onclick="newMatch()">${I.plus}</button>`:""}
@@ -507,87 +541,182 @@ function pickDay(y,m,d){const t=new Date();t.setHours(12,0,0,0);S.day=Math.round
 function calSheet(){
  const {y,m}=S.cal,codes=visCodes(),has=new Set();codes.forEach(c=>(leagues[c].matches||[]).forEach(x=>has.add(dkey(x.ts))));
  const off=(new Date(y,m,1).getDay()+6)%7,n=new Date(y,m+1,0).getDate(),tk=dkey(Date.now()),sk=dkey(dayAt(S.day).getTime());
- let g=["Du","Se","Ch","Pa","Ju","Sh","Ya"].map(x=>`<div class="h">${x}</div>`).join("");
+ let g=[$t("Du"),$t("Se"),$t("Ch"),$t("Pa"),$t("Ju"),$t("Sh"),$t("Ya")].map(x=>`<div class="h">${x}</div>`).join("");
  for(let i=0;i<off;i++)g+="<div></div>";
  for(let d=1;d<=n;d++){const k=y+"-"+m+"-"+d;g+=`<button class="${k===tk?'t':''} ${k===sk?'s':''}" onclick="pickDay(${y},${m},${d})">${d}${has.has(k)?'<i></i>':''}</button>`}
- return `<div class="sheet"><div class="calh"><button class="ic" onclick="calMove(-1)">${I.l}</button><b>${MOF[m]} ${y}</b><button class="ic" onclick="calMove(1)">${I.r}</button></div><div class="cal">${g}</div><div style="height:14px"></div><button class="btn sec" onclick="S.day=0;closeModal()">Bugunga o'tish</button></div>`;
+ return `<div class="sheet"><div class="calh"><button class="ic" onclick="calMove(-1)">${I.l}</button><b>${MOF[m]} ${y}</b><button class="ic" onclick="calMove(1)">${I.r}</button></div><div class="cal">${g}</div><div style="height:14px"></div><button class="btn sec" onclick="S.day=0;closeModal()">${$t("Bugunga o'tish")}</button></div>`;
 }
 
 /* ---------- Qidiruv ---------- */
 function openSearch(){S.q="";openModal("search")}
-function searchSheet(){return `<div class="sheet" style="min-height:60%"><div class="row"><input id="sq" placeholder="Liga yoki jamoa qidirish" oninput="S.q=this.value;$('#sres').innerHTML=sres()" autofocus><button class="ic" onclick="closeModal()">${I.x}</button></div><div id="sres" class="sres" style="margin-top:10px">${sres()}</div></div>`}
+function searchSheet(){return `<div class="sheet" style="min-height:60%"><div class="row"><input id="sq" placeholder="${$t("Liga yoki jamoa qidirish")}" oninput="S.q=this.value;$('#sres').innerHTML=sres()" autofocus><button class="ic" onclick="closeModal()">${I.x}</button></div><div id="sres" class="sres" style="margin-top:10px">${sres()}</div></div>`}
 function sres(){
  const q=S.q.trim().toLowerCase();let out="";
  Object.entries(leagues).forEach(([c,l])=>{
-  if(!q||l.name.toLowerCase().includes(q))out+=`<div class="pl" onclick="push({s:'league',code:'${c}'})">${lbadge(c,38)}<div style="flex:1"><div class="n">${esc(l.name)}</div><div class="s">Liga</div></div></div>`;
+  if(!q||l.name.toLowerCase().includes(q))out+=`<div class="pl" onclick="openLg('${c}')">${lbadge(c,38)}<div style="flex:1"><div class="n">${esc(l.name)}</div><div class="s">${isCup(l)?$t("Chempionat"):$t("Liga")}</div></div></div>`;
   (l.players||[]).forEach(p=>{if(q&&(p.team.toLowerCase().includes(q)||p.name.toLowerCase().includes(q)))out+=`<div class="pl" onclick="push({s:'team',code:'${c}',pid:'${p.id}'})">${logo(p,38)}<div style="flex:1"><div class="n">${esc(p.team)}</div><div class="s">${esc(l.name)} · ${esc(p.name)}</div></div></div>`})});
- return out||`<div class="empty">Hech narsa topilmadi</div>`;
+ return out||`<div class="empty">${$t("Hech narsa topilmadi")}</div>`;
 }
 
 /* ---------- 2) Ligalar (jadval) ---------- */
 function joinCard(l,c){
- if(!reg||(l.players||[]).some(p=>p.uid===me.id))return"";
- return `<div class="card pad" style="display:flex;align-items:center;gap:14px"><div style="width:48px;display:flex;justify-content:center">${crest({abbr:"?",c1:"#3b82f6",c2:"#f8fafc",pat:"vstripes"},44)}</div><div style="flex:1"><div style="font-weight:800">Jamoangizni ro'yxatdan o'tkazing</div><div class="mut">Nom va logotipni tanlang</div></div><button class="btn sm" onclick="openJoin('${c}')">Davom etish</button></div>`;
+ if(!reg||(l.players||[]).some(p=>p.uid===me.id)||(isCup(l)&&(l.status!=="reg"||(l.players||[]).length>=l.size)))return"";
+ return `<div class="card pad" style="display:flex;align-items:center;gap:14px"><div style="width:48px;display:flex;justify-content:center">${crest({abbr:"?",c1:"#3b82f6",c2:"#f8fafc",pat:"vstripes"},44)}</div><div style="flex:1"><div style="font-weight:800">${$t("Jamoangizni ro'yxatdan o'tkazing")}</div><div class="mut">${$t("Nom va logotipni tanlang")}</div></div><button class="btn sm" onclick="openJoin('${c}')">${$t("Davom etish")}</button></div>`;
 }
 function renderLeagues(){
- const ent=Object.entries(leagues);
- const hdr=bar(ptitle("Ligalar","Jadval, natijalar va statistika"),`<button class="pill addl" onclick="openNewLeague()">${I.plus2}Liga</button><button class="ic" onclick="openModal('joincode',{})">${I.link}</button>`);
- if(!ent.length){app.innerHTML=hdr+`<div class="empty">Hozircha liga yo'q.<br>Birinchi ligani o'zingiz yarating yoki do'stingiz yuborgan link bilan kiring (tepadagi zanjir tugmasi).</div><div style="padding:0 20px"><button class="btn" onclick="openNewLeague()">${I.plus2}Liga yaratish</button></div>`;return}
+ const ent=Object.entries(leagues).filter(([c,l])=>!isCup(l));
+ const hdr=bar(ptitle($t("Ligalar"),$t("Jadval, natijalar va statistika")),`<button class="pill addl" onclick="openNewLeague()">${I.plus2}${$t("Liga")}</button><button class="ic" onclick="openModal('joincode',{})">${I.link}</button>`);
+ if(!ent.length){app.innerHTML=hdr+`<div class="empty">${$t("Hozircha liga yo'q.")}<br>${$t("Birinchi ligani o'zingiz yarating yoki do'stingiz yuborgan link bilan kiring (tepadagi zanjir tugmasi).")}</div><div style="padding:0 20px"><button class="btn" onclick="openNewLeague()">${I.plus2}${$t("Liga yaratish")}</button></div>`;return}
  let c=S.lg;if(!leagues[c]){const m=ent.find(([k,x])=>isMine(x));c=(m||ent[0])[0];S.lg=c}
  const chips=ent.length>1?`<div class="chips">${ent.map(([k,x])=>`<div class="chip ${k===c?'on':''}" onclick="S.lg='${k}';render()">${lbadge(k,28)}${esc(x.name)}</div>`).join("")}</div>`:"";
  app.innerHTML=hdr+chips+leagueView(c,true);
 }
-let PRICE=400;
+let PRICE={lg:400,cp:400};
 const getUsed=()=>{try{return JSON.parse(localStorage.getItem("tr_used")||"[]")}catch(e){return[]}};
+const isCup=l=>!!l&&l.kind==="cup";
+const nextPow2=n=>{let p=1;while(p<n)p*=2;return p};
+const roundName=n=>n===2?$t("Final"):n===4?$t("Yarim final"):n===8?$t("Chorak final"):n===16?$t("1/8 final"):n===32?$t("1/16 final"):n===64?$t("1/32 final"):"1/"+(n/2)+" final";
 async function makeLeague(name){const c=genCode();await store.save(c,{name,owner:me.id,players:[],matches:[]});return c}
-async function fetchPrice(){try{const r=await fetch("/api/invoice");const j=await r.json();if(j.stars&&j.stars!==PRICE){PRICE=j.stars;if(S.modal==="newleague"&&S.pay!=="verify")render()}}catch(e){}}
-function openNewLeague(){S.pay="idle";openModal("newleague",{n:""});if(!isAdmin)fetchPrice()}
-function newLeagueSheet(){const d=S.draft;
- if(S.pay==="verify")return `<div class="sheet"><div class="payst"><div class="spin"></div><h3>To'lov tekshirilmoqda</h3><div class="mut">Telegram tasdiqlashini kutyapmiz, bir necha soniya...</div></div></div>`;
- return `<div class="sheet"><h3>Yangi liga yaratish</h3><label>Liga nomi</label><input maxlength="40" placeholder="Masalan: Do'stlar ligasi" value="${esc(d.n||"")}" oninput="S.draft.n=this.value">
- ${isAdmin?`<div class="paynote">Siz adminsiz: liga bepul yaratiladi.</div>`:`<label>To'lov usuli</label>
- <div class="payopt on"><div class="pi">${I.star(22)}</div><div style="flex:1;min-width:0"><b>Telegram Stars</b><span>Telegram ichida, bir bosishda</span></div><div class="pp">${PRICE}<small>Stars</small></div></div>
- <div class="payopt dis"><div class="pi">${I.coin}</div><div style="flex:1;min-width:0"><b>Kripto (USDT)</b><span>Tez orada</span></div><div class="soon">Tez orada</div></div>
- <div class="paynote">Narx taxminan 5 dollar. To'lov o'tgach liga darrov yaratiladi, to'lovni Telegramning o'zi tasdiqlaydi.</div>`}
- <div style="height:14px"></div><button class="btn" onclick="payCreate()">${isAdmin?"Ligani yaratish":`${I.star(18)}${PRICE} Stars bilan to'lash`}</button></div>`}
-async function payCreate(){
- const n=(S.draft.n||"").trim();if(!n)return toast("Liga nomini yozing");
- if(isAdmin){S.modal=null;const c=await makeLeague(n);toast("Liga yaratildi");S.lg=c;S.ltab="players";root("leagues");return}
- if(!TGW)return toast("To'lov uchun ilovani Telegram ichida oching");
+async function makeCup(name,size){const c=genCode();await store.save(c,{kind:"cup",name,owner:me.id,size,status:"reg",players:[],matches:[],rounds:[],champion:null,ic:"crown"});return c}
+function openLg(c){const l=leagues[c];if(!l)return;push(isCup(l)?{s:"cup",code:c}:{s:"league",code:c})}
+function openCode(c,tab){const l=leagues[c];if(!l)return;S.modal=null;if(isCup(l)){S.cup=c;S.ctab=tab||(l.status==="reg"?"teams":"bracket");root("cups")}else{S.lg=c;S.ltab=tab||"table";root("leagues")}}
+function deepOpen(h){const l=leagues[h];if(!l)return;if(isCup(l)){S.stack=[{s:"matches"},{s:"cup",code:h}];S.ctab="teams"}else{S.stack=[{s:"matches"},{s:"league",code:h}];S.ltab="players"}render()}
+async function fetchPrice(){try{const r=await fetch("/api/invoice");const j=await r.json();let ch=false;if(j.stars&&j.stars!==PRICE.lg){PRICE.lg=j.stars;ch=true}const cp=j.cup||j.stars;if(cp&&cp!==PRICE.cp){PRICE.cp=cp;ch=true}if(ch&&S.modal==="newleague"&&S.pay!=="verify")render()}catch(e){}}
+function openNewLeague(){S.pay="idle";openModal("newleague",{k:"lg",n:"",size:16});if(!isAdmin)fetchPrice()}
+function openNewCup(){S.pay="idle";openModal("newleague",{k:"cp",n:"",size:16});if(!isAdmin)fetchPrice()}
+function roundsText(size){size=parseInt(size)||0;if(size<2||size>64)return $t("Jamoalar soni 2 dan 64 gacha bo'lishi kerak");const P=nextPow2(size),L=[];for(let n=P;n>=2;n/=2)L.push(roundName(n));return ($t("Bosqichlar:")+" ")+L.join(" → ")+(P!==size?$t(". Jamoalar soni 2 ning darajasi emas, shuning uchun ba'zi jamoalar birinchi bosqichni o'ynamay o'tadi."):"")}
+function upRounds(){const e=$("#rinfo");if(e)e.textContent=roundsText(S.draft.size)}
+function newLeagueSheet(){const d=S.draft,k=d.k||"lg",cup=k==="cp",price=PRICE[k];
+ if(S.pay==="verify")return `<div class="sheet"><div class="payst"><div class="spin"></div><h3>${$t("To'lov tekshirilmoqda")}</h3><div class="mut">${$t("Telegram tasdiqlashini kutyapmiz, bir necha soniya...")}</div></div></div>`;
+ const cupBlock=cup?`<label>${$t("Jamoalar soni")}</label><input type="number" min="2" max="64" inputmode="numeric" value="${esc(d.size)}" oninput="S.draft.size=this.value;upRounds()"><div>${[4,8,16,32,64].map(n=>`<span class="nchip" onclick="S.draft.size=${n};render()">${n}</span>`).join("")}</div><div class="paynote" id="rinfo">${roundsText(d.size)}</div>`:"";
+ const payBlock=isAdmin?`<div class="paynote">${$t("Siz adminsiz: bepul yaratiladi.")}</div>`:`<label>${$t("To'lov usuli")}</label>
+ <div class="payopt on"><div class="pi">${I.star(22)}</div><div style="flex:1;min-width:0"><b>Telegram Stars</b><span>${$t("Telegram ichida, bir bosishda")}</span></div><div class="pp">${price}<small>Stars</small></div></div>
+ <div class="payopt dis"><div class="pi">${I.coin}</div><div style="flex:1;min-width:0"><b>${$t("Kripto (USDT)")}</b><span>${$t("Tez orada")}</span></div><div class="soon">${$t("Tez orada")}</div></div>
+ <div class="paynote">${$t("Narx taxminan 5 dollar. To'lov o'tgach {0} darrov yaratiladi, to'lovni Telegramning o'zi tasdiqlaydi.",[cup?$t("chempionat"):$t("liga")])}</div>`;
+ return `<div class="sheet"><h3>${cup?$t("Yangi chempionat yaratish"):$t("Yangi liga yaratish")}</h3><label>${cup?$t("Chempionat nomi"):$t("Liga nomi")}</label><input maxlength="40" placeholder="${cup?$t("Masalan: Yoz kubogi"):$t("Masalan: Do'stlar ligasi")}" value="${esc(d.n||"")}" oninput="S.draft.n=this.value">${cupBlock}${payBlock}
+ <div style="height:14px"></div>${isAdmin?`<button class="btn" onclick="payCreate()">${$t("Yaratish")}</button><button class="btn sec" style="margin-top:8px" onclick="payCreate(true)">${I.star(18)}${$t("To'lovni sinab ko'rish")}</button>`:`<button class="btn" onclick="payCreate()">${I.star(18)}${$t("{0} Stars bilan to'lash",[price])}</button>`}</div>`}
+async function payCreate(force){
+ const d=S.draft,k=d.k||"lg",n=(d.n||"").trim(),size=parseInt(d.size)||0;
+ if(!n)return toast(k==="cp"?$t("Chempionat nomini yozing"):$t("Liga nomini yozing"));
+ if(k==="cp"&&(size<2||size>64))return toast($t("Jamoalar soni 2 dan 64 gacha bo'lishi kerak"));
+ if(isAdmin&&!force){S.modal=null;const c=k==="cp"?await makeCup(n,size):await makeLeague(n);toast(k==="cp"?$t("Chempionat yaratildi"):$t("Liga yaratildi"));openCode(c,k==="cp"?"teams":"players");return}
+ if(!TGW)return toast($t("To'lov uchun ilovani Telegram ichida oching"));
  try{
-  const r=await fetch("/api/invoice",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({initData:TGW.initData})});
+  const r=await fetch("/api/invoice",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({initData:TGW.initData,kind:k,lang:(typeof LANG!=="undefined"?LANG:"uz")})});
   const j=await r.json();if(!j.ok)throw new Error(j.error||"xato");
-  keep("tr_pend_"+j.nonce,n);
-  TGW.openInvoice(j.link,st=>{if(st==="paid")finishPay(j.nonce,n);else if(st==="cancelled")toast("To'lov bekor qilindi");else if(st==="failed")toast("To'lov amalga oshmadi")});
- }catch(e){toast("To'lov oynasini ochib bo'lmadi")}
+  keep("tr_pend_"+j.nonce,{k,n,size});
+  TGW.openInvoice(j.link,st=>{if(st==="paid")finishPay(j.nonce,k,n,size);else if(st==="cancelled")toast($t("To'lov bekor qilindi"));else if(st==="failed")toast($t("To'lov amalga oshmadi"))});
+ }catch(e){toast($t("To'lov oynasini ochib bo'lmadi"))}
 }
-async function finishPay(nonce,name){
- if(getUsed().includes(nonce))return toast("Bu to'lov allaqachon ishlatilgan");
- S.pay="verify";if(!S.modal)S.modal="newleague";render();
+async function finishPay(nonce,k,name,size){
+ if(getUsed().includes(nonce))return toast($t("Bu to'lov allaqachon ishlatilgan"));
+ S.pay="verify";if(!S.modal)S.modal="newleague";if(!S.draft||!S.draft.k)S.draft={k,n:name,size};render();
  for(let i=0;i<12;i++){
-  try{const r=await fetch("/api/claim",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({initData:TGW.initData,nonce})});const j=await r.json();
-   if(j.ok&&j.paid){keep("tr_used",[...getUsed(),nonce]);S.pay="idle";S.modal=null;const c=await makeLeague(name||"Mening ligam");toast("To'lov tasdiqlandi, liga yaratildi");S.lg=c;S.ltab="players";root("leagues");return}}catch(e){}
+  try{const r=await fetch("/api/claim",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({initData:TGW.initData,nonce,kind:k})});const j=await r.json();
+   if(j.ok&&j.paid){keep("tr_used",[...getUsed(),nonce]);S.pay="idle";S.modal=null;const cup=k==="cp";const c=cup?await makeCup(name||$t("Mening chempionatim"),Math.min(64,Math.max(2,size||16))):await makeLeague(name||$t("Mening ligam"));toast(cup?$t("To'lov tasdiqlandi, chempionat yaratildi"):$t("To'lov tasdiqlandi, liga yaratildi"));openCode(c,cup?"teams":"players");return}}catch(e){}
   await new Promise(r=>setTimeout(r,2000));
  }
- S.pay="idle";S.modal=null;render();toast("To'lov hali tasdiqlanmadi. Botdan kelgan xabardagi tugmani bosing.");
+ S.pay="idle";S.modal=null;render();toast($t("To'lov hali tasdiqlanmadi. Botdan kelgan xabardagi tugmani bosing."));
 }
 function handlePaid(){
- let nonce=null;try{nonce=new URLSearchParams(location.search).get("paid")}catch(e){}
- if(!nonce||!TGW||!/^[a-f0-9]{10}$/.test(nonce))return;
+ let q=null;try{q=new URLSearchParams(location.search)}catch(e){}
+ const nonce=q&&q.get("paid");if(!nonce||!TGW||!/^[a-f0-9]{10}$/.test(nonce))return;
+ const k=q.get("k")==="cp"?"cp":"lg";
  try{history.replaceState(null,"",location.pathname+location.hash)}catch(e){}
- let name=null;try{name=localStorage.getItem("tr_pend_"+nonce)}catch(e){}
- finishPay(nonce,name);
+ let pend=null;try{const raw=localStorage.getItem("tr_pend_"+nonce);try{pend=JSON.parse(raw)}catch(e){pend={n:raw}}}catch(e){}
+ pend=pend||{};finishPay(nonce,k,pend.n||null,pend.size||16);
 }
-function joinCodeSheet(){return `<div class="sheet"><h3>Ligaga kirish</h3><div class="mut" style="margin-top:4px">Do'stingiz yuborgan link yoki kodni kiriting</div><label>Link yoki kod</label><input id="jc" placeholder="Kod yoki link"><div style="height:16px"></div><button class="btn" onclick="joinCode()">Kirish</button></div>`}
-function joinCode(){const c=($("#jc").value.trim().split("#").pop()||"").toLowerCase();if(!leagues[c])return toast("Bunday liga topilmadi");S.lg=c;S.ltab="players";S.modal=null;root("leagues")}
+
+/* ---------- Chempionat (kubok tizimi) ---------- */
+function seedOrder(P){let o=[1];while(o.length<P){const n=o.length*2;o=o.flatMap(x=>[x,n+1-x])}return o}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function advance(cup,r,k){
+ const t=cup.rounds[r][k];
+ if(r+1>=cup.rounds.length){cup.champion=t.w||null;cup.status=t.w?"done":"live";return}
+ const nt=cup.rounds[r+1][k>>1],key=(k%2===0)?"a":"b",prev=nt[key];nt[key]=t.w||null;
+ if(prev!==nt[key]&&(nt.w||nt.hs!=null)){nt.hs=nt.as=nt.pen=nt.w=null;nt.ts=null;advance(cup,r+1,k>>1)}
+}
+function drawCup(cup){
+ const pl=shuffle(cup.players.map(p=>p.id)),N=pl.length,P=nextPow2(N),ord=seedOrder(P),R=Math.log2(P);
+ cup.rounds=[];
+ for(let r=0;r<R;r++)cup.rounds.push(Array.from({length:P/2**(r+1)},()=>({a:null,b:null,hs:null,as:null,pen:null,w:null})));
+ for(let k=0;k<P/2;k++){const sa=ord[2*k],sb=ord[2*k+1],t=cup.rounds[0][k];t.a=sa<=N?pl[sa-1]:null;t.b=sb<=N?pl[sb-1]:null;if(!t.a||!t.b){t.w=t.a||t.b;t.bye=true}}
+ cup.status="live";cup.champion=null;
+ cup.rounds[0].forEach((t,k)=>{if(t.w)advance(cup,0,k)});
+}
+function matchesOf(l){if(!isCup(l))return l.matches||[];const out=[];(l.rounds||[]).forEach((rd,r)=>rd.forEach((t,k)=>{if(t.a&&t.b&&t.w&&!t.bye&&t.ts)out.push({id:r+"-"+k,h:t.a,a:t.b,hs:t.hs,as:t.as,ts:t.ts,by:t.by})}));return out}
+const cupStatus=l=>l.status==="done"?$t("Yakunlandi"):l.status==="live"?$t("O'ynalmoqda"):$t("Ro'yxat ochiq");
+function curRound(l){if(!l.rounds||!l.rounds.length)return null;for(let r=0;r<l.rounds.length;r++)if(l.rounds[r].some(t=>!t.w))return r;return l.rounds.length-1}
+function canTie(l,t){return isAdmin||l.owner===me.id||[t.a,t.b].some(id=>id&&(l.players||[]).some(p=>p.id===id&&p.uid===me.id))}
+function tieCard(c,l,P,r,k){
+ const t=l.rounds[r][k],A=t.a&&P[t.a],B=t.b&&P[t.b];
+ const row=(p,key,sc)=>{const w=t.w&&t.w===t[key];return `<div class="tt ${w?"w":""} ${t.w&&!w&&!t.bye?"l":""}">${p?logo(p,22):'<span class="tbd"></span>'}<span class="tn2">${p?esc(p.team):(t.bye?"—":$t("Kutilmoqda"))}</span>${sc!=null?`<b>${sc}</b>`:""}</div>`};
+ return `<div class="tie ${t.bye?"bye":""}" onclick="openTie('${c}',${r},${k})">${row(A,"a",t.hs)}${row(B,"b",t.as)}${t.bye?`<div class="tp">${$t("Keyingi bosqichga o'tdi")}</div>`:""}${t.pen&&t.w?`<div class="tp">${$t("Penaltilarda: {0}",[esc(P[t.w].team)])}</div>`:""}</div>`}
+function bracketHTML(c,l){const P=pmap(l),R=l.rounds.length;
+ return `<div class="brk">${l.rounds.map((rd,r)=>`<div class="brc"><div class="brh">${roundName(2**(R-r))}</div><div class="brb">${rd.map((t,k)=>tieCard(c,l,P,r,k)).join("")}</div></div>`).join("")}</div>`}
+function tieRow(c,l,P,r,k){const t=l.rounds[r][k],A=P[t.a],B=P[t.b],d=t.w!=null;
+ return `<div class="mr" onclick="openTie('${c}',${r},${k})">${d?'<span class="st">FT</span>':'<span class="st up"></span>'}<div class="n h"><span class="nm">${esc(A.team)}<small>${esc(A.name)}</small></span>${logo(A)}</div><div class="res ${d?"":"t"}">${d?t.hs+" - "+t.as:"vs"}</div><div class="n">${logo(B)}<span class="nm">${esc(B.team)}<small>${esc(B.name)}</small></span></div></div>`}
+function cupView(c,inline){
+ const l=leagues[c],P=pmap(l),pls=l.players||[],mp=pls.find(p=>p.uid===me.id),isO=l.owner===me.id||isAdmin,reg=l.status==="reg",R=(l.rounds||[]).length;
+ const cr=curRound(l),rn=cr!=null?roundName(2**(R-cr)):"—";
+ let body="";
+ if(S.ctab==="bracket"){
+  if(reg)body=`<div class="card empty">${$t("Qur'a hali tashlanmagan.")}<br>${$t("{0}/{1} jamoa qo'shildi.",[pls.length,l.size])}</div>`+(isO?(pls.length>=2?`<button class="btn" onclick="openModal('drawcup',{c:'${c}'})">${$t("Qur'a tashlash")}</button>`:`<div class="mut" style="text-align:center">${$t("Qur'a tashlash uchun kamida 2 jamoa kerak")}</div>`):"");
+  else{const ch=l.champion&&P[l.champion];
+   body=(ch?`<div class="champ"><div class="crown">${I.crown}</div>${logo(ch,48)}<div style="flex:1;min-width:0"><div class="annt" style="color:var(--gold)">${$t("Chempion")}</div><div style="font-weight:800;font-size:18px">${esc(ch.team)}</div><div class="mut">${esc(ch.name)}</div></div></div>`:"")+bracketHTML(c,l)}
+ }
+ if(S.ctab==="matches"){
+  if(reg)body=`<div class="card empty">${$t("Qur'a tashlangach o'yinlar shu yerda chiqadi")}</div>`;
+  else{const R2=l.rounds.length;body=l.rounds.map((rd,r)=>{const rows=rd.map((t,k)=>(t.a&&t.b&&!t.bye)?tieRow(c,l,P,r,k):"").join("");return rows?`<div class="card"><div class="ttl">${roundName(2**(R2-r))}</div>${rows}</div>`:""}).join("")||`<div class="card empty">${$t("Hali o'yin yo'q")}</div>`}
+ }
+ if(S.ctab==="teams"){
+  const canJoin=!mp&&reg&&pls.length<l.size&&reg;
+  body=`<div class="card pad"><h3 style="margin-bottom:10px">${$t("Do'stlarni taklif qilish")}</h3><div class="invite"><code>${esc(link(c))}</code><button class="btn sm" onclick="copyLink('${c}')">${$t("Nusxa")}</button></div><div class="mut" style="margin-top:8px">${$t("Kod:")} <b>${c}</b></div></div>`+
+  (canJoin?joinCard(l,c):"")+
+  `<div class="card"><div class="ttl">${$t("Jamoalar ({0}/{1})",[pls.length,l.size])}</div>${pls.map(p=>`<div class="pl" style="cursor:default">${logo(p,38)}<div style="flex:1"><div class="n">${esc(p.team)}</div><div class="s">${sub(p)}${p.uid===l.owner?(" "+$t("· tashkilotchi")):""}</div></div>${reg&&(p.uid===me.id||isO)?`<button class="btn sm sec" onclick="delPlayer('${c}','${p.id}')">${$t("Chiqarish")}</button>`:""}</div>`).join("")||`<div class="empty" style="padding:20px">${$t("Hali yo'q")}</div>`}</div>`+
+  (isO&&reg&&pls.length>=2?`<button class="btn" style="margin-bottom:12px" onclick="openModal('drawcup',{c:'${c}'})">${$t("Qur'a tashlash")}</button>`:"");
+ }
+ const hero=`<div class="lhero" style="--h:${lhue(c)}"><div class="lh-top">${lbadge(c,inline?60:68)}<div style="flex:1;min-width:0"><h2>${esc(l.name)}</h2><div class="sub">${$t("Chempionat · {0} jamoagacha",[l.size])}</div></div>${inline&&isO?`<button class="ic" onclick="editLeague('${c}')">${I.edit}</button>`:""}${inline?`<span class="star ${fol.includes(c)?"on":""}" onclick="follow('${c}',event)">${fol.includes(c)?I.star():I.starO()}</span>`:""}</div><div class="lh-st" style="grid-template-columns:repeat(3,1fr)"><div><b>${pls.length}/${l.size}</b><span>${$t("Jamoa")}</span></div><div><b style="font-size:14px;text-align:center">${rn}</b><span>${$t("Bosqich")}</span></div><div><b style="font-size:14px;text-align:center">${cupStatus(l)}</b><span>${$t("Holat")}</span></div></div></div>`;
+ return hero+tabsBar([["bracket",$t("Setka")],["matches",$t("O'yinlar")],["teams",$t("Jamoalar")]],S.ctab,"setCT")+body;
+}
+function setCT(k){S.ctab=k;render()}
+function renderCups(){
+ const ent=Object.entries(leagues).filter(([c,l])=>isCup(l));
+ const hdr=bar(ptitle($t("Chempionatlar"),$t("Kubok formatidagi turnirlar")),`<button class="pill addl" onclick="openNewCup()">${I.plus2}${$t("Chempionat")}</button><button class="ic" onclick="openModal('joincode',{})">${I.link}</button>`);
+ if(!ent.length){app.innerHTML=hdr+`<div class="empty">${$t("Hozircha chempionat yo'q.")}<br>${$t("Jamoalar soni va bosqichlarni o'zingiz belgilab, kubok turnirini yarating yoki do'stingiz yuborgan link bilan kiring.")}</div><div style="padding:0 20px"><button class="btn" onclick="openNewCup()">${I.plus2}${$t("Chempionat yaratish")}</button></div>`;return}
+ let c=S.cup;if(!leagues[c]||!isCup(leagues[c])){const m=ent.find(([k,x])=>isMine(x));c=(m||ent[0])[0];S.cup=c;S.ctab=leagues[c].status==="reg"?"teams":"bracket"}
+ const chips=ent.length>1?`<div class="chips">${ent.map(([k,x])=>`<div class="chip ${k===c?"on":""}" onclick="S.cup='${k}';S.ctab=leagues['${k}'].status==='reg'?'teams':'bracket';render()">${lbadge(k,28)}${esc(x.name)}</div>`).join("")}</div>`:"";
+ app.innerHTML=hdr+chips+cupView(c,true);
+}
+function renderCup(){const {code:c}=cur();if(!leagues[c]||!isCup(leagues[c])){back();return}
+ app.innerHTML=backBar(`${(leagues[c].owner===me.id||isAdmin)?`<button class="ic" onclick="editLeague('${c}')">${I.edit}</button>`:""}<button class="sub-btn ${fol.includes(c)?"on":""}" onclick="follow('${c}')">${fol.includes(c)?I.star(18):I.starO(18)}${fol.includes(c)?$t("Kuzatilmoqda"):$t("Kuzatish")}</button>`)+cupView(c,false)}
+function drawSheet(){const l=leagues[S.draft.c],N=(l.players||[]).length,P=nextPow2(N),L=[];for(let n=P;n>=2;n/=2)L.push(roundName(n));
+ return `<div class="sheet"><h3>${$t("Qur'a tashlash")}</h3><div class="mut" style="margin-top:6px;line-height:1.5">${$t("{0} jamoa qatnashadi. Bosqichlar: {1}.{2}",[N,L.join(" → "),P!==N?` ${$t("{0} jamoa birinchi bosqichni o'ynamay keyingisiga o'tadi.",[P-N])}`:""])}<br>${$t("Qur'adan keyin yangi jamoa qo'shib bo'lmaydi.")}</div><div style="height:16px"></div><button class="btn" onclick="startCup()">${$t("Qur'a tashlash")}</button></div>`}
+async function startCup(){const c=S.draft.c,cup=structuredClone(leagues[c]);if(!cup.players||cup.players.length<2)return toast($t("Kamida 2 jamoa kerak"));drawCup(cup);S.modal=null;S.ctab="bracket";await store.save(c,cup);toast($t("Qur'a tashlandi"))}
+function openTie(c,r,k){const l=leagues[c];if(!l||l.status==="reg")return;const t=(l.rounds[r]||[])[k];if(!t||t.bye)return;if(!t.a||!t.b)return toast($t("Raqib hali aniqlanmagan"));if(!canTie(l,t))return toast($t("Natijani faqat o'yinchilar yoki tashkilotchi kirita oladi"));openModal("tie",{c,r,k,hs:t.hs==null?"":t.hs,as:t.as==null?"":t.as,pen:t.pen||null,had:t.w!=null})}
+function tiedNow(){const d=S.draft;return d.hs!==""&&d.as!==""&&parseInt(d.hs)===parseInt(d.as)}
+function penHTML(){const d=S.draft;if(!tiedNow())return"";const l=leagues[d.c],t=l.rounds[d.r][d.k],P=pmap(l);return `<label>${$t("Penaltilarda kim yutdi?")}</label><div class="mode"><div class="${d.pen==="h"?"on":""}" onclick="S.draft.pen='h';upTie()">${esc(P[t.a].team)}</div><div class="${d.pen==="a"?"on":""}" onclick="S.draft.pen='a';upTie()">${esc(P[t.b].team)}</div></div>`}
+function upTie(){const e=$("#tpen");if(e)e.innerHTML=penHTML()}
+function tieSheet(){const d=S.draft,l=leagues[d.c],t=l.rounds[d.r][d.k],P=pmap(l),A=P[t.a],B=P[t.b];
+ const row=(p,key,v)=>`<div class="mrowx"><div class="lg">${logo(p,36)}</div><div class="tnm">${esc(p.team)}<small>${esc(p.name)}</small></div><input class="si" type="number" min="0" max="99" inputmode="numeric" placeholder="0" value="${v}" oninput="S.draft.${key}=this.value;upTie()"></div>`;
+ return `<div class="sheet"><h3>${roundName(2**(l.rounds.length-d.r))}</h3><div class="mut" style="margin:4px 0 14px">${esc(l.name)}</div>${row(A,"hs",d.hs)}<div class="vs">VS</div>${row(B,"as",d.as)}<div id="tpen">${penHTML()}</div><div style="height:16px"></div><button class="btn" onclick="saveTie()">${$t("Natijani tasdiqlash")}</button>${d.had&&(isAdmin||l.owner===me.id)?`<button class="btn red" style="margin-top:6px" onclick="clearTie()">${$t("Natijani o'chirish")}</button>`:""}</div>`}
+async function saveTie(){const d=S.draft,hs=parseInt(d.hs),as=parseInt(d.as);
+ if(isNaN(hs)||isNaN(as)||hs<0||as<0)return toast($t("Hisobni kiriting"));
+ if(hs===as&&!d.pen)return toast($t("Penaltilarda g'olibni tanlang"));
+ const cup=structuredClone(leagues[d.c]),t=cup.rounds[d.r][d.k];
+ t.hs=hs;t.as=as;t.pen=hs===as?d.pen:null;t.w=hs>as?t.a:hs<as?t.b:(d.pen==="h"?t.a:t.b);t.ts=Date.now();t.by=me.id;
+ advance(cup,d.r,d.k);S.modal=null;await store.save(d.c,cup);toast(cup.status==="done"?$t("Chempion aniqlandi!"):$t("Natija saqlandi"))}
+async function clearTie(){const d=S.draft,cup=structuredClone(leagues[d.c]),t=cup.rounds[d.r][d.k];t.hs=t.as=t.pen=t.w=t.ts=null;advance(cup,d.r,d.k);S.modal=null;await store.save(d.c,cup);toast($t("Natija o'chirildi"))}
+function joinCodeSheet(){return `<div class="sheet"><h3>${$t("Ligaga kirish")}</h3><div class="mut" style="margin-top:4px">${$t("Do'stingiz yuborgan link yoki kodni kiriting")}</div><label>${$t("Link yoki kod")}</label><input id="jc" placeholder="${$t("Kod yoki link")}"><div style="height:16px"></div><button class="btn" onclick="joinCode()">${$t("Kirish")}</button></div>`}
+function joinCode(){const c=($("#jc").value.trim().split("#").pop()||"").toLowerCase();if(!leagues[c])return toast($t("Bunday liga topilmadi"));openCode(c,"players")}
 
 /* ---------- Admin panel ---------- */
 function annBanner(){if(!announce||!announce.on||!announce.text)return"";let dis="";try{dis=localStorage.getItem("annx")||""}catch(e){}if(dis===String(announce.ts))return"";
- return `<div class="ann"><div class="annic">${I.mega}</div><div style="flex:1"><div class="annt">E'lon</div><div style="line-height:1.45">${esc(announce.text)}</div></div><button class="ic" onclick="dismissAnn()">${I.x}</button></div>`}
+ return `<div class="ann"><div class="annic">${I.mega}</div><div style="flex:1"><div class="annt">${$t("E'lon")}</div><div style="line-height:1.45">${esc(announce.text)}</div></div><button class="ic" onclick="dismissAnn()">${I.x}</button></div>`}
 function dismissAnn(){keep("annx",String(announce.ts));render()}
 
 /* ---------- Boshqaruv paneli (super bo'lim) ---------- */
-function ago(ts){if(!ts)return"—";const m=Math.round((Date.now()-ts)/6e4);if(m<3)return"hozir";if(m<60)return m+" daqiqa oldin";const h=Math.round(m/60);if(h<24)return h+" soat oldin";const d=Math.round(h/24);if(d===1)return"kecha";if(d<7)return d+" kun oldin";return dshort(ts)}
+function ago(ts){if(!ts)return"—";const m=Math.round((Date.now()-ts)/6e4);if(m<3)return $t($t("hozir"));if(m<60)return $t($t("{0} daqiqa oldin"),[m]);const h=Math.round(m/60);if(h<24)return $t($t("{0} soat oldin"),[h]);const d=Math.round(h/24);if(d===1)return $t($t("kecha"));if(d<7)return $t($t("{0} kun oldin"),[d]);return dshort(ts)}
 function setAT(k){S.at=k;render()}
 function allUsers(){
  const m={};
@@ -598,106 +727,112 @@ function allUsers(){
  Object.entries(leagues).forEach(([c,l])=>standings(l).forEach(r=>{const u=m[r.p.uid];if(!u)return;u.leagues++;["P","W","D","L","GF","GA","Pts"].forEach(k=>u[k]+=r[k]);u.teams.push({c,p:r.p})}));
  return Object.values(m);
 }
-function uname(uid){const u=usersMap[uid];if(u&&u.name)return u.name;for(const l of Object.values(leagues)){const p=(l.players||[]).find(x=>x.uid===uid);if(p)return p.name}return "Foydalanuvchi"}
+function uname(uid){const u=usersMap[uid];if(u&&u.name)return u.name;for(const l of Object.values(leagues)){const p=(l.players||[]).find(x=>x.uid===uid);if(p)return p.name}return $t("Foydalanuvchi")}
 function dayBuckets(list,n=14){const a=Array(n).fill(0),lb=[],t0=new Date();t0.setHours(0,0,0,0);
  for(let i=0;i<n;i++){const d=new Date(t0);d.setDate(d.getDate()-(n-1-i));lb.push(d.getDate())}
  list.forEach(ts=>{const d=new Date(ts);d.setHours(0,0,0,0);const i=n-1-Math.round((t0-d)/864e5);if(i>=0&&i<n)a[i]++});return {a,lb}}
 function barChart(b,color){const {a,lb}=b,max=Math.max(1,...a),w=300,h=90,bw=w/a.length;
  return `<svg viewBox="0 0 ${w} ${h+24}" width="100%" style="display:block">${a.map((v,i)=>{const bh=Math.max(v?4:2,v/max*h);return `<rect x="${i*bw+3}" y="${h-bh+12}" width="${bw-6}" height="${bh}" rx="3" style="fill:${v?color:"var(--line)"}"/>${v?`<text x="${i*bw+bw/2}" y="${h-bh+8}" text-anchor="middle" font-size="9" font-weight="700" style="fill:var(--tx)">${v}</text>`:""}`}).join("")}${lb.map((l,i)=>(i%2===0||i===lb.length-1)?`<text x="${i*bw+bw/2}" y="${h+24}" text-anchor="middle" font-size="9" style="fill:var(--mut)">${l}</text>`:"").join("")}</svg>`}
-function userRow(u,sb,right,rank){return `<div class="pl" onclick="openUser('${esc(u.id)}')">${rank?`<div class="rkn">${rank}</div>`:""}<div class="av">${esc((u.name||"?").slice(0,1).toUpperCase())}</div><div style="flex:1;min-width:0"><div class="n">${esc(u.name||"Nomsiz")}${u.id===me.id?' <span class="tag">siz</span>':""}</div><div class="s">${u.tg?"@"+esc(u.tg)+" · ":""}${sb}</div></div>${right?`<div class="rt">${right}</div>`:""}</div>`}
+function userRow(u,sb,right,rank){return `<div class="pl" onclick="openUser('${esc(u.id)}')">${rank?`<div class="rkn">${rank}</div>`:""}<div class="av">${esc((u.name||"?").slice(0,1).toUpperCase())}</div><div style="flex:1;min-width:0"><div class="n">${esc(u.name||$t("Nomsiz"))}${u.id===me.id?` <span class="tag">${$t("siz")}</span>`:""}</div><div class="s">${u.tg?"@"+esc(u.tg)+" · ":""}${sb}</div></div>${right?`<div class="rt">${right}</div>`:""}</div>`}
 function renderAdmin(){
  if(!isAdmin){root("matches");return}
- const tabs=[["over","Umumiy"],["users","Foydalanuvchilar"],["leagues","Ligalar"],["act","Faollik"],["data","Ma'lumotlar"]];
- app.innerHTML=bar(ptitle("Boshqaruv paneli","Platforma holati va nazorat"),`<div class="pill" style="color:var(--acc)">${I.shield.replace('width="24" height="24"','width="16" height="16"')}Egasi</div>`)+tabsBar(tabs,S.at,"setAT")+({over:adminOver,users:adminUsers,leagues:adminLeagues,act:adminAct,data:adminData})[S.at]();
+ const tabs=[["over",$t("Umumiy")],["users",$t("Foydalanuvchilar")],["leagues",$t("Ligalar")],["act",$t("Faollik")],["data",$t("Ma'lumotlar")]];
+ app.innerHTML=bar(ptitle($t("Boshqaruv paneli"),$t("Platforma holati va nazorat")),`<div class="pill" style="color:var(--acc)">${I.shield.replace('width="24" height="24"','width="16" height="16"')}${$t("Egasi")}</div>`)+tabsBar(tabs,S.at,"setAT")+({over:adminOver,users:adminUsers,leagues:adminLeagues,act:adminAct,data:adminData})[S.at]();
 }
 function adminOver(){
- const U=allUsers(),L=Object.entries(leagues),d7=Date.now()-7*864e5;
+ const U=allUsers(),L=Object.entries(leagues).filter(([c,l])=>!isCup(l)),cupsN=Object.values(leagues).filter(isCup).length,d7=Date.now()-7*864e5;
  const M=L.flatMap(([c,l])=>(l.matches||[]).filter(done).map(m=>({...m,c})));
  const teams=L.reduce((a,[c,l])=>a+(l.players||[]).length,0),goals=M.reduce((a,m)=>a+m.hs+m.as,0);
  const act=U.filter(u=>u.seen&&u.seen>d7).length,nu=U.filter(u=>u.joined&&u.joined>d7).length,m7=M.filter(m=>m.ts>d7).length;
  const kp=(ic,v,l,d)=>`<div class="kpi"><div class="ki">${ic}</div><div class="kv">${v}</div><div class="kl">${l}</div>${d?`<div class="kd">${d}</div>`:""}</div>`;
  const top=U.filter(u=>u.P>0).sort((a,b)=>b.Pts-a.Pts||(b.GF-b.GA)-(a.GF-a.GA)).slice(0,5);
- return `<div class="kgrid">${kp(I.users,U.length,"Foydalanuvchilar",nu?`+${nu} shu hafta`:"")}${kp(I.clock,act,"Faol (7 kun)","")}${kp(I.tro(),L.length,"Ligalar","")}${kp(I.shield,teams,"Jamoalar","")}${kp(I.pitch,M.length,"O'yinlar",m7?`+${m7} shu hafta`:"")}${kp(I.chart,goals,"Jami gollar",M.length?(goals/M.length).toFixed(1)+" o'yinga":"")}</div>`+
- `<div class="card pad"><div class="ct2">O'yinlar · oxirgi 14 kun</div>${barChart(dayBuckets(M.map(m=>m.ts)),"var(--acc)")}</div>`+
- `<div class="card pad"><div class="ct2">Yangi foydalanuvchilar · oxirgi 14 kun</div>${barChart(dayBuckets(U.filter(u=>u.joined).map(u=>u.joined)),"var(--blue)")}</div>`+
- `<div class="card"><div class="ttl">Eng yaxshi o'yinchilar</div>${top.map((u,i)=>userRow(u,`${u.P} o'yin · ${u.W} g'alaba`,u.Pts+" och",i+1)).join("")||'<div class="empty" style="padding:20px">Natijalar kiritilgach chiqadi</div>'}</div>`+annCard();
+ return `<div class="kgrid">${kp(I.users,U.length,$t("Foydalanuvchilar"),nu?`${$t("+{0} shu hafta",[nu])}`:"")}${kp(I.clock,act,$t("Faol (7 kun)"),"")}${kp(I.tro(),L.length,$t("Ligalar"),cupsN?`${$t("+{0} chempionat",[cupsN])}`:"")}${kp(I.shield,teams,$t("Jamoalar"),"")}${kp(I.pitch,M.length,$t("O'yinlar"),m7?`${$t("+{0} shu hafta",[m7])}`:"")}${kp(I.chart,goals,$t("Jami gollar"),M.length?(goals/M.length).toFixed(1)+(" "+$t("o'yinga")):"")}</div>`+
+ `<div class="card pad"><div class="ct2">${$t("O'yinlar · oxirgi 14 kun")}</div>${barChart(dayBuckets(M.map(m=>m.ts)),"var(--acc)")}</div>`+
+ `<div class="card pad"><div class="ct2">${$t("Yangi foydalanuvchilar · oxirgi 14 kun")}</div>${barChart(dayBuckets(U.filter(u=>u.joined).map(u=>u.joined)),"var(--blue)")}</div>`+
+ `<div class="card"><div class="ttl">${$t("Eng yaxshi o'yinchilar")}</div>${top.map((u,i)=>userRow(u,`${$t("{0} o'yin · {1} g'alaba",[u.P,u.W])}`,u.Pts+(" "+$t("och")),i+1)).join("")||`<div class="empty" style="padding:20px">${$t("Natijalar kiritilgach chiqadi")}</div>`}</div>`+annCard();
 }
-function annCard(){const a=announce||{};return `<div class="card pad"><div class="row" style="margin-bottom:10px"><span style="color:var(--acc);display:flex">${I.mega}</span><h3>E'lon (hamma ko'radi)</h3></div><textarea id="annt" rows="3" placeholder="Masalan: Shanba kuni 20:00 da final o'yini!">${esc(a.on?a.text:"")}</textarea><div class="row" style="margin-top:10px"><button class="btn" onclick="postAnn(true)">E'lon qilish</button>${a.on?`<button class="btn sec" onclick="postAnn(false)">Olib tashlash</button>`:""}</div></div>`}
-async function postAnn(on){const t=($("#annt").value||"").trim();if(on&&!t)return toast("E'lon matnini yozing");const v={text:on?t:"",on,ts:Date.now()};announce=v;if(SA)keep("tr_ann",v);if(db){try{await db.doc("meta/announcement").set(v)}catch(e){toast("Saqlashda xato")}}toast(on?"E'lon chop etildi":"E'lon olib tashlandi");render()}
+function annCard(){const a=announce||{};return `<div class="card pad"><div class="row" style="margin-bottom:10px"><span style="color:var(--acc);display:flex">${I.mega}</span><h3>${$t("E'lon (hamma ko'radi)")}</h3></div><textarea id="annt" rows="3" placeholder="${$t("Masalan: Shanba kuni 20:00 da final o'yini!")}">${esc(a.on?a.text:"")}</textarea><div class="row" style="margin-top:10px"><button class="btn" onclick="postAnn(true)">${$t("E'lon qilish")}</button>${a.on?`<button class="btn sec" onclick="postAnn(false)">${$t("Olib tashlash")}</button>`:""}</div></div>`}
+async function postAnn(on){const t=($("#annt").value||"").trim();if(on&&!t)return toast($t("E'lon matnini yozing"));const v={text:on?t:"",on,ts:Date.now()};announce=v;if(SA)keep("tr_ann",v);if(db){try{await db.doc("meta/announcement").set(v)}catch(e){toast($t("Saqlashda xato"))}}toast(on?$t("E'lon chop etildi"):$t("E'lon olib tashlandi"));render()}
 function userList(){const q=S.uq.trim().toLowerCase();
  const U=allUsers().sort((a,b)=>(b.seen||0)-(a.seen||0)).filter(u=>!q||(u.name||"").toLowerCase().includes(q)||(u.tg||"").toLowerCase().includes(q));
- return U.map(u=>userRow(u,`${u.leagues} liga · ${u.P} o'yin · ${ago(u.seen)}`,"")).join("")||'<div class="empty" style="padding:20px">Hech kim topilmadi</div>'}
-function adminUsers(){return `<div class="card pad"><input id="uq" placeholder="Ism yoki @username bo'yicha qidirish" value="${esc(S.uq)}" oninput="S.uq=this.value;$('#ul').innerHTML=userList()"></div><div class="card"><div class="ttl">Foydalanuvchilar (${allUsers().length})</div><div id="ul">${userList()}</div></div>`}
+ return U.map(u=>userRow(u,`${$t("{0} liga · {1} o'yin · {2}",[u.leagues,u.P,ago(u.seen)])}`,"")).join("")||`<div class="empty" style="padding:20px">${$t("Hech kim topilmadi")}</div>`}
+function adminUsers(){return `<div class="card pad"><input id="uq" placeholder="${$t("Ism yoki @username bo'yicha qidirish")}" value="${esc(S.uq)}" oninput="S.uq=this.value;$('#ul').innerHTML=userList()"></div><div class="card"><div class="ttl">${$t("Foydalanuvchilar ({0})",[allUsers().length])}</div><div id="ul">${userList()}</div></div>`}
 function openUser(id){openModal("user",{id})}
 function userSheet(){const d=S.draft,u=allUsers().find(x=>x.id===d.id);if(!u)return `<div class="sheet"></div>`;
  const t=u.teams.map(x=>`<div class="pl" style="padding-left:0;padding-right:0" onclick="S.modal=null;S.lg='${x.c}';root('leagues')">${logo(x.p,32)}<div style="flex:1"><div class="n">${esc(x.p.team)}</div><div class="s">${esc(leagues[x.c].name)}</div></div></div>`).join("");
- return `<div class="sheet"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center"><div class="av" style="width:72px;height:72px;font-size:30px">${esc((u.name||"?").slice(0,1).toUpperCase())}</div><h3>${esc(u.name||"Nomsiz")}</h3>${u.tg?`<a class="lnk" href="https://t.me/${esc(u.tg)}" target="_blank" rel="noopener">@${esc(u.tg)}</a>`:""}</div>
- <div class="grid" style="margin-top:16px;border-radius:14px;overflow:hidden"><div><b>${u.P}</b><span>O'yin</span></div><div><b>${u.W}</b><span>G'alaba</span></div><div><b>${u.Pts}</b><span>Ochko</span></div></div>
- <div class="kv2" style="margin-top:8px">Ro'yxatdan o'tgan<b>${u.joined?dlong(u.joined):"—"}</b></div><div class="kv2">Oxirgi faollik<b>${ago(u.seen)}</b></div>
- <label>Jamoalari (${u.teams.length})</label>${t||'<div class="mut">Hali jamoa yo\'q</div>'}
- ${u.id===me.id||!u.teams.length?"":(d.del?`<button class="btn red" style="margin-top:12px" onclick="removeUser('${esc(u.id)}')">Ha, hamma ligadan chiqarish</button>`:`<button class="btn red" style="margin-top:12px" onclick="S.draft.del=1;render()">Ligalardan chiqarish</button>`)}</div>`}
-async function removeUser(uid){S.modal=null;for(const [c,l0] of Object.entries(leagues)){const ids=(l0.players||[]).filter(p=>p.uid===uid).map(p=>p.id);if(!ids.length)continue;const l=structuredClone(l0);l.players=l.players.filter(p=>!ids.includes(p.id));l.matches=(l.matches||[]).filter(m=>!ids.includes(m.h)&&!ids.includes(m.a));await store.save(c,l)}toast("Foydalanuvchi ligalardan chiqarildi")}
+ return `<div class="sheet"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center"><div class="av" style="width:72px;height:72px;font-size:30px">${esc((u.name||"?").slice(0,1).toUpperCase())}</div><h3>${esc(u.name||$t("Nomsiz"))}</h3>${u.tg?`<a class="lnk" href="https://t.me/${esc(u.tg)}" target="_blank" rel="noopener">@${esc(u.tg)}</a>`:""}</div>
+ <div class="grid" style="margin-top:16px;border-radius:14px;overflow:hidden"><div><b>${u.P}</b><span>${$t("O'yin")}</span></div><div><b>${u.W}</b><span>${$t("G'alaba")}</span></div><div><b>${u.Pts}</b><span>${$t("Ochko")}</span></div></div>
+ <div class="kv2" style="margin-top:8px">${$t("Ro'yxatdan o'tgan")}<b>${u.joined?dlong(u.joined):"—"}</b></div><div class="kv2">${$t("Oxirgi faollik")}<b>${ago(u.seen)}</b></div>
+ <label>${$t("Jamoalari ({0})",[u.teams.length])}</label>${t||`<div class="mut">${$t("Hali jamoa yo'q")}</div>`}
+ ${u.id===me.id||!u.teams.length?"":(d.del?`<button class="btn red" style="margin-top:12px" onclick="removeUser('${esc(u.id)}')">${$t("Ha, hamma ligadan chiqarish")}</button>`:`<button class="btn red" style="margin-top:12px" onclick="S.draft.del=1;render()">${$t("Ligalardan chiqarish")}</button>`)}</div>`}
+async function removeUser(uid){S.modal=null;for(const [c,l0] of Object.entries(leagues)){const ids=(l0.players||[]).filter(p=>p.uid===uid).map(p=>p.id);if(!ids.length)continue;const l=structuredClone(l0);l.players=l.players.filter(p=>!ids.includes(p.id));l.matches=(l.matches||[]).filter(m=>!ids.includes(m.h)&&!ids.includes(m.a));await store.save(c,l)}toast($t("Foydalanuvchi ligalardan chiqarildi"))}
 function adminLeagues(){const ent=Object.entries(leagues);
- return `<div class="card pad"><h3>Yangi liga yaratish</h3><label>Liga nomi</label><input id="aln" placeholder="Masalan: Do'stlar ligasi"><div style="height:14px"></div><button class="btn" onclick="createLeague()">Yaratish</button></div>`+
- `<div class="card"><div class="ttl">Barcha ligalar (${ent.length})</div>${ent.map(([c,l])=>{const ms=(l.matches||[]).filter(done),last=ms.reduce((a,m)=>Math.max(a,m.ts),0),g=ms.reduce((a,m)=>a+m.hs+m.as,0);
-  return `<div class="pl" onclick="editLeague('${c}')">${lbadge(c,46)}<div style="flex:1;min-width:0"><div class="n">${esc(l.name)}</div><div class="s">${(l.players||[]).length} jamoa · ${ms.length} o'yin · ${g} gol</div><div class="s">Kod: ${c} · oxirgi o'yin: ${ago(last)}</div></div><button class="btn sm sec" onclick="event.stopPropagation();S.lg='${c}';root('leagues')">Ko'rish</button></div>`}).join("")||'<div class="empty" style="padding:22px">Hali liga yaratilmagan</div>'}</div>`}
+ return `<div class="card pad"><h3>${$t("Yangi liga yaratish")}</h3><label>${$t("Liga nomi")}</label><input id="aln" placeholder="${$t("Masalan: Do'stlar ligasi")}"><div style="height:14px"></div><button class="btn" onclick="createLeague()">${$t("Yaratish")}</button></div>`+
+ `<div class="card"><div class="ttl">${$t("Barcha ligalar ({0})",[ent.length])}</div>${ent.map(([c,l])=>{const ms=(l.matches||[]).filter(done),last=ms.reduce((a,m)=>Math.max(a,m.ts),0),g=ms.reduce((a,m)=>a+m.hs+m.as,0);
+  return `<div class="pl" onclick="editLeague('${c}')">${lbadge(c,46)}<div style="flex:1;min-width:0"><div class="n">${esc(l.name)}${isCup(l)?` <span class="tag">${$t("kubok")}</span>`:""}</div><div class="s">${$t("{0} jamoa · {1} o'yin · {2} gol",[(l.players||[]).length,ms.length,g])}</div><div class="s">${$t("Kod: {0} · oxirgi o'yin: {1}",[c,ago(last)])}</div></div><button class="btn sm sec" onclick="event.stopPropagation();S.lg='${c}';root('leagues')">${$t("Ko'rish")}</button></div>`}).join("")||`<div class="empty" style="padding:22px">${$t("Hali liga yaratilmagan")}</div>`}</div>`}
 function adminAct(){const ev=[];
  Object.entries(leagues).forEach(([c,l])=>{const P=pmap(l);(l.matches||[]).filter(done).forEach(m=>{if(P[m.h]&&P[m.a])ev.push({ts:m.ts,k:"m",by:m.by,txt:`${esc(P[m.h].team)} ${m.hs} - ${m.as} ${esc(P[m.a].team)}`,sb:esc(l.name)})})});
- allUsers().forEach(u=>{if(u.joined)ev.push({ts:u.joined,k:"u",txt:esc(u.name||"Foydalanuvchi")+" ro'yxatdan o'tdi",sb:u.tg?"@"+esc(u.tg):""})});
+ allUsers().forEach(u=>{if(u.joined)ev.push({ts:u.joined,k:"u",txt:esc(u.name||$t("Foydalanuvchi"))+(" "+$t("ro'yxatdan o'tdi")),sb:u.tg?"@"+esc(u.tg):""})});
  ev.sort((a,b)=>b.ts-a.ts);
- return `<div class="card"><div class="ttl">So'nggi faollik</div>${ev.slice(0,40).map(e=>`<div class="pl" style="cursor:default"><div class="evi ${e.k}">${e.k==="m"?I.pitch:I.users}</div><div style="flex:1;min-width:0"><div class="n" style="font-size:14px">${e.k==="m"?esc(uname(e.by))+" natija kiritdi":e.txt}</div><div class="s">${e.k==="m"?e.txt+" · "+e.sb:e.sb}</div></div><div class="s" style="flex:none">${ago(e.ts)}</div></div>`).join("")||'<div class="empty" style="padding:22px">Hali faollik yo\'q</div>'}</div>`}
+ return `<div class="card"><div class="ttl">${$t("So'nggi faollik")}</div>${ev.slice(0,40).map(e=>`<div class="pl" style="cursor:default"><div class="evi ${e.k}">${e.k==="m"?I.pitch:I.users}</div><div style="flex:1;min-width:0"><div class="n" style="font-size:14px">${e.k==="m"?esc(uname(e.by))+(" "+$t("natija kiritdi")):e.txt}</div><div class="s">${e.k==="m"?e.txt+" · "+e.sb:e.sb}</div></div><div class="s" style="flex:none">${ago(e.ts)}</div></div>`).join("")||`<div class="empty" style="padding:22px">${$t("Hali faollik yo'q")}</div>`}</div>`}
 function adminData(){const kb=Math.round(JSON.stringify({leagues,usersMap}).length/1024);
- return `<div class="card pad"><h3>Ma'lumotlar bazasi</h3><div class="grid" style="margin-top:12px;border-radius:14px;overflow:hidden"><div><b>${Object.keys(leagues).length}</b><span>Liga</span></div><div><b>${allUsers().length}</b><span>Foydalanuvchi</span></div><div><b>${kb} KB</b><span>Hajmi</span></div></div></div>`+
- `<div class="card pad"><h3>Eksport</h3><div class="mut" style="margin:3px 0 12px">Zaxira nusxa va hisobotlarni yuklab oling</div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn sec" onclick="exportData('json')">${I.dl}Zaxira nusxa (JSON)</button><button class="btn sec" onclick="exportData('results')">${I.dl}Natijalar (CSV)</button><button class="btn sec" onclick="exportData('users')">${I.dl}Foydalanuvchilar (CSV)</button></div></div>`}
+ return `<div class="card pad"><h3>${$t("Ma'lumotlar bazasi")}</h3><div class="grid" style="margin-top:12px;border-radius:14px;overflow:hidden"><div><b>${Object.keys(leagues).length}</b><span>${$t("Liga")}</span></div><div><b>${allUsers().length}</b><span>${$t("Foydalanuvchi")}</span></div><div><b>${kb} KB</b><span>${$t("Hajmi")}</span></div></div></div>`+
+ `<div class="card pad"><h3>${$t("Eksport")}</h3><div class="mut" style="margin:3px 0 12px">${$t("Zaxira nusxa va hisobotlarni yuklab oling")}</div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn sec" onclick="exportData('json')">${I.dl}${$t("Zaxira nusxa (JSON)")}</button><button class="btn sec" onclick="exportData('results')">${I.dl}${$t("Natijalar (CSV)")}</button><button class="btn sec" onclick="exportData('users')">${I.dl}${$t("Foydalanuvchilar (CSV)")}</button></div></div>`}
 const csv=rows=>"\ufeff"+rows.map(r=>r.map(v=>{v=String(v==null?"":v);return /[",\n;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(",")).join("\n");
 async function exportData(k){
- if(!dl)return toast("Yuklab olish bu yerda mavjud emas");
+ if(!dl)return toast($t("Yuklab olish bu yerda mavjud emas"));
  const day=new Date().toISOString().slice(0,10);let name,data;
  if(k==="json"){name="trofeo-zaxira-"+day+".json";data=JSON.stringify({leagues,users:usersMap,exportedAt:Date.now()},null,1)}
- if(k==="results"){const r=[["Liga","Sana","Uy jamoasi","Uy egasi","Hisob","Mehmon jamoasi","Mehmon egasi"]];Object.values(leagues).forEach(l=>{const P=pmap(l);(l.matches||[]).filter(done).sort((a,b)=>a.ts-b.ts).forEach(m=>{const h=P[m.h],a=P[m.a];if(h&&a)r.push([l.name,new Date(m.ts).toLocaleString("uz-UZ"),h.team,h.name,m.hs+":"+m.as,a.team,a.name])})});name="trofeo-natijalar-"+day+".csv";data=csv(r)}
- if(k==="users"){const r=[["Ism","Telegram","Royxatdan otgan","Oxirgi faollik","Ligalar","Oyinlar","Galaba","Ochko"]];allUsers().forEach(u=>r.push([u.name,u.tg?"@"+u.tg:"",u.joined?new Date(u.joined).toLocaleDateString("uz-UZ"):"",u.seen?new Date(u.seen).toLocaleString("uz-UZ"):"",u.leagues,u.P,u.W,u.Pts]));name="trofeo-foydalanuvchilar-"+day+".csv";data=csv(r)}
- try{await dl.save({filename:name,data});toast("Fayl tayyor")}catch(e){if(!e||e.code!=="declined")toast("Saqlab bo'lmadi")}}
-async function createLeague(){if(!isAdmin)return;const n=($("#aln").value||"").trim();if(!n)return toast("Liga nomini yozing");const c=genCode();await store.save(c,{name:n,owner:me.id,players:[],matches:[]});S.lg=c;toast("Liga yaratildi")}
+ if(k==="results"){const r=[[$t("Liga"),$t("Sana"),$t("Uy jamoasi"),$t("Uy egasi"),$t("Hisob"),$t("Mehmon jamoasi"),$t("Mehmon egasi")]];Object.values(leagues).forEach(l=>{const P=pmap(l);(l.matches||[]).filter(done).sort((a,b)=>a.ts-b.ts).forEach(m=>{const h=P[m.h],a=P[m.a];if(h&&a)r.push([l.name,new Date(m.ts).toLocaleString(LOC[LANG]),h.team,h.name,m.hs+":"+m.as,a.team,a.name])})});name="trofeo-natijalar-"+day+".csv";data=csv(r)}
+ if(k==="users"){const r=[[$t("Ism"),"Telegram",$t("Royxatdan otgan"),$t("Oxirgi faollik"),$t("Ligalar"),$t("Oyinlar"),$t("Galaba"),$t("Ochko")]];allUsers().forEach(u=>r.push([u.name,u.tg?"@"+u.tg:"",u.joined?new Date(u.joined).toLocaleDateString(LOC[LANG]):"",u.seen?new Date(u.seen).toLocaleString(LOC[LANG]):"",u.leagues,u.P,u.W,u.Pts]));name="trofeo-foydalanuvchilar-"+day+".csv";data=csv(r)}
+ try{await dl.save({filename:name,data});toast($t("Fayl tayyor"))}catch(e){if(!e||e.code!=="declined")toast($t("Saqlab bo'lmadi"))}}
+async function createLeague(){if(!isAdmin)return;const n=($("#aln").value||"").trim();if(!n)return toast($t("Liga nomini yozing"));const c=genCode();await store.save(c,{name:n,owner:me.id,players:[],matches:[]});S.lg=c;toast($t("Liga yaratildi"))}
 function editLeague(c){const l=leagues[c];openModal("leagueEdit",{c,n:l.name,ic:l.ic||"trophy",h:l.h!=null?l.h:hue(c),img:l.img||null})}
 function leagueEditSheet(){const d=S.draft,l=leagues[d.c];if(!l)return `<div class="sheet"></div>`;
- return `<div class="sheet"><h3>Ligani sozlash</h3>
- <div class="row" style="margin-top:14px;align-items:flex-end"><div style="width:84px;display:flex;justify-content:center;padding-bottom:2px">${lbadgeOf(d,72,d.c)}</div><div style="flex:1"><label style="margin-top:0">Liga nomi</label><input value="${esc(d.n)}" oninput="S.draft.n=this.value"></div></div>
- <label>Belgi</label><div class="icg">${Object.keys(LIC).map(k=>`<div class="icb ${d.ic===k&&!d.img?'on':''}" onclick="setLic('ic','${k}')">${lbadgeOf({ic:k,h:d.h},40,d.c)}</div>`).join("")}</div>
- <label>Rang</label><div class="hues">${HUES.map(h=>`<div class="hue ${d.h===h&&!d.img?'on':''}" style="background:${h<0?'hsl(220,8%,34%)':`hsl(${h},68%,45%)`}" onclick="setLic('h',${h})"></div>`).join("")}</div>
- <label>yoki o'z rasmingizni yuklang</label><div class="row"><input type="file" accept="image/*" onchange="pickLeagueImg(this)">${d.img?`<button class="btn sm sec" onclick="setLic('img',null)">Olib tashlash</button>`:""}</div>
- <label>Do'stlar uchun taklif linki</label><div class="invite"><code>${esc(link(d.c))}</code><button class="btn sm" onclick="copyLink('${d.c}')">Nusxa</button></div>
- <div style="height:16px"></div><button class="btn" onclick="saveLeagueName()">Saqlash</button>
- ${d.del?`<button class="btn red" style="margin-top:6px" onclick="delLeague()">Ha, butunlay o'chirish (${(l.players||[]).length} jamoa, ${(l.matches||[]).length} o'yin)</button>`:`<button class="btn red" style="margin-top:6px" onclick="S.draft.del=1;render()">Ligani o'chirish</button>`}</div>`}
+ return `<div class="sheet"><h3>${$t("Ligani sozlash")}</h3>
+ <div class="row" style="margin-top:14px;align-items:flex-end"><div style="width:84px;display:flex;justify-content:center;padding-bottom:2px">${lbadgeOf(d,72,d.c)}</div><div style="flex:1"><label style="margin-top:0">${$t("Liga nomi")}</label><input value="${esc(d.n)}" oninput="S.draft.n=this.value"></div></div>
+ <label>${$t("Belgi")}</label><div class="icg">${Object.keys(LIC).map(k=>`<div class="icb ${d.ic===k&&!d.img?'on':''}" onclick="setLic('ic','${k}')">${lbadgeOf({ic:k,h:d.h},40,d.c)}</div>`).join("")}</div>
+ <label>${$t("Rang")}</label><div class="hues">${HUES.map(h=>`<div class="hue ${d.h===h&&!d.img?'on':''}" style="background:${h<0?'hsl(220,8%,34%)':`hsl(${h},68%,45%)`}" onclick="setLic('h',${h})"></div>`).join("")}</div>
+ <label>${$t("yoki o'z rasmingizni yuklang")}</label><div class="row"><input type="file" accept="image/*" onchange="pickLeagueImg(this)">${d.img?`<button class="btn sm sec" onclick="setLic('img',null)">${$t("Olib tashlash")}</button>`:""}</div>
+ <label>${$t("Do'stlar uchun taklif linki")}</label><div class="invite"><code>${esc(link(d.c))}</code><button class="btn sm" onclick="copyLink('${d.c}')">${$t("Nusxa")}</button></div>
+ <div style="height:16px"></div><button class="btn" onclick="saveLeagueName()">${$t("Saqlash")}</button>
+ ${d.del?`<button class="btn red" style="margin-top:6px" onclick="delLeague()">${$t("Ha, butunlay o'chirish ({0} jamoa, {1} o'yin)",[(l.players||[]).length,(l.matches||[]).length])}</button>`:`<button class="btn red" style="margin-top:6px" onclick="S.draft.del=1;render()">${$t("Ligani o'chirish")}</button>`}</div>`}
 function setLic(k,v){const d=S.draft;d[k]=v;if(k!=="img")d.img=null;render()}
 function pickLeagueImg(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=c.height=128;const x=c.getContext("2d"),m=Math.min(im.width,im.height);x.drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,128,128);S.draft.img=c.toDataURL("image/webp",.85);render()};im.src=r.result};r.readAsDataURL(f)}
-async function saveLeagueName(){const d=S.draft,n=(d.n||"").trim();if(!n)return toast("Nomni yozing");const l=structuredClone(leagues[d.c]);l.name=n;l.ic=d.ic;l.h=d.h;l.img=d.img||null;S.modal=null;await store.save(d.c,l);toast("Saqlandi")}
-async function delLeague(){const c=S.draft.c;S.modal=null;await store.remove(c);toast("Liga o'chirildi")}
+async function saveLeagueName(){const d=S.draft,n=(d.n||"").trim();if(!n)return toast($t("Nomni yozing"));const l=structuredClone(leagues[d.c]);l.name=n;l.ic=d.ic;l.h=d.h;l.img=d.img||null;S.modal=null;await store.save(d.c,l);toast($t("Saqlandi"))}
+async function delLeague(){const c=S.draft.c;S.modal=null;await store.remove(c);toast($t("Liga o'chirildi"))}
 
 /* ---------- 3) Kuzatish ---------- */
 function renderFollow(){
  const lg=fol.filter(c=>leagues[c]),tm=ft.map(k=>{const [c,pid]=k.split(":");const l=leagues[c];return l&&pmap(l)[pid]?{c,l,p:pmap(l)[pid]}:null}).filter(Boolean);
- const teamsCard=tm.length?`<div class="card"><div class="ttl">Jamoalar</div>${tm.map(x=>`<div class="pl" onclick="push({s:'team',code:'${x.c}',pid:'${x.p.id}'})">${logo(x.p,38)}<div style="flex:1"><div class="n">${esc(x.p.team)}</div><div class="s">${esc(x.l.name)}</div></div></div>`).join("")}</div>`:"";
- const leaguesCard=lg.length?`<div class="card"><div class="ttl">Ligalar</div>${lg.map(c=>`<div class="pl" onclick="push({s:'league',code:'${c}'})">${lbadge(c,38)}<div style="flex:1"><div class="n">${esc(leagues[c].name)}</div><div class="s">${(leagues[c].players||[]).length} o'yinchi</div></div></div>`).join("")}</div>`:"";
- app.innerHTML=bar(ptitle("Sevimlilar","Kuzatilayotgan liga va jamoalar"))+(teamsCard+leaguesCard||`<div class="empty">Hali hech narsa kuzatilmayapti.<br>Liga yoki jamoa sahifasidagi yulduzchani bosing.</div>`);
+ const teamsCard=tm.length?`<div class="card"><div class="ttl">${$t("Jamoalar")}</div>${tm.map(x=>`<div class="pl" onclick="push({s:'team',code:'${x.c}',pid:'${x.p.id}'})">${logo(x.p,38)}<div style="flex:1"><div class="n">${esc(x.p.team)}</div><div class="s">${esc(x.l.name)}</div></div></div>`).join("")}</div>`:"";
+ const leaguesCard=lg.length?`<div class="card"><div class="ttl">${$t("Ligalar")}</div>${lg.map(c=>`<div class="pl" onclick="openLg('${c}')">${lbadge(c,38)}<div style="flex:1"><div class="n">${esc(leagues[c].name)}</div><div class="s">${$t("{0} o'yinchi",[(leagues[c].players||[]).length])}</div></div></div>`).join("")}</div>`:"";
+ app.innerHTML=bar(ptitle($t("Sevimlilar"),$t("Kuzatilayotgan liga va jamoalar")))+(teamsCard+leaguesCard||`<div class="empty">${$t("Hali hech narsa kuzatilmayapti.")}<br>${$t("Liga yoki jamoa sahifasidagi yulduzchani bosing.")}</div>`);
 }
 
 /* ---------- 4) Profil ---------- */
 const MINI={dark:{bg:"#000000",card:"#1c1c1e",tx:"#f4f5f7",acc:"#2fd47b",mut:"#8b8b95"},light:{bg:"#f3f5f8",card:"#ffffff",tx:"#101828",acc:"#0a9d57",mut:"#98a2b3"}};
 const mini=c=>`<rect width="80" height="52" fill="${c.bg}"/><rect x="6" y="7" width="30" height="5" rx="2.5" fill="${c.tx}"/><rect x="6" y="18" width="68" height="14" rx="4" fill="${c.card}"/><circle cx="14" cy="25" r="3.6" fill="${c.acc}"/><rect x="22" y="22.5" width="28" height="3" rx="1.5" fill="${c.tx}" opacity=".85"/><rect x="6" y="36" width="68" height="14" rx="4" fill="${c.card}"/><circle cx="14" cy="43" r="3.6" fill="${c.mut}"/><rect x="22" y="40.5" width="20" height="3" rx="1.5" fill="${c.tx}" opacity=".6"/>`;
 const pvSvg=b=>`<svg viewBox="0 0 80 52" width="100%" height="100%" preserveAspectRatio="none" style="display:block">${b}</svg>`;
+function langCard(){return `<div class="card pad"><h3>${$t("Til")}</h3><div class="mut" style="margin:3px 0 14px">${$t("Ilova tilini tanlang")}</div><div class="langs">${Object.entries(LANGS).map(([k,n])=>`<div class="lang ${LANG===k?"on":""}" onclick="setLang('${k}')"><b>${k.toUpperCase()}</b><span>${n}</span></div>`).join("")}</div></div>`}
+function initLang(){let l="";try{l=localStorage.getItem("lang")||""}catch(e){}
+ if(!LANGS[l]){const c=((TGW&&TGW.initDataUnsafe&&TGW.initDataUnsafe.user&&TGW.initDataUnsafe.user.language_code)||navigator.language||"uz").toLowerCase().slice(0,2);l=c==="uz"?"uz":["ru","be","uk","kk","ky","tg"].includes(c)?"ru":c==="en"?"en":(TGW?"en":"uz")}
+ setLangQuiet(l)}
+function setLangQuiet(l){LANG=l;try{document.documentElement.lang=l}catch(e){}langArrays()}
+function setLang(l){keep("lang",l);setLangQuiet(l);render()}
 function themeCard(th){
- const o=[["auto","Tizim",I.monitor,pvSvg(`<g>${mini(MINI.dark)}</g><clipPath id="tca"><polygon points="0,0 80,0 0,52"/></clipPath><g clip-path="url(#tca)">${mini(MINI.light)}</g>`)],["light","Yorug'",I.sun,pvSvg(mini(MINI.light))],["dark","Qorong'i",I.moon,pvSvg(mini(MINI.dark))]];
- return `<div class="card pad"><h3>Mavzu</h3><div class="mut" style="margin:3px 0 14px">Ilova ko'rinishini tanlang</div><div class="themes">${o.map(([k,t,ic,pv])=>`<div class="tile ${th===k?'on':''}" onclick="setTheme('${k}')">${th===k?`<div class="ck">${I.check}</div>`:""}<div class="pv">${pv}</div><div class="lb">${ic}${t}</div></div>`).join("")}</div></div>`}
+ const o=[["auto",$t("Tizim"),I.monitor,pvSvg(`<g>${mini(MINI.dark)}</g><clipPath id="tca"><polygon points="0,0 80,0 0,52"/></clipPath><g clip-path="url(#tca)">${mini(MINI.light)}</g>`)],["light",$t("Yorug'"),I.sun,pvSvg(mini(MINI.light))],["dark",$t("Qorong'i"),I.moon,pvSvg(mini(MINI.dark))]];
+ return `<div class="card pad"><h3>${$t("Mavzu")}</h3><div class="mut" style="margin:3px 0 14px">${$t("Ilova ko'rinishini tanlang")}</div><div class="themes">${o.map(([k,t,ic,pv])=>`<div class="tile ${th===k?'on':''}" onclick="setTheme('${k}')">${th===k?`<div class="ck">${I.check}</div>`:""}<div class="pv">${pv}</div><div class="lb">${ic}${t}</div></div>`).join("")}</div></div>`}
 function ptitle(t,sb){return `<div class="ptw"><div class="pt">${t}</div>${sb?`<div class="ps">${sb}</div>`:""}</div>`}
 function renderProfile(){
  const T={P:0,W:0,D:0,L:0,GF:0,GA:0,Pts:0};
  Object.values(leagues).forEach(l=>standings(l).forEach(r=>{if(r.p.uid===me.id)for(const k in T)T[k]+=r[k]}));
  const th=(function(){try{return localStorage.getItem("theme")||"auto"}catch(e){return"auto"}})();
- app.innerHTML=bar(ptitle("Mening profilim","Hisob va ko'rinish sozlamalari"))+
- `<div class="card pad" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">${me.photo?`<img class="avatar" src="${esc(me.photo)}" referrerpolicy="no-referrer" alt="">`:`<div class="avatar">${esc((me.name||"?").slice(0,1).toUpperCase())}</div>`}<h2>${esc(me.name)}</h2><div class="mut">${me.tg?"@"+esc(me.tg):"Telegram foydalanuvchisi"}</div>${me.tgid?`<div class="mut">Telegram ID: <b style="color:var(--tx)">${me.tgid}</b></div>`:""}</div>`+
- `<div class="card"><div class="ttl">Shaxsiy statistika</div><div class="prow">${donut(T.W,T.D,T.L,88)}<div class="pleg"><div><i style="background:var(--acc)"></i>G'alaba<b>${T.W}</b></div><div><i style="background:#8b93a0"></i>Durang<b>${T.D}</b></div><div><i style="background:var(--red)"></i>Mag'lubiyat<b>${T.L}</b></div></div></div><div class="grid"><div><b>${T.P}</b><span>O'yin</span></div><div><b>${T.W}</b><span>G'alaba</span></div><div><b>${T.D}</b><span>Durang</span></div><div><b>${T.L}</b><span>Mag'lubiyat</span></div><div><b>${T.GF}</b><span>Urilgan gol</span></div><div><b>${T.GA}</b><span>O'tkazilgan gol</span></div></div></div>`+
- themeCard(th)+
- (TGW?"":`<button class="btn out" style="margin-top:4px" onclick="logout()">Hisobdan chiqish</button>`);
+ app.innerHTML=bar(ptitle($t("Mening profilim"),$t("Hisob va ko'rinish sozlamalari")))+
+ `<div class="card pad" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">${me.photo?`<img class="avatar" src="${esc(me.photo)}" referrerpolicy="no-referrer" alt="">`:`<div class="avatar">${esc((me.name||"?").slice(0,1).toUpperCase())}</div>`}<h2>${esc(me.name)}</h2><div class="mut">${me.tg?"@"+esc(me.tg):$t("Telegram foydalanuvchisi")}</div>${me.tgid?`<div class="mut">Telegram ID: <b style="color:var(--tx)">${me.tgid}</b></div>`:""}</div>`+
+ `<div class="card"><div class="ttl">${$t("Shaxsiy statistika")}</div><div class="prow">${donut(T.W,T.D,T.L,88)}<div class="pleg"><div><i style="background:var(--acc)"></i>${$t("G'alaba")}<b>${T.W}</b></div><div><i style="background:#8b93a0"></i>${$t("Durang")}<b>${T.D}</b></div><div><i style="background:var(--red)"></i>${$t("Mag'lubiyat")}<b>${T.L}</b></div></div></div><div class="grid"><div><b>${T.P}</b><span>${$t("O'yin")}</span></div><div><b>${T.W}</b><span>${$t("G'alaba")}</span></div><div><b>${T.D}</b><span>${$t("Durang")}</span></div><div><b>${T.L}</b><span>${$t("Mag'lubiyat")}</span></div><div><b>${T.GF}</b><span>${$t("Urilgan gol")}</span></div><div><b>${T.GA}</b><span>${$t("O'tkazilgan gol")}</span></div></div></div>`+
+ themeCard(th)+langCard()+(isAdmin?`<button class="btn sec" style="margin-bottom:12px" onclick="root('admin')">${I.shield.replace('width="24" height="24"','width="20" height="20"')}${$t("Boshqaruv paneli")}</button>`:"")+
+ (TGW?"":`<button class="btn out" style="margin-top:4px" onclick="logout()">${$t("Hisobdan chiqish")}</button>`);
 }
 function setTheme(k){keep("theme",k==="auto"?"":k);applyTheme();render()}
 
@@ -712,70 +847,70 @@ function donut(w,d,l,s=64){const t=w+d+l,C=2*Math.PI*26;let off=0;
  const seg=(v,col)=>{if(!v)return"";const len=v/t*C,e=`<circle cx="32" cy="32" r="26" fill="none" stroke-width="7" style="stroke:${col}" stroke-dasharray="${Math.max(len-1.5,0.1)} ${C}" stroke-dashoffset="${-off}"/>`;off+=len;return e};
  return `<div class="donut" style="width:${s}px;height:${s}px"><svg viewBox="0 0 64 64" width="${s}" height="${s}" style="transform:rotate(-90deg)"><circle cx="32" cy="32" r="26" fill="none" stroke-width="7" style="stroke:var(--line)"/>${t?seg(w,"var(--acc)")+seg(d,"#8b93a0")+seg(l,"var(--red)"):""}</svg><div class="dnt"><b>${t?Math.round(w/t*100)+"%":"—"}</b></div></div>`}
 function podium(l,c){const st=standings(l).filter(r=>r.P>0);if(st.length<3)return"";
- const cell=(r,pos)=>`<div class="pd pd${pos}" onclick="push({s:'team',code:'${c}',pid:'${r.p.id}'})">${pos===1?`<div class="crown">${I.crown}</div>`:""}<div class="pdl">${logo(r.p,pos===1?58:46)}<i class="pdn">${pos}</i></div><div class="pdt">${esc(r.p.team)}</div><div class="pds">${esc(r.p.name)}</div><div class="pdp">${r.Pts}<small>och</small></div></div>`;
- return `<div class="card podium"><div class="ttl" style="padding:0 4px 10px">Peshqadamlar</div><div class="pdw">${cell(st[1],2)}${cell(st[0],1)}${cell(st[2],3)}</div></div>`}
-function teamHero(l,t,r,i){return `<div class="lhero" id="th" style="--h:${teamHue(t)}"><div class="lh-top">${logo(t,66)}<div style="flex:1;min-width:0"><h2>${esc(t.team)}</h2><div class="sub">${sub(t)}</div><div class="rankpill">${i+1}-o'rin · ${r.Pts} ochko</div></div>${donut(r.W,r.D,r.L,68)}</div></div>`}
+ const cell=(r,pos)=>`<div class="pd pd${pos}" onclick="push({s:'team',code:'${c}',pid:'${r.p.id}'})">${pos===1?`<div class="crown">${I.crown}</div>`:""}<div class="pdl">${logo(r.p,pos===1?58:46)}<i class="pdn">${pos}</i></div><div class="pdt">${esc(r.p.team)}</div><div class="pds">${esc(r.p.name)}</div><div class="pdp">${r.Pts}<small>${$t("och")}</small></div></div>`;
+ return `<div class="card podium"><div class="ttl" style="padding:0 4px 10px">${$t("Peshqadamlar")}</div><div class="pdw">${cell(st[1],2)}${cell(st[0],1)}${cell(st[2],3)}</div></div>`}
+function teamHero(l,t,r,i){return `<div class="lhero" id="th" style="--h:${teamHue(t)}"><div class="lh-top">${logo(t,66)}<div style="flex:1;min-width:0"><h2>${esc(t.team)}</h2><div class="sub">${sub(t)}</div><div class="rankpill">${$t("{0}-o'rin · {1} ochko",[i+1,r.Pts])}</div></div>${donut(r.W,r.D,r.L,68)}</div></div>`}
 function prevRank(l){const ms=(l.matches||[]).filter(done);if(ms.length<2)return null;const last=ms[ms.length-1];const a=standings({...l,matches:(l.matches||[]).filter(m=>m!==last)}),mp={};a.forEach((r,i)=>mp[r.p.id]=i);return mp}
 function tableCard(l,c,hl){
- const st=standings(l);if(!st.length)return `<div class="card empty">Hali jamoa yo'q. Jamoangizni qo'shing.</div>`;
+ const st=standings(l);if(!st.length)return `<div class="card empty">${$t("Hali jamoa yo'q. Jamoangizni qo'shing.")}</div>`;
  const sg=S.seg,n=st.length,pr=prevRank(l);let head="",row;const open=r=>`onclick="push({s:'team',code:'${c}',pid:'${r.p.id}'})"`;
  const td=r=>`${r.GF-r.GA>0?"+":""}${r.GF-r.GA}`;
  const tn=r=>`<div class="tm">${logo(r.p,26)}<div class="tn"><span>${esc(r.p.team)}</span><span class="own">${esc(r.p.name)}</span></div></div>`;
- if(sg==="short"){head=`<tr><th class="l" colspan="2">Jamoa</th><th>O</th><th>TF</th><th>Och</th></tr>`;
+ if(sg==="short"){head=`<tr><th class="l" colspan="2">${$t("Jamoa")}</th><th>${$t("O")}</th><th>${$t("TF")}</th><th>${$t("Och")}</th></tr>`;
   row=r=>`<td class="l">${tn(r)}</td><td>${r.P}</td><td>${td(r)}</td><td class="p">${r.Pts}</td>`}
- else if(sg==="full"){head=`<tr><th class="l" colspan="2">Jamoa</th><th>O</th><th>G</th><th>D</th><th>M</th><th>To'p</th><th>TF</th><th>Och</th></tr>`;
+ else if(sg==="full"){head=`<tr><th class="l" colspan="2">${$t("Jamoa")}</th><th>${$t("O")}</th><th>${$t("G")}</th><th>${$t("D")}</th><th>${$t("M")}</th><th>${$t("To'p")}</th><th>${$t("TF")}</th><th>${$t("Och")}</th></tr>`;
   row=r=>`<td class="l">${tn(r)}</td><td>${r.P}</td><td>${r.W}</td><td>${r.D}</td><td>${r.L}</td><td>${r.GF}:${r.GA}</td><td>${td(r)}</td><td class="p">${r.Pts}</td>`}
- else{head=`<tr><th class="l" colspan="2">Jamoa</th><th>So'nggi o'yinlar</th></tr>`;
-  row=r=>`<td class="l">${tn(r)}</td><td style="padding-right:12px"><span class="fm">${form(l,r.p.id).map(f=>`<b class="${f.r}">${f.r==="W"?"G":f.r==="D"?"D":"M"}</b>`).join("")||'<span class="mut">—</span>'}</span></td>`}
+ else{head=`<tr><th class="l" colspan="2">${$t("Jamoa")}</th><th>${$t("So'nggi o'yinlar")}</th></tr>`;
+  row=r=>`<td class="l">${tn(r)}</td><td style="padding-right:12px"><span class="fm">${form(l,r.p.id).map(f=>`<b class="${f.r}">${$t(f.r==="W"?"G":f.r==="D"?"D":"M")}</b>`).join("")||'<span class="mut">—</span>'}</span></td>`}
  return `<div class="card" style="overflow-x:auto"><table>${head}${st.map((r,i)=>{const o=pr?pr[r.p.id]:null;const mv=(o!=null&&o!==i)?(o>i?'<i class="mv u"></i>':'<i class="mv d"></i>'):"";
   return `<tr ${open(r)} class="${hl===r.p.id?'hl':''}${r.p.uid===me.id?' me':''}"><td class="rk ${i===0&&r.P?'z1':(i<3&&n>=4&&r.P?'z2':'')}"><div class="rkc"><span class="rkn2 ${r.P&&i<3?'m'+(i+1):''}">${i+1}</span>${mv}</div></td>${row(r)}</tr>`}).join("")}</table></div>`;
 }
 function leagueStats(l){
- const P=pmap(l),st=standings(l).filter(r=>r.P>0);if(!st.length)return `<div class="card empty">Statistika o'yinlar o'ynalgach paydo bo'ladi.</div>`;
+ const P=pmap(l),st=standings(l).filter(r=>r.P>0);if(!st.length)return `<div class="card empty">${$t("Statistika o'yinlar o'ynalgach paydo bo'ladi.")}</div>`;
  const best=(arr,f,min)=>arr.reduce((a,b)=>(min?f(b)<f(a):f(b)>f(a))?b:a);
  const att=best(st,r=>r.GF),def=best(st,r=>r.GA/r.P,true),pts=best(st,r=>r.Pts/r.P);
  const ms=(l.matches||[]).filter(done),big=best(ms,m=>Math.abs(m.hs-m.as)*100+m.hs+m.as),goals=ms.reduce((s,m)=>s+m.hs+m.as,0);
  let streak={n:0,p:null};(l.players||[]).forEach(p=>{let c=0,mx=0;form(l,p.id,999).forEach(f=>{c=f.r==="W"?c+1:0;mx=Math.max(mx,c)});if(mx>streak.n)streak={n:mx,p}});
  const sr=(k,p,v)=>`<div class="statrow">${logo(p,30)}<div class="k">${k}<b>${esc(p.team)}</b></div><div class="v">${v}</div></div>`;
- return `<div class="card"><div class="ttl">Liga statistikasi</div><div class="grid"><div><b>${ms.length}</b><span>O'yin</span></div><div><b>${goals}</b><span>Jami gol</span></div><div><b>${(goals/ms.length).toFixed(1)}</b><span>O'yinga gol</span></div></div></div>
- <div class="card">${sr("Eng ko'p gol urgan",att.p,att.GF)}${sr("Eng yaxshi himoya (o'yinga o'tkazilgan)",def.p,(def.GA/def.P).toFixed(1))}${sr("Eng yaxshi ochko o'rtachasi",pts.p,(pts.Pts/pts.P).toFixed(2))}${streak.n>=2?sr("Eng uzun g'alabalar seriyasi",streak.p,streak.n):""}
- <div class="statrow">${logo(P[big.hs>=big.as?big.h:big.a],30)}<div class="k">Eng katta hisob<b>${esc(P[big.h].team)} ${big.hs}:${big.as} ${esc(P[big.a].team)}</b></div></div></div>`;
+ return `<div class="card"><div class="ttl">${$t("Liga statistikasi")}</div><div class="grid"><div><b>${ms.length}</b><span>${$t("O'yin")}</span></div><div><b>${goals}</b><span>${$t("Jami gol")}</span></div><div><b>${(goals/ms.length).toFixed(1)}</b><span>${$t("O'yinga gol")}</span></div></div></div>
+ <div class="card">${sr($t("Eng ko'p gol urgan"),att.p,att.GF)}${sr($t("Eng yaxshi himoya (o'yinga o'tkazilgan)"),def.p,(def.GA/def.P).toFixed(1))}${sr($t("Eng yaxshi ochko o'rtachasi"),pts.p,(pts.Pts/pts.P).toFixed(2))}${streak.n>=2?sr($t("Eng uzun g'alabalar seriyasi"),streak.p,streak.n):""}
+ <div class="statrow">${logo(P[big.hs>=big.as?big.h:big.a],30)}<div class="k">${$t("Eng katta hisob")}<b>${esc(P[big.h].team)} ${big.hs}:${big.as} ${esc(P[big.a].team)}</b></div></div></div>`;
 }
 function leagueView(c,inline){
  const l=leagues[c],mp=(l.players||[]).find(p=>p.uid===me.id);let body="";
- if(S.ltab==="table")body=joinCard(l,c)+((l.players||[]).length>=2&&canAdd(l)?`<button class="btn" style="margin-bottom:12px" onclick="newMatch('${c}')">Natija kiritish</button>`:"")+podium(l,c)+`<div class="segs">${[["short","Qisqacha"],["full","To'liq"],["form","Forma"]].map(([k,t])=>`<button class="seg ${S.seg===k?'on':''}" onclick="S.seg='${k}';render()">${t}</button>`).join("")}</div>`+tableCard(l,c);
+ if(S.ltab==="table")body=joinCard(l,c)+((l.players||[]).length>=2&&canAdd(l)?`<button class="btn" style="margin-bottom:12px" onclick="newMatch('${c}')">${$t("Natija kiritish")}</button>`:"")+podium(l,c)+`<div class="segs">${[["short",$t("Qisqacha")],["full",$t("To'liq")],["form",$t("Forma")]].map(([k,t])=>`<button class="seg ${S.seg===k?'on':''}" onclick="S.seg='${k}';render()">${t}</button>`).join("")}</div>`+tableCard(l,c);
  if(S.ltab==="matches"){
   const all=[...(l.matches||[])],up=all.filter(m=>!done(m)).sort((a,b)=>a.ts-b.ts),pl=all.filter(done).sort((a,b)=>b.ts-a.ts);
-  body=(up.length?`<div class="card"><div class="ttl">Keyingi o'yinlar</div>${gGrp(l,c,up)}</div>`:"")+(pl.length?`<div class="card"><div class="ttl">O'tkazilgan o'yinlar</div>${gGrp(l,c,pl)}</div>`:"")||`<div class="card empty">Hali o'yin yo'q</div>`;
+  body=(up.length?`<div class="card"><div class="ttl">${$t("Keyingi o'yinlar")}</div>${gGrp(l,c,up)}</div>`:"")+(pl.length?`<div class="card"><div class="ttl">${$t("O'tkazilgan o'yinlar")}</div>${gGrp(l,c,pl)}</div>`:"")||`<div class="card empty">${$t("Hali o'yin yo'q")}</div>`;
  }
  if(S.ltab==="players"){
-  body=`<div class="card pad"><h3 style="margin-bottom:10px">Do'stlarni taklif qilish</h3><div class="invite"><code>${esc(link(c))}</code><button class="btn sm" onclick="copyLink('${c}')">Nusxa</button></div><div class="mut" style="margin-top:8px">Kod: <b>${c}</b></div></div>`+
-  `<div class="card"><div class="ttl">Jamoalar</div>${(l.players||[]).map(p=>`<div class="pl" onclick="push({s:'team',code:'${c}',pid:'${p.id}'})">${logo(p,38)}<div style="flex:1"><div class="n">${esc(p.team)}</div><div class="s">${sub(p)}${p.uid===l.owner?" · liga egasi":""}</div></div>${(p.uid===me.id||l.owner===me.id||isAdmin)?`<button class="btn sm sec" onclick="event.stopPropagation();delPlayer('${c}','${p.id}')">Chiqarish</button>`:""}</div>`).join("")||'<div class="empty" style="padding:20px">Hali yo\'q</div>'}${!mp?`<div class="pad"><button class="btn" onclick="openJoin('${c}')">Ligaga qo'shilish</button></div>`:""}</div>`;
+  body=`<div class="card pad"><h3 style="margin-bottom:10px">${$t("Do'stlarni taklif qilish")}</h3><div class="invite"><code>${esc(link(c))}</code><button class="btn sm" onclick="copyLink('${c}')">${$t("Nusxa")}</button></div><div class="mut" style="margin-top:8px">${$t("Kod:")} <b>${c}</b></div></div>`+
+  `<div class="card"><div class="ttl">${$t("Jamoalar")}</div>${(l.players||[]).map(p=>`<div class="pl" onclick="push({s:'team',code:'${c}',pid:'${p.id}'})">${logo(p,38)}<div style="flex:1"><div class="n">${esc(p.team)}</div><div class="s">${sub(p)}${p.uid===l.owner?(" "+$t("· liga egasi")):""}</div></div>${(p.uid===me.id||l.owner===me.id||isAdmin)?`<button class="btn sm sec" onclick="event.stopPropagation();delPlayer('${c}','${p.id}')">${$t("Chiqarish")}</button>`:""}</div>`).join("")||`<div class="empty" style="padding:20px">${$t("Hali yo'q")}</div>`}${!mp?`<div class="pad"><button class="btn" onclick="openJoin('${c}')">${$t("Ligaga qo'shilish")}</button></div>`:""}</div>`;
  }
  if(S.ltab==="stats")body=leagueStats(l);
  const stt=standings(l),ld=stt.find(r=>r.P>0),dn=(l.matches||[]).filter(done),gl=dn.reduce((a,m)=>a+m.hs+m.as,0);
- const hero=`<div class="lhero" style="--h:${lhue(c)}"><div class="lh-top">${lbadge(c,inline?60:68)}<div style="flex:1;min-width:0"><h2>${esc(l.name)}</h2><div class="sub">${(l.players||[]).length} jamoa · ${dn.length} o'yin</div></div>${inline&&(l.owner===me.id||isAdmin)?`<button class="ic" onclick="editLeague('${c}')">${I.edit}</button>`:""}${inline?`<span class="star ${fol.includes(c)?'on':''}" onclick="follow('${c}',event)">${fol.includes(c)?I.star():I.starO()}</span>`:""}</div><div class="lh-st"><div><b>${(l.players||[]).length}</b><span>Jamoa</span></div><div><b>${dn.length}</b><span>O'yin</span></div><div><b>${gl}</b><span>Gol</span></div><div>${ld?`<b>${logo(ld.p,26)}</b><span>${esc(ld.p.team)}</span>`:`<b>—</b><span>Peshqadam</span>`}</div></div></div>`;
- return hero+tabsBar([["table","Jadval"],["matches","O'yinlar"],["players","Jamoalar"],["stats","Statistika"]],S.ltab,"setLT")+body+
+ const hero=`<div class="lhero" style="--h:${lhue(c)}"><div class="lh-top">${lbadge(c,inline?60:68)}<div style="flex:1;min-width:0"><h2>${esc(l.name)}</h2><div class="sub">${$t("{0} jamoa · {1} o'yin",[(l.players||[]).length,dn.length])}</div></div>${inline&&(l.owner===me.id||isAdmin)?`<button class="ic" onclick="editLeague('${c}')">${I.edit}</button>`:""}${inline?`<span class="star ${fol.includes(c)?'on':''}" onclick="follow('${c}',event)">${fol.includes(c)?I.star():I.starO()}</span>`:""}</div><div class="lh-st"><div><b>${(l.players||[]).length}</b><span>${$t("Jamoa")}</span></div><div><b>${dn.length}</b><span>${$t("O'yin")}</span></div><div><b>${gl}</b><span>${$t("Gol")}</span></div><div>${ld?`<b>${logo(ld.p,26)}</b><span>${esc(ld.p.team)}</span>`:`<b>—</b><span>${$t("Peshqadam")}</span>`}</div></div></div>`;
+ return hero+tabsBar([["table",$t("Jadval")],["matches",$t("O'yinlar")],["players",$t("Jamoalar")],["stats",$t("Statistika")]],S.ltab,"setLT")+body+
  ((l.players||[]).length>=2&&canAdd(l)?`<button class="fab" onclick="openMatch('${c}','new')">${I.plus}</button>`:"");
 }
 function renderLeague(){
  const {code:c}=cur();if(!leagues[c]){back();return}
- app.innerHTML=backBar(`${(leagues[c].owner===me.id||isAdmin)?`<button class="ic" onclick="editLeague('${c}')">${I.edit}</button>`:""}<button class="sub-btn ${fol.includes(c)?'on':''}" onclick="follow('${c}')">${fol.includes(c)?I.star(18):I.starO(18)}${fol.includes(c)?"Kuzatilmoqda":"Kuzatish"}</button>`)+leagueView(c,false);
+ app.innerHTML=backBar(`${(leagues[c].owner===me.id||isAdmin)?`<button class="ic" onclick="editLeague('${c}')">${I.edit}</button>`:""}<button class="sub-btn ${fol.includes(c)?'on':''}" onclick="follow('${c}')">${fol.includes(c)?I.star(18):I.starO(18)}${fol.includes(c)?$t("Kuzatilmoqda"):$t("Kuzatish")}</button>`)+leagueView(c,false);
 }
 function setLT(k){S.ltab=k;render()}
-function copyLink(c){const t=link(c);(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast("Nusxalandi"),()=>toast("Kod: "+c))}
+function copyLink(c){const t=link(c);(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast($t("Nusxalandi")),()=>toast(($t("Kod:")+" ")+c))}
 async function delPlayer(c,id){const l=structuredClone(leagues[c]);l.players=l.players.filter(p=>p.id!==id);l.matches=(l.matches||[]).filter(m=>m.h!==id&&m.a!==id);await store.save(c,l)}
 
 /* ---------- 6) Jamoa sahifasi ---------- */
 function summary(l,pid,rank,r){
  const P=pmap(l),t=P[pid],f=form(l,pid,999).reverse();
- if(!f.length)return `<p>${esc(t.team)} hali rasmiy o'yin o'tkazmagan. Birinchi hisob kiritilgach bu yerda jamoa haqida qisqa xulosa paydo bo'ladi.</p>`;
+ if(!f.length)return `<p>${$t("{0} hali rasmiy o'yin o'tkazmagan. Birinchi hisob kiritilgach bu yerda jamoa haqida qisqa xulosa paydo bo'ladi.",[esc(t.team)])}</p>`;
  const x=f[0],o=esc(P[x.opp].team);
- const verb=x.r==="W"?`${o} jamoasi ustidan ${x.gf}:${x.ga} hisobida g'alaba qozondi`:x.r==="L"?`${o} jamoasiga ${x.ga}:${x.gf} hisobida yutqazdi`:`${o} jamoasi bilan ${x.gf}:${x.ga} hisobida durang o'ynadi`;
- let s=`<p>${esc(t.team)} so'nggi o'yinda ${verb}. ${esc(t.name)} jamoani ${r.P} o'yindan ${r.Pts} ochkoga yetkazdi va jadvalda ${rank}-o'rinda turibdi.</p>`;
+ const verb=x.r==="W"?`${$t("{0} jamoasi ustidan {1}:{2} hisobida g'alaba qozondi",[o,x.gf,x.ga])}`:x.r==="L"?`${$t("{0} jamoasiga {1}:{2} hisobida yutqazdi",[o,x.ga,x.gf])}`:`${$t("{0} jamoasi bilan {1}:{2} hisobida durang o'ynadi",[o,x.gf,x.ga])}`;
+ let s=`<p>${$t("{0} so'nggi o'yinda {1}. {2} jamoani {3} o'yindan {4} ochkoga yetkazdi va jadvalda {5}-o'rinda turibdi.",[esc(t.team),verb,esc(t.name),r.P,r.Pts,rank])}</p>`;
  let w=0;for(const y of f){if(y.r==="W")w++;else break}let u=0;for(const y of f){if(y.r!=="L")u++;else break}
- if(w>=2)s+=`<p>Ketma-ket ${w} ta g'alaba — jamoa yaxshi kayfiyatda.</p>`;else if(u>=3)s+=`<p>Ketma-ket ${u} o'yinda mag'lub bo'lmagan.</p>`;
- if(f.length>=2&&f.slice(0,2).every(y=>y.r==="L"))s+=`<p>Ketma-ket ikki mag'lubiyat. Qaytish vaqti keldi.</p>`;
+ if(w>=2)s+=`<p>${$t("Ketma-ket {0} ta g'alaba — jamoa yaxshi kayfiyatda.",[w])}</p>`;else if(u>=3)s+=`<p>${$t("Ketma-ket {0} o'yinda mag'lub bo'lmagan.",[u])}</p>`;
+ if(f.length>=2&&f.slice(0,2).every(y=>y.r==="L"))s+=`<p>${$t("Ketma-ket ikki mag'lubiyat. Qaytish vaqti keldi.")}</p>`;
  return s;
 }
 function renderTeam(){
@@ -784,19 +919,19 @@ function renderTeam(){
  const st=standings(l),i=st.findIndex(r=>r.p.id===pid),r=st[i],k=c+":"+pid;let body="";
  if(S.ttab==="over"){
   const f=form(l,pid),up=pm(l,pid).filter(m=>!done(m)).sort((a,b)=>a.ts-b.ts).slice(0,3),hist=pm(l,pid).filter(done).sort((a,b)=>b.ts-a.ts);
-  body=`<div class="card"><div class="ttl">Oxirgi 5 o'yin</div>${f.length?`<div class="form5">${f.map(x=>`<div class="f5" onclick="openMatch('${c}','${x.m.id}')"><div class="b ${x.r}">${x.gf} - ${x.ga}</div>${logo(P[x.opp],30)}<div class="fo">${esc(P[x.opp].team)}</div><div class="fd">${dshort(x.m.ts)}</div></div>`).join("")}</div>`:'<div class="hint">Hali o\'yin yo\'q</div>'}</div>`+
-  (up.length?`<div class="card"><div class="ttl">Keyingi o'yinlar</div>${gGrp(l,c,up)}</div>`:"")+
-  (hist.length?`<div class="card"><div class="ttl">O'yinlar tarixi</div>${gGrp(l,c,hist)}</div>`:"")+`<div class="card"><div class="ttl">Qisqacha tahlil</div><div class="pad sum" style="padding-top:0">${summary(l,pid,i+1,r)}</div></div>`+
-  `<div class="card"><div class="ttl">Statistika</div><div class="grid"><div><b>${r.P}</b><span>O'yin</span></div><div><b>${r.Pts}</b><span>Ochko</span></div><div><b>${r.P?Math.round(r.W/r.P*100):0}%</b><span>G'alaba</span></div><div><b>${r.W}-${r.D}-${r.L}</b><span>G-D-M</span></div><div><b>${r.GF}</b><span>Urilgan gol</span></div><div><b>${r.GA}</b><span>O'tkazilgan gol</span></div></div></div>`;
+  body=`<div class="card"><div class="ttl">${$t("Oxirgi 5 o'yin")}</div>${f.length?`<div class="form5">${f.map(x=>`<div class="f5" onclick="openMatch('${c}','${x.m.id}')"><div class="b ${x.r}">${x.gf} - ${x.ga}</div>${logo(P[x.opp],30)}<div class="fo">${esc(P[x.opp].team)}</div><div class="fd">${dshort(x.m.ts)}</div></div>`).join("")}</div>`:`<div class="hint">${$t("Hali o'yin yo'q")}</div>`}</div>`+
+  (up.length?`<div class="card"><div class="ttl">${$t("Keyingi o'yinlar")}</div>${gGrp(l,c,up)}</div>`:"")+
+  (hist.length?`<div class="card"><div class="ttl">${$t("O'yinlar tarixi")}</div>${gGrp(l,c,hist)}</div>`:"")+`<div class="card"><div class="ttl">${$t("Qisqacha tahlil")}</div><div class="pad sum" style="padding-top:0">${summary(l,pid,i+1,r)}</div></div>`+
+  `<div class="card"><div class="ttl">${$t("Statistika")}</div><div class="grid"><div><b>${r.P}</b><span>${$t("O'yin")}</span></div><div><b>${r.Pts}</b><span>${$t("Ochko")}</span></div><div><b>${r.P?Math.round(r.W/r.P*100):0}%</b><span>${$t("G'alaba")}</span></div><div><b>${r.W}-${r.D}-${r.L}</b><span>${$t("G-D-M")}</span></div><div><b>${r.GF}</b><span>${$t("Urilgan gol")}</span></div><div><b>${r.GA}</b><span>${$t("O'tkazilgan gol")}</span></div></div></div>`;
  }
  if(S.ttab==="matches"){
   const ms=pm(l,pid),up=ms.filter(m=>!done(m)).sort((a,b)=>a.ts-b.ts),pl=ms.filter(done).sort((a,b)=>b.ts-a.ts);
-  body=(up.length?`<div class="card"><div class="ttl">Keyingi o'yinlar</div>${gGrp(l,c,up)}</div>`:"")+(pl.length?`<div class="card"><div class="ttl">O'tkazilgan o'yinlar</div>${gGrp(l,c,pl)}</div>`:"")||`<div class="card empty">Hali o'yin yo'q</div>`;
+  body=(up.length?`<div class="card"><div class="ttl">${$t("Keyingi o'yinlar")}</div>${gGrp(l,c,up)}</div>`:"")+(pl.length?`<div class="card"><div class="ttl">${$t("O'tkazilgan o'yinlar")}</div>${gGrp(l,c,pl)}</div>`:"")||`<div class="card empty">${$t("Hali o'yin yo'q")}</div>`;
  }
  if(S.ttab==="table")body=tableCard(l,c,pid);
- app.innerHTML=backBar(`${(t.uid===me.id||isAdmin)?`<button class="ic" onclick="openEditTeam('${c}','${pid}')">${I.edit}</button>`:""}<button class="sub-btn ${ft.includes(k)?'on':''}" onclick="followT('${k}')">${ft.includes(k)?I.star(18):I.starO(18)}${ft.includes(k)?"Kuzatilmoqda":"Kuzatish"}</button>`)+
+ app.innerHTML=backBar(`${(t.uid===me.id||isAdmin)?`<button class="ic" onclick="openEditTeam('${c}','${pid}')">${I.edit}</button>`:""}<button class="sub-btn ${ft.includes(k)?'on':''}" onclick="followT('${k}')">${ft.includes(k)?I.star(18):I.starO(18)}${ft.includes(k)?$t("Kuzatilmoqda"):$t("Kuzatish")}</button>`)+
  teamHero(l,t,r,i)+
- tabsBar([["over","Umumiy"],["matches","O'yinlar"],["table","Jadval"]],S.ttab,"setTT")+body;tintTeam(t);
+ tabsBar([["over",$t("Umumiy")],["matches",$t("O'yinlar")],["table",$t("Jadval")]],S.ttab,"setTT")+body;tintTeam(t);
 }
 function setTT(k){S.ttab=k;render()}
 
@@ -804,7 +939,7 @@ function setTT(k){S.ttab=k;render()}
 const norm=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9\u0430-\u044f]/g,"");
 const UZ=[["Paxtakor","PAX","#1a5fb4","#f8fafc","solid"],["Bunyodkor","BUN","#4aa3df","#f8fafc","chevron"],["Nasaf","NAS","#16a34a","#f8fafc","hstripes"],["Navbahor","NAV","#f59e0b","#111111","hstripes"],["Lokomotiv Toshkent","LOK","#dc2626","#1e3a8a","half"],["Neftchi","NEF","#0b1b3a","#f8fafc","chevron"],["AGMK","AGM","#facc15","#111111","vstripes"],["Sogdiana","SOG","#2563eb","#fbbf24","sash"]];
 const LGN=[...CL.map(x=>x[0]),"O'zbekiston"];
-const ALIAS_RAW={barselona:"Barcelona",barsa:"Barcelona",barca:"Barcelona",real:"Real Madrid",madrid:"Real Madrid",atletiko:"Atlético de Madrid",atletico:"Atlético de Madrid",sevilya:"Sevilla",valensiya:"Valencia",viyarreal:"Villarreal",betis:"Real Betis Balompié",sosyedad:"Real Sociedad",bilbao:"Athletic Bilbao",atletik:"Athletic Bilbao",siti:"Manchester City",mancity:"Manchester City",manutd:"Manchester United",manyunayted:"Manchester United",yunayted:"Manchester United",manunited:"Manchester United",liverpul:"Liverpool",chelsi:"Chelsea",tottenham:"Tottenham Hotspur",spurs:"Tottenham Hotspur",nyukasl:"Newcastle United",yuventus:"Juventus",juve:"Juventus",inter:"Inter Milan",intermilan:"Inter Milan",lasio:"SS Lazio",lazio:"SS Lazio",atalanta:"Atalanta BC",fiorentina:"ACF Fiorentina",bavariya:"Bayern Munich",bayern:"Bayern Munich",dortmund:"Borussia Dortmund",borussiya:"Borussia Dortmund",leverkuzen:"Bayer 04 Leverkusen",leverkusen:"Bayer 04 Leverkusen",leypsig:"RB Leipzig",psj:"Paris Saint-Germain",psg:"Paris Saint-Germain",parij:"Paris Saint-Germain",marsel:"Olympique Marseille",marseille:"Olympique Marseille",lion:"Olympique Lyon",lyon:"Olympique Lyon",monako:"Monaco",benfika:"Benfica",sporting:"Sporting CP",ayaks:"Ajax Amsterdam",ajax:"Ajax Amsterdam",psv:"PSV Eindhoven",feyenoord:"Feyenoord Rotterdam",fenerbaxche:"Fenerbahce",beshiktash:"Besiktas JK",besiktas:"Besiktas JK",seltik:"Celtic",reynjers:"Rangers",zenit:"Zenit St. Petersburg",spartak:"Spartak Moscow",cska:"CSKA Moscow",dinamokiev:"Dynamo Kyiv",dynamokyiv:"Dynamo Kyiv",shaxtyor:"Shakhtar Donetsk",shakhtar:"Shakhtar Donetsk",brugge:"Club Brugge KV",anderlecht:"RSC Anderlecht"};
+const ALIAS_RAW={"барселона":"Barcelona","реал":"Real Madrid","реалмадрид":"Real Madrid","мадрид":"Real Madrid","атлетико":"Atlético de Madrid","севилья":"Sevilla","валенсия":"Valencia","вильярреал":"Villarreal","бетис":"Real Betis Balompié","манчестерсити":"Manchester City","манчестерюнайтед":"Manchester United","ливерпуль":"Liverpool","арсенал":"Arsenal","челси":"Chelsea","тоттенхэм":"Tottenham Hotspur","ньюкасл":"Newcastle United","ювентус":"Juventus","милан":"Milan","интер":"Inter Milan","наполи":"Napoli","рома":"Roma","лацио":"SS Lazio","аталанта":"Atalanta BC","фиорентина":"ACF Fiorentina","бавария":"Bayern Munich","боруссия":"Borussia Dortmund","дортмунд":"Borussia Dortmund","байер":"Bayer 04 Leverkusen","лейпциг":"RB Leipzig","псж":"Paris Saint-Germain","париж":"Paris Saint-Germain","марсель":"Olympique Marseille","лион":"Olympique Lyon","монако":"Monaco","бенфика":"Benfica","порту":"Porto","спортинг":"Sporting CP","аякс":"Ajax Amsterdam","псв":"PSV Eindhoven","фейеноорд":"Feyenoord Rotterdam","галатасарай":"Galatasaray","фенербахче":"Fenerbahce","бешикташ":"Besiktas JK","селтик":"Celtic","рейнджерс":"Rangers","зенит":"Zenit St. Petersburg","спартак":"Spartak Moscow","цска":"CSKA Moscow","динамокиев":"Dynamo Kyiv","шахтер":"Shakhtar Donetsk","шахтёр":"Shakhtar Donetsk","брюгге":"Club Brugge KV","андерлехт":"RSC Anderlecht",barselona:"Barcelona",barsa:"Barcelona",barca:"Barcelona",real:"Real Madrid",madrid:"Real Madrid",atletiko:"Atlético de Madrid",atletico:"Atlético de Madrid",sevilya:"Sevilla",valensiya:"Valencia",viyarreal:"Villarreal",betis:"Real Betis Balompié",sosyedad:"Real Sociedad",bilbao:"Athletic Bilbao",atletik:"Athletic Bilbao",siti:"Manchester City",mancity:"Manchester City",manutd:"Manchester United",manyunayted:"Manchester United",yunayted:"Manchester United",manunited:"Manchester United",liverpul:"Liverpool",chelsi:"Chelsea",tottenham:"Tottenham Hotspur",spurs:"Tottenham Hotspur",nyukasl:"Newcastle United",yuventus:"Juventus",juve:"Juventus",inter:"Inter Milan",intermilan:"Inter Milan",lasio:"SS Lazio",lazio:"SS Lazio",atalanta:"Atalanta BC",fiorentina:"ACF Fiorentina",bavariya:"Bayern Munich",bayern:"Bayern Munich",dortmund:"Borussia Dortmund",borussiya:"Borussia Dortmund",leverkuzen:"Bayer 04 Leverkusen",leverkusen:"Bayer 04 Leverkusen",leypsig:"RB Leipzig",psj:"Paris Saint-Germain",psg:"Paris Saint-Germain",parij:"Paris Saint-Germain",marsel:"Olympique Marseille",marseille:"Olympique Marseille",lion:"Olympique Lyon",lyon:"Olympique Lyon",monako:"Monaco",benfika:"Benfica",sporting:"Sporting CP",ayaks:"Ajax Amsterdam",ajax:"Ajax Amsterdam",psv:"PSV Eindhoven",feyenoord:"Feyenoord Rotterdam",fenerbaxche:"Fenerbahce",beshiktash:"Besiktas JK",besiktas:"Besiktas JK",seltik:"Celtic",reynjers:"Rangers",zenit:"Zenit St. Petersburg",spartak:"Spartak Moscow",cska:"CSKA Moscow",dinamokiev:"Dynamo Kyiv",dynamokyiv:"Dynamo Kyiv",shaxtyor:"Shakhtar Donetsk",shakhtar:"Shakhtar Donetsk",brugge:"Club Brugge KV",anderlecht:"RSC Anderlecht"};
 const ALIAS={};Object.entries(ALIAS_RAW).forEach(([k,v])=>ALIAS[norm(k)]=v);
 const NM={};CL.forEach(([g,ns])=>ns.forEach(n=>NM[norm(n)]=n));
 function matchClub(name){const q=norm(name);if(q.length<3)return null;if(NM[q])return NM[q];if(ALIAS[q]&&LG[ALIAS[q]])return ALIAS[q];
@@ -816,49 +951,50 @@ function clubItems(){
 function clubGrid(){const d=S.draft;
  return clubItems().map(x=>{const on=x.gen?(!d.club&&d.abbr===x.gen[1]&&d.c1===x.gen[2]&&!d.img):d.club===x.n;
   const ic=x.gen?crest({abbr:x.gen[1],c1:x.gen[2],c2:x.gen[3],pat:x.gen[4]},40):`<img src="${LG[x.n]}" alt="" style="height:40px;width:auto;max-width:46px;object-fit:contain">`;
-  return `<div class="cc ${on?'on':''}" data-n="${esc(x.n)}" onclick="pickClub(this.dataset.n,${x.gen?1:0})">${ic}<span>${esc(x.n)}</span></div>`}).join("")||`<div class="empty" style="grid-column:1/-1;padding:16px">Topilmadi. Pastdan o'zingiz yasang.</div>`}
+  return `<div class="cc ${on?'on':''}" data-n="${esc(x.n)}" onclick="pickClub(this.dataset.n,${x.gen?1:0})">${ic}<span>${esc(x.n)}</span></div>`}).join("")||`<div class="empty" style="grid-column:1/-1;padding:16px">${$t("Topilmadi. Pastdan o'zingiz yasang.")}</div>`}
 function openJoin(c){c=c||cur().code;S.cq="";S.clg="Angliya";openModal("join",{c,team:"",club:null,autoClub:0,autoName:1,designed:0,abbr:"",c1:"#3b82f6",c2:"#f8fafc",pat:"vstripes",img:null})}
 function openEditTeam(c,pid){const p=pmap(leagues[c])[pid];S.cq="";S.clg="Angliya";openModal("join",{c,edit:pid,team:p.team,club:p.club||null,autoClub:0,autoName:0,designed:0,abbr:p.abbr||"",c1:p.c1||"#3b82f6",c2:p.c2||"#f8fafc",pat:p.pat||"solid",img:p.img||null})}
 function onTeamInput(v){const d=S.draft;d.team=v;d.autoName=0;const m=matchClub(v);
  if(m&&!d.img&&!d.designed&&!(d.club&&!d.autoClub)){d.club=m;d.autoClub=1}else if(!m&&d.autoClub){d.club=null;d.autoClub=0}
- const pv=$("#jprev");if(pv)pv.innerHTML=logo(d,68);const a=$("#jauto");if(a)a.textContent=(d.club&&d.autoClub)?"Logotip avtomatik topildi: "+d.club:""}
+ const pv=$("#jprev");if(pv)pv.innerHTML=logo(d,68);const a=$("#jauto");if(a)a.textContent=(d.club&&d.autoClub)?($t("Logotip avtomatik topildi:")+" ")+d.club:""}
 function setLg(i){S.clg=LGN[i];render()}
 function pickClub(n,gen){const d=S.draft;d.autoClub=0;d.designed=0;
  if(gen){const u=UZ.find(x=>x[0]===n);Object.assign(d,{club:null,abbr:u[1],c1:u[2],c2:u[3],pat:u[4],img:null})}else Object.assign(d,{club:n,img:null});
  if(!d.team||d.autoName){d.team=n;d.autoName=1}render()}
 function customize(k,v){const d=S.draft;d[k]=v;Object.assign(d,{club:null,autoClub:0,designed:1,img:null});render()}
 function joinSheet(){const d=S.draft;
- return `<div class="sheet"><h3>${d.edit?"Jamoani tahrirlash":"Jamoangizni yarating"}</h3>
- <div class="row" style="margin-top:14px;align-items:flex-start"><div id="jprev" style="width:76px;display:flex;justify-content:center;padding-top:22px">${logo(d,68)}</div><div style="flex:1"><label style="margin-top:0">1. Jamoa nomi</label><input placeholder="Masalan: Barcelona yoki Jasur FC" value="${esc(d.team)}" oninput="onTeamInput(this.value)"><div id="jauto" class="mut" style="margin-top:6px;min-height:16px">${d.club&&d.autoClub?"Logotip avtomatik topildi: "+esc(d.club):""}</div></div></div>
- <label>2. Logotip: klubni qidiring yoki tanlang</label>
- <input placeholder="Klub qidirish (barselona, real, liverpul...)" value="${esc(S.cq)}" oninput="S.cq=this.value;$('#cg').innerHTML=clubGrid();$('#lgs').style.display=S.cq.trim()?'none':'flex'">
- <div class="lgs" id="lgs" style="display:${S.cq.trim()?"none":"flex"}">${LGN.map((g,i)=>`<div class="lgb ${S.clg===g?'on':''}" onclick="setLg(${i})">${g}</div>`).join("")}</div>
+ return `<div class="sheet"><h3>${d.edit?$t("Jamoani tahrirlash"):$t("Jamoangizni yarating")}</h3>
+ <div class="row" style="margin-top:14px;align-items:flex-start"><div id="jprev" style="width:76px;display:flex;justify-content:center;padding-top:22px">${logo(d,68)}</div><div style="flex:1"><label style="margin-top:0">${$t("1. Jamoa nomi")}</label><input placeholder="${$t("Masalan: Barcelona yoki Jasur FC")}" value="${esc(d.team)}" oninput="onTeamInput(this.value)"><div id="jauto" class="mut" style="margin-top:6px;min-height:16px">${d.club&&d.autoClub?($t("Logotip avtomatik topildi:")+" ")+esc(d.club):""}</div></div></div>
+ <label>${$t("2. Logotip: klubni qidiring yoki tanlang")}</label>
+ <input placeholder="${$t("Klub qidirish (barselona, real, liverpul...)")}" value="${esc(S.cq)}" oninput="S.cq=this.value;$('#cg').innerHTML=clubGrid();$('#lgs').style.display=S.cq.trim()?'none':'flex'">
+ <div class="lgs" id="lgs" style="display:${S.cq.trim()?"none":"flex"}">${LGN.map((g,i)=>`<div class="lgb ${S.clg===g?'on':''}" onclick="setLg(${i})">${tg(g)}</div>`).join("")}</div>
  <div class="cgrid" id="cg" style="margin-top:8px">${clubGrid()}</div>
- <label>yoki o'zingiz yasang (naqsh va ranglar)</label>
+ <label>${$t("yoki o'zingiz yasang (naqsh va ranglar)")}</label>
  <div class="pats">${PATS.map(p=>`<div class="club ${d.pat===p&&d.designed?'on':''}" style="padding:6px 8px" onclick="customize('pat','${p}')">${crest({abbr:"",c1:d.c1,c2:d.c2,pat:p},30)}</div>`).join("")}</div>
- <div class="row" style="margin-top:10px"><div><label style="margin-top:0">Rang 1</label><input type="color" value="${d.c1}" onchange="customize('c1',this.value)"></div><div><label style="margin-top:0">Rang 2</label><input type="color" value="${d.c2}" onchange="customize('c2',this.value)"></div><div style="flex:1"><label style="margin-top:0">Qisqartma (3 harf)</label><input maxlength="3" value="${esc(d.abbr)}" style="text-transform:uppercase" onchange="customize('abbr',this.value.toUpperCase())"></div></div>
- <label>yoki o'z rasmingizni yuklang</label><div class="row"><input type="file" accept="image/*" onchange="pickImg(this)">${d.img?`<img src="${d.img}" width="44" height="44" style="border-radius:50%;object-fit:cover">`:""}</div>
- <div style="height:18px"></div><button class="btn" onclick="doJoin()">${d.edit?"Saqlash":"Qo'shilish"}</button></div>`}
+ <div class="row" style="margin-top:10px"><div><label style="margin-top:0">${$t("Rang 1")}</label><input type="color" value="${d.c1}" onchange="customize('c1',this.value)"></div><div><label style="margin-top:0">${$t("Rang 2")}</label><input type="color" value="${d.c2}" onchange="customize('c2',this.value)"></div><div style="flex:1"><label style="margin-top:0">${$t("Qisqartma (3 harf)")}</label><input maxlength="3" value="${esc(d.abbr)}" style="text-transform:uppercase" onchange="customize('abbr',this.value.toUpperCase())"></div></div>
+ <label>${$t("yoki o'z rasmingizni yuklang")}</label><div class="row"><input type="file" accept="image/*" onchange="pickImg(this)">${d.img?`<img src="${d.img}" width="44" height="44" style="border-radius:50%;object-fit:cover">`:""}</div>
+ <div style="height:18px"></div><button class="btn" onclick="doJoin()">${d.edit?$t("Saqlash"):$t("Qo'shilish")}</button></div>`}
 function pickImg(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=c.height=96;const x=c.getContext("2d"),s=Math.min(im.width,im.height);x.drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,96,96);Object.assign(S.draft,{img:c.toDataURL("image/jpeg",.75),club:null,autoClub:0});render()};im.src=r.result};r.readAsDataURL(f)}
-async function doJoin(){const d=S.draft,team=(d.team||"").trim();if(!team)return toast("Jamoa nomini yozing");
+async function doJoin(){const d=S.draft,team=(d.team||"").trim();if(!team)return toast($t("Jamoa nomini yozing"));
  const c=d.c,l=structuredClone(leagues[c]);l.players=l.players||[];
+ if(isCup(l)&&!d.edit&&(l.status!=="reg"||l.players.length>=l.size))return toast(l.status!=="reg"?$t("Qur'a tashlangan, yangi jamoa qo'shib bo'lmaydi"):$t("Jamoalar soni to'lgan"));
  const f={team,club:d.club||null,abbr:(d.abbr||team.slice(0,3)).toUpperCase(),c1:d.c1,c2:d.c2,pat:d.pat,img:d.img||null};
  if(d.edit){const p=l.players.find(x=>x.id===d.edit);if(p)Object.assign(p,f)}
  else l.players.push({id:uid(),uid:me.id,name:me.name,tg:me.tg,...f});
- S.modal=null;await store.save(c,l);toast(d.edit?"Saqlandi":"Qo'shildingiz!")}
+ S.modal=null;await store.save(c,l);toast(d.edit?$t("Saqlandi"):$t("Qo'shildingiz!"))}
 
 /* ---------- Natija kiritish ---------- */
 const canAdd=l=>isAdmin||(l.players||[]).some(p=>p.uid===me.id);
 const eligible=()=>Object.entries(leagues).filter(([c,l])=>(l.players||[]).length>=2&&canAdd(l));
 function mkDraft(c){const l=leagues[c],mp=(l.players||[]).find(p=>p.uid===me.id)||l.players[0],o=l.players.find(p=>p.id!==mp.id);return {c,id:null,h:mp.id,a:o.id,hs:"",as:"",mode:"played",ts:Date.now()}}
-function newMatch(c){const el=eligible();if(!el.length)return toast("Natija kiritish uchun ligada kamida 2 jamoa kerak");
+function newMatch(c){const el=eligible();if(!el.length)return toast($t("Natija kiritish uchun ligada kamida 2 jamoa kerak"));
  const k=(c&&el.find(x=>x[0]===c))?c:(el.find(x=>x[0]===S.lg)||el.find(x=>isMine(x[1]))||el[0])[0];openModal("match",mkDraft(k))}
-function openMatch(c,id){if(id==="new")return newMatch(c);const l=leagues[c];if(!l||!canAdd(l))return;const m=l.matches.find(x=>x.id===id);if(!m)return;
+function openMatch(c,id){if(id==="new")return newMatch(c);const l=leagues[c];if(l&&isCup(l)){const q=String(id).split("-").map(Number);return openTie(c,q[0],q[1])}if(!l||!canAdd(l))return;const m=l.matches.find(x=>x.id===id);if(!m)return;
  openModal("match",{c,id,h:m.h,a:m.a,hs:m.hs??"",as:m.as??"",mode:done(m)?"played":"sched",ts:m.ts,by:m.by,wasSched:!done(m)})}
 function setMLeague(c){S.draft=mkDraft(c);render()}
 function prevText(){const d=S.draft,l=leagues[d.c],P=pmap(l),a=P[d.h],b=P[d.a],x=parseInt(d.hs),y=parseInt(d.as);
  if(d.mode!=="played"||isNaN(x)||isNaN(y))return "";
- return x>y?`${esc(a.team)} g'alaba qozonadi: +3 ochko`:x<y?`${esc(b.team)} g'alaba qozonadi: +3 ochko`:`Durang: ikkala jamoaga +1 ochko`}
+ return x>y?`${$t("{0} g'alaba qozonadi: +3 ochko",[esc(a.team)])}`:x<y?`${$t("{0} g'alaba qozonadi: +3 ochko",[esc(b.team)])}`:`${$t("Durang: ikkala jamoaga +1 ochko")}`}
 function upPrev(){const e=$("#mprev");if(e){const t=prevText();e.innerHTML=t;e.style.display=t?"block":"none"}}
 function matchSheet(){const d=S.draft,l=leagues[d.c];if(!l)return `<div class="sheet"></div>`;
  const P=l.players||[],pa=P.find(p=>p.id===d.h),pb=P.find(p=>p.id===d.a),played=d.mode==="played";
@@ -866,41 +1002,41 @@ function matchSheet(){const d=S.draft,l=leagues[d.c];if(!l)return `<div class="s
  const opt=(sel,ex)=>P.filter(p=>p.id!==ex).map(p=>`<option value="${p.id}" ${p.id===sel?"selected":""}>${esc(p.team)} — ${esc(p.name)}</option>`).join("");
  const row=(p,k,other,sc)=>`<div class="mrowx"><div class="lg">${logo(p,36)}</div><select onchange="S.draft.${k}=this.value;render()">${opt(p.id,other)}</select>${played?`<input class="si" type="number" min="0" max="99" inputmode="numeric" placeholder="0" value="${sc}" oninput="S.draft.${k==="h"?"hs":"as"}=this.value;upPrev()">`:""}</div>`;
  const canDel=d.id&&(l.owner===me.id||d.by===me.id||isAdmin),t=prevText();
- return `<div class="sheet"><h3>${d.id?"O'yinni tahrirlash":"Natija kiritish"}</h3>
- ${d.id?`<div class="mut" style="margin-top:4px">${esc(l.name)}</div>`:`<label>Liga</label><select onchange="setMLeague(this.value)">${lopt}</select>`}
- <label>${pa.uid===me.id?"Sizning jamoangiz":"1-jamoa"}</label>${row(pa,"h",d.a,d.hs)}
+ return `<div class="sheet"><h3>${d.id?$t("O'yinni tahrirlash"):$t("Natija kiritish")}</h3>
+ ${d.id?`<div class="mut" style="margin-top:4px">${esc(l.name)}</div>`:`<label>${$t("Liga")}</label><select onchange="setMLeague(this.value)">${lopt}</select>`}
+ <label>${pa.uid===me.id?$t("Sizning jamoangiz"):"1-jamoa"}</label>${row(pa,"h",d.a,d.hs)}
  <div class="vs">VS</div>
- <label style="margin-top:0">Raqib</label>${row(pb,"a",d.h,d.as)}
- <div class="mode"><div class="${played?'on':''}" onclick="S.draft.mode='played';render()">O'ynaldi</div><div class="${!played?'on':''}" onclick="S.draft.mode='sched';render()">Rejalashtirish</div></div>
- ${played?`<label>Sana va vaqt</label><div class="autodt">${dlong(d.id&&!d.wasSched?d.ts:Date.now())}, ${hhmm(d.id&&!d.wasSched?d.ts:Date.now())}${d.id&&!d.wasSched?"":" · avtomatik"}</div>`:`<label>O'yin sanasi va vaqti</label><input type="datetime-local" value="${toLocal(d.ts)}" onchange="S.draft.ts=new Date(this.value).getTime()||Date.now()">`}
+ <label style="margin-top:0">${$t("Raqib")}</label>${row(pb,"a",d.h,d.as)}
+ <div class="mode"><div class="${played?'on':''}" onclick="S.draft.mode='played';render()">${$t("O'ynaldi")}</div><div class="${!played?'on':''}" onclick="S.draft.mode='sched';render()">${$t("Rejalashtirish")}</div></div>
+ ${played?`<label>${$t("Sana va vaqt")}</label><div class="autodt">${dlong(d.id&&!d.wasSched?d.ts:Date.now())}, ${hhmm(d.id&&!d.wasSched?d.ts:Date.now())}${d.id&&!d.wasSched?"":(" "+$t("· avtomatik"))}</div>`:`<label>${$t("O'yin sanasi va vaqti")}</label><input type="datetime-local" value="${toLocal(d.ts)}" onchange="S.draft.ts=new Date(this.value).getTime()||Date.now()">`}
  <div class="prev" id="mprev" style="display:${t?"block":"none"}">${t}</div>
- <div style="height:16px"></div><button class="btn" onclick="saveMatch()">Natijani tasdiqlash</button>${canDel?`<button class="btn red" style="margin-top:6px" onclick="delMatch()">O'yinni o'chirish</button>`:""}</div>`}
-async function saveMatch(){const d=S.draft;if(d.h===d.a)return toast("Bir xil jamoa tanlangan");
- let hs=null,as=null;if(d.mode==="played"){hs=parseInt(d.hs);as=parseInt(d.as);if(isNaN(hs)||isNaN(as)||hs<0||as<0)return toast("Hisobni kiriting")}
+ <div style="height:16px"></div><button class="btn" onclick="saveMatch()">${$t("Natijani tasdiqlash")}</button>${canDel?`<button class="btn red" style="margin-top:6px" onclick="delMatch()">${$t("O'yinni o'chirish")}</button>`:""}</div>`}
+async function saveMatch(){const d=S.draft;if(d.h===d.a)return toast($t("Bir xil jamoa tanlangan"));
+ let hs=null,as=null;if(d.mode==="played"){hs=parseInt(d.hs);as=parseInt(d.as);if(isNaN(hs)||isNaN(as)||hs<0||as<0)return toast($t("Hisobni kiriting"))}
  const l=structuredClone(leagues[d.c]);l.matches=l.matches||[];
  const m={id:d.id||uid(),h:d.h,a:d.a,hs,as,ts:(d.mode==="played"&&(!d.id||d.wasSched))?Date.now():d.ts,by:d.by||me.id},i=l.matches.findIndex(x=>x.id===m.id);
  if(i>=0)l.matches[i]=m;else l.matches.push(m);
- S.modal=null;await store.save(d.c,l);toast(hs==null?"O'yin rejalashtirildi":"Natija saqlandi, jadval yangilandi")}
+ S.modal=null;await store.save(d.c,l);toast(hs==null?$t("O'yin rejalashtirildi"):$t("Natija saqlandi, jadval yangilandi"))}
 async function delMatch(){const d=S.draft,l=structuredClone(leagues[d.c]);l.matches=l.matches.filter(m=>m.id!==d.id);S.modal=null;await store.save(d.c,l)}
 
 /* ---------- Render ---------- */
-function nav(){const t=cur().s;const on=k=>(k==="matches"&&t==="matches")||(k==="leagues"&&["leagues","league","team"].includes(t))||(k===t);
- return `<div class="nav"><div>${[["matches","O'yinlar",I.pitch],["leagues","Ligalar",I.tro()],["follow","Sevimlilar",I.starO(24)],["profile","Profil",I.usr],...(isAdmin?[["admin","Boshqaruv",I.shield]]:[])].map(([k,n,ic])=>`<div class="ni ${on(k)?'on':''}" onclick="root('${k}')">${ic}${n}</div>`).join("")}</div></div>`}
+function nav(){const t=cur().s;const on=k=>(k==="matches"&&t==="matches")||(k==="leagues"&&["leagues","league","team"].includes(t))||(k==="cups"&&["cups","cup"].includes(t))||(k==="profile"&&["profile","admin"].includes(t))||(k===t);
+ return `<div class="nav"><div>${[["matches",$t("O'yinlar"),I.pitch],["leagues",$t("Ligalar"),I.tro()],["cups",$t("Chempionat"),I.bracket],["follow",$t("Sevimlilar"),I.starO(24)],["profile",$t("Profil"),I.usr]].map(([k,n,ic])=>`<div class="ni ${on(k)?'on':''}" onclick="root('${k}')">${ic}${n}</div>`).join("")}</div></div>`}
 function render(full=true){
  if(!full&&document.activeElement&&app.contains(document.activeElement)&&/INPUT|SELECT/.test(document.activeElement.tagName))return;
  {const key=reg?cur().s+(cur().code||"")+(cur().pid||""):"w";if(full&&key!==S.lastKey){S.lastKey=key;app.classList.add("go");clearTimeout(S.gt);S.gt=setTimeout(()=>app.classList.remove("go"),700)}}
  let n=$("#navw");if(!n){n=document.createElement("div");n.id="navw";document.body.appendChild(n)}
  if(!reg){renderWelcome();n.innerHTML=""}
- else{({matches:renderMatches,leagues:renderLeagues,follow:renderFollow,profile:renderProfile,admin:renderAdmin,league:renderLeague,team:renderTeam})[cur().s]();n.innerHTML=nav()}
+ else{({matches:renderMatches,leagues:renderLeagues,follow:renderFollow,profile:renderProfile,admin:renderAdmin,cups:renderCups,cup:renderCup,league:renderLeague,team:renderTeam})[cur().s]();n.innerHTML=nav()}
  if(full){const o=$(".modal");let sc=0;if(o){const sh=o.querySelector(".sheet");if(sh)sc=sh.scrollTop;o.remove()}
   if(S.modal){const w=document.createElement("div");w.className="modal";w.onclick=e=>{if(e.target===w){S.modal=null;render()}};
-   w.innerHTML=({join:joinSheet,match:matchSheet,leagueEdit:leagueEditSheet,joincode:joinCodeSheet,user:userSheet,newleague:newLeagueSheet,register:registerSheet,cal:calSheet,search:searchSheet})[S.modal]();document.body.appendChild(w);
+   w.innerHTML=({join:joinSheet,match:matchSheet,leagueEdit:leagueEditSheet,joincode:joinCodeSheet,user:userSheet,newleague:newLeagueSheet,tie:tieSheet,drawcup:drawSheet,register:registerSheet,cal:calSheet,search:searchSheet})[S.modal]();document.body.appendChild(w);
    const sh=w.querySelector(".sheet");if(sh)sh.scrollTop=sc;const q=w.querySelector("#sq");if(q)q.focus()}}
 }
 (async()=>{
  await store.init();
  const h=location.hash.slice(1).toLowerCase();
- if(h){const go=()=>{if(reg&&leagues[h]&&cur().s!=="league"&&!S.opened){S.opened=1;S.stack=[{s:"matches"},{s:"league",code:h}];S.ltab="players";render()}};go();setTimeout(go,1200)}
+ if(h){const go=()=>{if(reg&&leagues[h]&&cur().s!=="league"&&!S.opened){S.opened=1;deepOpen(h)}};go();setTimeout(go,1200)}
  render();handlePaid();
 })();
 </script>
