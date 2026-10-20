@@ -1,26 +1,38 @@
-// Liga yaratish uchun Telegram Stars to'lov havolasini yaratadi.
-// GET  -> narx (Stars)
-// POST -> { initData } : to'lov havolasi
-// Narx: Vercel'da LEAGUE_STARS o'zgaruvchisi (standart 400). Sinash uchun 1 qilib qo'ying.
+// Liga yoki chempionat yaratish uchun Telegram Stars to'lov havolasini yaratadi.
+// GET  -> narxlar (Stars): { stars, cup }
+// POST -> { initData, kind: "lg"|"cp", lang } : to'lov havolasi
+// Narx: Vercel'da LEAGUE_STARS (standart 400) va ixtiyoriy CUP_STARS. Sinash uchun 1 qiling.
 const crypto = require("crypto");
 const { verify, call } = require("../lib/tg");
 
+const num = (v, d) => Math.max(1, parseInt(v || String(d), 10) || d);
+const TXT = {
+  uz: { lg: ["Yangi liga", "Trofeo'da yangi liga yaratish", "Liga yaratish"], cp: ["Yangi chempionat", "Trofeo'da yangi chempionat (kubok) yaratish", "Chempionat yaratish"] },
+  ru: { lg: ["Новая лига", "Создание новой лиги в Trofeo", "Создание лиги"], cp: ["Новый чемпионат", "Создание нового чемпионата (кубка) в Trofeo", "Создание чемпионата"] },
+  en: { lg: ["New league", "Create a new league in Trofeo", "League creation"], cp: ["New tournament", "Create a new knockout tournament in Trofeo", "Tournament creation"] },
+};
+
 module.exports = async (req, res) => {
-  const stars = Math.max(1, parseInt(process.env.LEAGUE_STARS || "400", 10) || 400);
-  if (req.method === "GET") return res.status(200).json({ stars });
+  const lg = num(process.env.LEAGUE_STARS, 400);
+  const cp = num(process.env.CUP_STARS || process.env.LEAGUE_STARS, 400);
+  if (req.method === "GET") return res.status(200).json({ stars: lg, cup: cp });
   if (req.method !== "POST") return res.status(405).json({ ok: false });
   const token = process.env.BOT_TOKEN;
-  const u = verify((req.body || {}).initData, token);
+  const { initData, kind, lang } = req.body || {};
+  const u = verify(initData, token);
   if (!u) return res.status(401).json({ ok: false, error: "kirish tasdiqlanmadi" });
+  const k = kind === "cp" ? "cp" : "lg";
+  const stars = k === "cp" ? cp : lg;
+  const L = (TXT[lang] || TXT.uz)[k];
   const nonce = crypto.randomBytes(5).toString("hex");
-  const payload = `lg:${u.id}:${nonce}`;
+  const payload = `${k}:${u.id}:${nonce}`;
   const r = await call(token, "createInvoiceLink", {
-    title: "Yangi liga",
-    description: "Trofeo'da yangi liga yaratish",
+    title: L[0],
+    description: L[1],
     payload,
     currency: "XTR",
-    prices: [{ label: "Liga yaratish", amount: stars }],
+    prices: [{ label: L[2], amount: stars }],
   });
   if (!r.ok) return res.status(502).json({ ok: false, error: r.description || "havola yaratilmadi" });
-  return res.status(200).json({ ok: true, link: r.result, nonce, stars });
+  return res.status(200).json({ ok: true, link: r.result, nonce, stars, kind: k });
 };
