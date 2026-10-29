@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Trofeo · Admin</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#f3f6f4;--card:#fff;--card2:#edf1ee;--tx:#0b1511;--mut:#5f7167;--acc:#0b9b63;--accx:#fff;--line:#e2e9e5;--red:#e5484d;--gold:#c98a12;--blue:#3b82f6;--sh:0 1px 2px rgba(10,30,20,.06),0 8px 24px rgba(10,30,20,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#050806;--card:#0e1411;--card2:#171f1a;--tx:#f1f6f3;--mut:#8c9c93;--acc:#2bd98c;--accx:#03150d;--line:#1f2a24;--red:#ff6b6b;--gold:#f4c14e;--blue:#5aa9ff;--sh:none}}
+:root[data-theme="dark"]{--bg:#050806;--card:#0e1411;--card2:#171f1a;--tx:#f1f6f3;--mut:#8c9c93;--acc:#2bd98c;--accx:#03150d;--line:#1f2a24;--red:#ff6b6b;--gold:#f4c14e;--blue:#5aa9ff;--sh:none}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-top:env(safe-area-inset-top,0)}
+#app{max-width:980px;margin:0 auto;padding:12px 12px 60px}
+h1{font-size:22px;margin:6px 2px 2px;letter-spacing:-.3px}h2,h3{margin:0}
+.sub{color:var(--mut);font-size:13px;margin:0 2px 10px}
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin:0 -12px 14px;padding:0 12px;position:sticky;top:0;background:var(--bg);z-index:5;scrollbar-width:none}
+.tab{flex:none;padding:12px 13px;color:var(--mut);font-weight:700;border-bottom:3px solid transparent;cursor:pointer}.tab.on{color:var(--tx);border-color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);margin-bottom:12px;overflow:hidden}.pad{padding:14px}
+.ttl{font-weight:800;padding:14px 14px 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--sh)}.kpi b{display:block;font-size:26px;letter-spacing:-.5px}.kpi span{color:var(--mut);font-size:12px;font-weight:600}.kpi.live b{color:var(--acc)}
+.row{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--line);cursor:pointer}.row:first-child{border-top:0}.row:hover{background:var(--card2)}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(145deg,var(--acc),#0a6d3a);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex:none;position:relative}
+.dot{position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;background:var(--mut);border:2px solid var(--card)}.dot.on{background:var(--acc)}
+.grow{flex:1;min-width:0}.n{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.s{color:var(--mut);font-size:12px}
+.chip{display:inline-block;padding:2px 8px;border-radius:10px;background:var(--card2);color:var(--mut);font-size:11px;font-weight:800;margin-left:6px}.chip.r{background:rgba(229,72,77,.15);color:var(--red)}.chip.g{background:rgba(43,217,140,.15);color:var(--acc)}.chip.y{background:rgba(244,193,78,.18);color:var(--gold)}
+input,select,textarea{width:100%;background:var(--card2);border:1px solid transparent;color:var(--tx);border-radius:12px;padding:11px 12px;font:inherit;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--acc)}
+.btn{background:var(--acc);color:var(--accx);border:0;border-radius:12px;padding:11px 14px;font-weight:800;cursor:pointer;font:inherit;font-weight:800}.btn.sec{background:var(--card2);color:var(--tx)}.btn.red{background:rgba(229,72,77,.14);color:var(--red)}.btn.sm{padding:7px 11px;font-size:13px}
+.bar{height:10px;border-radius:6px;background:var(--card2);overflow:hidden}.bar i{display:block;height:100%;background:var(--acc)}
+.filters{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}.filters>*{flex:1;min-width:120px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+.sheet{background:var(--card);width:100%;max-width:640px;border-radius:22px 22px 0 0;padding:18px 16px 24px;max-height:90%;overflow-y:auto}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}label{display:block;font-size:12px;color:var(--mut);margin:12px 0 6px;font-weight:600}
+.kv{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--mut)}.kv b{color:var(--tx);text-align:right}
+.empty{text-align:center;color:var(--mut);padding:30px 10px}
+.toast{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:9px 16px;border-radius:20px;font-weight:700;z-index:50}
+.lock{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:9px 10px;border-top:1px solid var(--line);text-align:left}th{color:var(--mut);font-size:11px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const TG=(window.Telegram&&Telegram.WebApp&&Telegram.WebApp.initData)?Telegram.WebApp:null;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let tab="over",NOW=Date.now(),timer=null;
+const app=$("#app");
+if(TG){try{TG.ready();TG.expand();document.documentElement.dataset.theme=TG.colorScheme||"dark";TG.setHeaderColor&&TG.setHeaderColor(TG.colorScheme==="light"?"#f3f6f4":"#050806")}catch(e){}}
+async function api(action,body){
+ try{const r=await fetch("/api/admin",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(Object.assign({initData:TG?TG.initData:"",action},body||{}))});
+  let j={};try{j=await r.json()}catch(e){}j._s=r.status;return j}catch(e){return{ok:false,error:"net",_s:0}}}
+function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2200)}
+const ask=(t)=>new Promise(r=>{if(TG&&TG.showConfirm)TG.showConfirm(t,r);else r(confirm(t))});
+const ago=ts=>{if(!ts)return"—";const m=Math.round((NOW-new Date(ts).getTime())/6e4);if(m<2)return"hozir";if(m<60)return m+" daq. oldin";const h=Math.round(m/60);if(h<24)return h+" soat oldin";const d=Math.round(h/24);return d<30?d+" kun oldin":new Date(ts).toLocaleDateString("uz-UZ")};
+const dt=ts=>ts?new Date(ts).toLocaleString("uz-UZ"):"—";
+const online=ts=>NOW-new Date(ts).getTime()<120000;
+const LN={uz:"O'zbekcha",ru:"Русский",en:"English"};
+const frozenChip=l=>(l.deleted_at?'<span class="chip r">o\'chirilgan</span>':l.frozen?'<span class="chip y">to\'xtatilgan</span>':"")+(l.kind==="cup"?'<span class="chip">kubok</span>':"");
+function shell(inner){
+ app.innerHTML=`<h1>Trofeo · Admin</h1><div class="sub">Faqat egasi uchun boshqaruv paneli</div><div class="tabs">${[["over","Umumiy"],["users","Foydalanuvchilar"],["leagues","Liga va chempionatlar"],["pay","To'lovlar"],["ann","E'lon"],["log","Jurnal"]].map(([k,t])=>`<div class="tab ${tab===k?"on":""}" onclick="go('${k}')">${t}</div>`).join("")}</div><div id="body">${inner||'<div class="empty">Yuklanmoqda...</div>'}</div>`}
+function denied(j){app.innerHTML=`<div class="lock"><h1>Kirish yopiq</h1><div>${!TG?"Bu panelni faqat Telegram ichida, bot orqali (/admin) ochish mumkin.":j._s===403?"Bu bo'limga faqat ilova egasi kira oladi.":j.configured===false?"Baza (Supabase) hali ulanmagan. Vercel'da SUPABASE_URL va SUPABASE_SERVICE_KEY ni qo'shing.":"Server xatosi: "+esc(j.detail||j.error||j._s)}</div></div>`}
+function go(k){tab=k;load()}
+async function load(){
+ clearTimeout(timer);shell();
+ const f={over:ovr,users:usr,leagues:lgs,pay:pays,ann:annn,log:logs}[tab];await f();
+ if(tab==="over")timer=setTimeout(()=>{if(tab==="over")load()},30000)}
+async function ovr(){
+ const j=await api("overview");if(!j.ok)return denied(j);NOW=Date.now();
+ const u=j.users,l=j.leagues,p=j.payments,tot=Math.max(1,u.total);
+ const k=(b,s,c)=>`<div class="kpi ${c||""}"><b>${b}</b><span>${s}</span></div>`;
+ $("#body").innerHTML=`<div class="grid">${k(u.total,"Foydalanuvchilar")}${k(u.online,"Hozir online","live")}${k(u.d1,"24 soatda faol")}${k(u.d7,"7 kunda faol")}${k(u.new7,"Yangi (7 kun)")}${k(u.banned,"Bloklangan")}</div>
+ <div class="grid">${k(l.leagues,"Ligalar")}${k(l.cups,"Chempionatlar")}${k(l.active7,"Faol (7 kun)","live")}${k(l.frozen,"To'xtatilgan")}${k(l.deleted,"O'chirilgan")}${k(p.paid+" · "+p.stars+" Stars","To'lovlar")}</div>
+ <div class="card pad"><h3>Tillar</h3>${["uz","ru","en"].map(x=>`<div style="margin-top:12px"><div class="kv" style="border:0;padding:0 0 5px"><span>${LN[x]}</span><b>${u.langs[x]||0} (${Math.round((u.langs[x]||0)/tot*100)}%)</b></div><div class="bar"><i style="width:${(u.langs[x]||0)/tot*100}%"></i></div></div>`).join("")}</div>
+ <div class="card"><div class="ttl">Eng ko'p kuzatilayotganlar</div>${j.top.length?j.top.map(t=>`<div class="row" onclick="lgd('${t.id}')"><div class="grow"><div class="n">${esc(t.name)}${t.kind==="cup"?'<span class="chip">kubok</span>':""}</div><div class="s">${t.players_n} jamoa</div></div><b>${t.followers} <span class="s">obunachi</span></b></div>`).join(""):'<div class="empty">Hali yo\'q</div>'}</div>`}
+let UQ="";
+async function usr(){
+ $("#body").innerHTML=`<input id="uq" placeholder="Ism, @username yoki ID bo'yicha qidirish" value="${esc(UQ)}" oninput="UQ=this.value;clearTimeout(window._ut);window._ut=setTimeout(usrList,300)"><div id="ul" style="margin-top:10px"></div>`;usrList()}
+async function usrList(){
+ const j=await api("users",{q:UQ,limit:100});if(!j.ok)return denied(j);NOW=new Date(j.now).getTime();
+ $("#ul").innerHTML=`<div class="card"><div class="ttl">Foydalanuvchilar (${j.total})</div>${j.users.map(u=>`<div class="row" onclick="usd('${u.id}')"><div class="av">${esc((u.name||"?").slice(0,1).toUpperCase())}<span class="dot ${online(u.last_seen)?"on":""}"></span></div><div class="grow"><div class="n">${esc(u.name||"Nomsiz")}${u.banned_until&&new Date(u.banned_until)>NOW?'<span class="chip r">ban</span>':""}${u.owned?`<span class="chip g">${u.owned} egalik</span>`:""}</div><div class="s">${u.tg?"@"+esc(u.tg)+" · ":""}${LN[u.lang]||u.lang} · ${ago(u.last_seen)}</div></div></div>`).join("")||'<div class="empty">Hech kim topilmadi</div>'}</div>`}
+async function usd(id){
+ const j=await api("user",{uid:id});if(!j.ok)return toast("Xato: "+(j.error||j._s));const u=j.user,banned=u.banned_until&&new Date(u.banned_until)>NOW;
+ modal(`<div class="row" style="padding:0;cursor:default"><div class="av">${esc((u.name||"?").slice(0,1).toUpperCase())}</div><div class="grow"><h3>${esc(u.name||"Nomsiz")}</h3><div class="s">${u.tg?`<a style="color:var(--blue)" target="_blank" rel="noopener" href="https://t.me/${esc(u.tg)}">@${esc(u.tg)}</a> · `:""}ID ${esc(u.id.replace(/^tg/,""))}</div></div></div>
+ <div style="margin-top:10px"><div class="kv">Til<b>${LN[u.lang]||u.lang}</b></div><div class="kv">Oxirgi faollik<b>${dt(u.last_seen)}</b></div><div class="kv">Ro'yxatdan o'tgan<b>${dt(u.first_seen)}</b></div><div class="kv">Kuzatadi<b>${((u.follows&&u.follows.l)||[]).length} ta</b></div>${banned?`<div class="kv">Ban<b style="color:var(--red)">${new Date(u.banned_until).getFullYear()>9000?"doimiy":dt(u.banned_until)}${u.ban_reason?" · "+esc(u.ban_reason):""}</b></div>`:""}</div>
+ <label>Egalik qilayotgan liga va chempionatlari (${j.owned.length})</label>${j.owned.map(l=>`<div class="row" onclick="lgd('${l.id}')"><div class="grow"><div class="n">${esc(l.name)}${frozenChip(l)}</div><div class="s">${l.players_n} jamoa · ${ago(l.updated_at)}</div></div></div>`).join("")||'<div class="s">Yo\'q</div>'}
+ <label>Qatnashayotganlari (${j.member.length})</label>${j.member.map(l=>`<div class="row" onclick="lgd('${l.id}')"><div class="grow"><div class="n">${esc(l.name)}${l.mod?'<span class="chip g">moderator</span>':""}${frozenChip(l)}</div><div class="s">${esc(l.team||"")}</div></div></div>`).join("")||'<div class="s">Yo\'q</div>'}
+ <label>To'lovlari (${j.payments.length})</label>${j.payments.map(p=>`<div class="kv">${dt(p.created_at)} · ${p.kind==="cp"?"chempionat":"liga"}<b>${p.stars} Stars · ${p.status}</b></div>`).join("")||'<div class="s">Yo\'q</div>'}
+ ${u.id!==me()?`<label>Jazo</label><div class="filters" style="margin:0"><select id="bd"><option value="1">1 kun</option><option value="7" selected>7 kun</option><option value="30">30 kun</option><option value="0">Doimiy</option></select><input id="br" placeholder="Sabab (foydalanuvchi ko'radi)"></div>
+ <div class="acts">${banned?`<button class="btn" onclick="act('unban',{uid:'${u.id}'},true)">Blokdan chiqarish</button>`:`<button class="btn red" onclick="banU('${u.id}')">Bloklash</button>`}<button class="btn sec" onclick="kickU('${u.id}')">Hamma ligadan chiqarish</button></div>`:""}`)}
+let ME="";const me=()=>ME;
+async function banU(id){const d=+$("#bd").value,r=$("#br").value;if(!(await ask("Foydalanuvchi bloklansinmi?")))return;const j=await api("ban",{uid:id,days:d,reason:r});if(j.ok){toast("Bloklandi");closeM();usr()}else toast("Xato")}
+async function kickU(id){if(!(await ask("Foydalanuvchi barcha liga va chempionatlardan chiqarilsinmi? (O'zi egasi bo'lganlariga tegilmaydi)")))return;const j=await api("kick",{uid:id});if(j.ok){toast(j.count+" ta joydan chiqarildi");closeM()}else toast("Xato")}
+async function act(a,b,reload){const j=await api(a,b);if(j.ok){toast("Tayyor");closeM();if(reload)load()}else toast("Xato: "+(j.error||j._s))}
+let LQ="",LK="all",LS="all";
+async function lgs(){
+ $("#body").innerHTML=`<div class="filters"><input id="lq" placeholder="Nom, egasi yoki kod" value="${esc(LQ)}" oninput="LQ=this.value;clearTimeout(window._lt);window._lt=setTimeout(lgList,300)"><select onchange="LK=this.value;lgList()"><option value="all">Hammasi</option><option value="league" ${LK==="league"?"selected":""}>Ligalar</option><option value="cup" ${LK==="cup"?"selected":""}>Chempionatlar</option></select><select onchange="LS=this.value;lgList()"><option value="all">Har qanday holat</option><option value="active" ${LS==="active"?"selected":""}>Faol (7 kun)</option><option value="frozen" ${LS==="frozen"?"selected":""}>To'xtatilgan</option><option value="deleted" ${LS==="deleted"?"selected":""}>O'chirilgan</option></select></div><div id="ll"></div>`;lgList()}
+async function lgList(){
+ const j=await api("leagues",{q:LQ,kind:LK,status:LS,limit:150});if(!j.ok)return denied(j);NOW=Date.now();
+ $("#ll").innerHTML=`<div class="card"><div class="ttl">Jami: ${j.total}</div>${j.leagues.map(l=>`<div class="row" onclick="lgd('${l.id}')"><div class="grow"><div class="n">${esc(l.name)}${frozenChip(l)}</div><div class="s">Egasi: ${esc(l.owner_name||l.owner)} · ${l.players_n} jamoa · ${l.matches_n} o'yin · ${ago(l.updated_at)}</div></div><div style="text-align:right"><b>${l.followers}</b><div class="s">obunachi</div></div></div>`).join("")||'<div class="empty">Hech narsa topilmadi</div>'}</div>`}
+async function lgd(id){
+ const j=await api("league",{id});if(!j.ok)return toast("Xato: "+(j.error||j._s));const l=j.league,nm=u=>{const p=l.players.find(x=>x.uid===u);return p?p.name:u};
+ modal(`<h3>${esc(l.name)} ${frozenChip(l)}</h3><div class="s">Kod: ${esc(l.id)}</div>
+ <div style="margin-top:10px"><div class="kv">Egasi<b>${esc(nm(l.owner))}</b></div><div class="kv">Jamoalar<b>${l.players.length}${l.size?" / "+l.size:""}</b></div>${l.kind==="cup"?`<div class="kv">Holat<b>${{reg:"Ro'yxat ochiq",live:"O'ynalmoqda",done:"Yakunlangan"}[l.status]||l.status}</b></div>`:""}<div class="kv">Yaratilgan<b>${dt(l.created_at)}</b></div><div class="kv">Oxirgi faollik<b>${dt(l.updated_at)}</b></div>${l.freeze_reason?`<div class="kv">To'xtatish sababi<b>${esc(l.freeze_reason)}</b></div>`:""}</div>
+ ${l.mods.length?`<label>Moderatorlar</label>${l.mods.map(u=>`<div class="s">${esc(nm(u))}</div>`).join("")}`:""}
+ ${l.banned.length?`<label>Ban qilinganlar</label>${l.banned.map(b=>`<div class="s">${esc(b.name||b.uid)}</div>`).join("")}`:""}
+ <label>Jamoalar (${l.players.length})</label><div style="max-height:180px;overflow:auto">${l.players.slice(0,200).map(p=>`<div class="kv">${esc(p.team)}<b>${esc(p.name)}${p.tg?" @"+esc(p.tg):""}</b></div>`).join("")||'<div class="s">Yo\'q</div>'}</div>
+ <label>Boshqarish (ma'lumotlarga tegilmaydi, istalgan payt qaytarsa bo'ladi)</label><input id="fr" placeholder="Sabab (egasi ko'radi)">
+ <div class="acts">${l.deleted_at?`<button class="btn" onclick="act('restore',{id:'${l.id}'},true)">Qaytarish</button>`:`${l.frozen?`<button class="btn" onclick="act('unfreeze',{id:'${l.id}'},true)">To'xtatishni bekor qilish</button>`:`<button class="btn sec" onclick="frz('${l.id}')">To'xtatib qo'yish</button>`}<button class="btn red" onclick="rmv('${l.id}')">Olib qo'yish (savatga)</button>`}</div>`)}
+async function frz(id){const r=$("#fr").value;if(!(await ask("Bu liga vaqtincha to'xtatilsinmi?")))return;act("freeze",{id,reason:r},true)}
+async function rmv(id){if(!(await ask("Savatga olib qo'yilsinmi? Keyin qaytarish mumkin.")))return;act("remove",{id},true)}
+async function pays(){
+ const j=await api("payments");if(!j.ok)return denied(j);
+ $("#body").innerHTML=`<div class="card" style="overflow-x:auto"><div class="ttl">So'nggi to'lovlar</div><table><tr><th>Sana</th><th>Foydalanuvchi</th><th>Tur</th><th>Stars</th><th>Holat</th><th></th></tr>${j.payments.map(p=>`<tr><td>${dt(p.created_at)}</td><td>${esc(p.user_name||p.user_id)}</td><td>${p.kind==="cp"?"chempionat":"liga"}</td><td>${p.stars}</td><td>${esc(p.status)}</td><td>${p.charge_id&&p.status!=="refunded"?`<button class="btn red sm" onclick="rf('${p.nonce}')">Qaytarish</button>`:""}</td></tr>`).join("")||'<tr><td colspan="6" class="empty">Hali yo\'q</td></tr>'}</table></div>`}
+async function rf(n){if(!(await ask("Stars to'lovi foydalanuvchiga qaytarilsinmi?")))return;const j=await api("refund",{nonce:n});if(j.ok){toast("Qaytarildi");pays()}else toast("Xato: "+(j.detail||j.error||j._s))}
+async function annn(){
+ const j=await api("overview");if(!j.ok)return denied(j);const a=j.announce||{};
+ $("#body").innerHTML=`<div class="card pad"><h3>Hamma foydalanuvchiga e'lon</h3><div class="s" style="margin:4px 0 10px">Ilovaning bosh sahifasida tepada ko'rinadi. ${a.on?'<span class="chip g">hozir faol</span>':""}</div><textarea id="at" rows="4" maxlength="400" placeholder="Masalan: Shanba kuni 20:00 da final!">${esc(a.on?a.text:"")}</textarea><div class="acts"><button class="btn" onclick="pubA(true)">E'lon qilish</button>${a.on?'<button class="btn sec" onclick="pubA(false)">Olib tashlash</button>':""}</div></div>`}
+async function pubA(on){const t=$("#at").value.trim();if(on&&!t)return toast("Matn yozing");const j=await api("announce",{on,text:t});if(j.ok){toast(on?"E'lon qilindi":"Olib tashlandi");annn()}else toast("Xato")}
+async function logs(){
+ const j=await api("log");if(!j.ok)return denied(j);
+ $("#body").innerHTML=`<div class="card" style="overflow-x:auto"><div class="ttl">Admin harakatlari jurnali</div><table><tr><th>Vaqt</th><th>Harakat</th><th>Nishon</th><th>Izoh</th></tr>${j.log.map(x=>`<tr><td>${dt(x.ts)}</td><td>${esc(x.action)}</td><td>${esc(x.target)}</td><td>${esc(x.note)}</td></tr>`).join("")||'<tr><td colspan="4" class="empty">Hali yo\'q</td></tr>'}</table></div>`}
+function modal(h){closeM();const m=document.createElement("div");m.className="modal";m.onclick=e=>{if(e.target===m)closeM()};m.innerHTML=`<div class="sheet">${h}</div>`;document.body.appendChild(m)}
+function closeM(){document.querySelectorAll(".modal").forEach(m=>m.remove())}
+try{ME="tg"+(TG&&TG.initDataUnsafe&&TG.initDataUnsafe.user&&TG.initDataUnsafe.user.id)}catch(e){}
+load();
+</script>
+</body>
+</html>
