@@ -1,4 +1,6 @@
 // Trofeo bot: Telegram webhook (Vercel serverless funksiyasi). Til: uz / ru / en
+const db = require("../lib/db");
+const { isAdminNumeric } = require("../lib/auth");
 const TOKEN = process.env.BOT_TOKEN;
 const tg = (method, body) =>
   fetch(`https://api.telegram.org/bot${TOKEN}/${method}`, {
@@ -81,6 +83,12 @@ async function onMessage(m, req) {
     const sp = m.successful_payment;
     console.log("Stars to'lovi:", sp.telegram_payment_charge_id, sp.total_amount);
     const parts = String(sp.invoice_payload || "").split(":");
+    if (db.configured() && (parts[0] === "lg" || parts[0] === "cp") && parts[2]) {
+      try {
+        const upd = await db.patch("payments", `nonce=eq.${parts[2]}&status=eq.invoiced`, { status: "paid", charge_id: sp.telegram_payment_charge_id, paid_at: new Date().toISOString() });
+        if (!upd.length) await db.upsert("payments", { nonce: parts[2], user_id: "tg" + m.from.id, kind: parts[0], stars: sp.total_amount, status: "paid", charge_id: sp.telegram_payment_charge_id, paid_at: new Date().toISOString() }, "nonce");
+      } catch (e) { console.error("to'lovni yozib bo'lmadi:", e.message); }
+    }
     if ((parts[0] === "lg" || parts[0] === "cp") && parts[2]) {
       const cp = parts[0] === "cp";
       return tg("sendMessage", {
@@ -102,6 +110,9 @@ async function onMessage(m, req) {
       reply_markup: openBtn(url, L.open),
     });
   }
+  if (text.startsWith("/admin") && m.from && isAdminNumeric(m.from.id)) {
+    return tg("sendMessage", { chat_id: chat, text: "Admin", reply_markup: openBtn(`${base(req)}/admin/`, "Admin panel") });
+  }
   if (text.startsWith("/id")) return tg("sendMessage", { chat_id: chat, text: L.id(m.from.id) });
   if (text.startsWith("/support")) return tg("sendMessage", { chat_id: chat, text: L.support(L.contact(handle())) });
   if (text.startsWith("/paysupport")) return tg("sendMessage", { chat_id: chat, text: L.paysupport(L.contact(handle())) });
@@ -119,7 +130,17 @@ module.exports = async (req, res) => {
   const u = req.body || {};
   try {
     if (u.pre_checkout_query) {
-      await tg("answerPreCheckoutQuery", { pre_checkout_query_id: u.pre_checkout_query.id, ok: true });
+      const q = u.pre_checkout_query;
+      let ok = true, why = "";
+      if (db.configured()) {
+        const parts = String(q.invoice_payload || "").split(":");
+        try {
+          const rows = await db.get("payments", `nonce=eq.${db.enc(parts[2] || "")}&select=status,user_id,stars`);
+          const r = rows[0];
+          if (!r || r.status !== "invoiced" || r.user_id !== "tg" + q.from.id || r.stars !== q.total_amount) { ok = false; why = "This payment is no longer valid. Please try again."; }
+        } catch (e) { ok = true; }
+      }
+      await tg("answerPreCheckoutQuery", ok ? { pre_checkout_query_id: q.id, ok: true } : { pre_checkout_query_id: q.id, ok: false, error_message: why });
     } else if (u.message) {
       await onMessage(u.message, req);
     }
