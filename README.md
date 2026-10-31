@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/34145860/README.md)
+[README.md](https://github.com/user-attachments/files/34208092/README.md)
 # Trofeo
 
 Do'stlar bilan konsolda futbol (yoki istalgan o'yin) o'ynash uchun liga, chempionat (kubok), jadval va natijalar ilovasi.
